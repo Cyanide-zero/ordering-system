@@ -15,7 +15,7 @@ function Home(){
             </div>
 
             <div className="second-section">
-                <h1>CATEGORIES</h1>
+                <h1 class="top-second">CATEGORIES</h1>
                 <div className="smallcard-container">
                     <Scard food = "Nilagang Palaka"/>
                     <Scard food = "Adobong Paniki"/>
@@ -46,6 +46,44 @@ function Home(){
                 <div className = "dots1">
                     <p></p>
                     <p></p>
+                </div>
+            </div>
+
+            <div className="reservation">
+                <div className="top-reservation">
+                    <h1>BOOK A TABLE</h1>
+                </div>
+
+                <div className='main-reservation'>
+                    <p className="square"></p>
+                    <div class="form-group-container">
+                        <h1>MAKE A RESERVATION</h1>
+                        <p>For further questions, please contact us</p>
+                        <div className='sched-form'>
+                            <div className="sched-inputs">
+                                DATE
+                                <input type="text" name="date"/>
+                            </div>
+                            <div className="sched-inputs">
+                                TIME
+                                <input type="text" name="time"/>
+                            </div>
+                            <div className="sched-inputs">
+                                PARTY SIZE
+                                <input type="text" name="size"/>
+                            </div>
+                        </div>
+                        
+                        <div className='info-form'>
+                            <p>NAME</p>
+                            <input type="text" name="name"/>
+                            <p>EMAIL ADDRESS</p>
+                            <input type="text" name="email"/>
+                        </div>
+                        <button className='form-button'>
+                            RESERVE NOW
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

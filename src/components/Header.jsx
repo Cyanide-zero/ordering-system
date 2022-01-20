@@ -13,7 +13,7 @@ function Header(){
                 <Link className="button" to='/contactus'><p>CONTACT US</p></Link>
             </div>
 
-            <div className="title">
+            <div className="header-title">
                 WEBSITE TITLE
             </div>
 

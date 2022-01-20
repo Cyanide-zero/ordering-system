@@ -6,6 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 import Header from './components/Header';
+import Footer from './components/Footer'
 
 import Home from './screens/Home';
 import Category from './screens/Category';
@@ -23,6 +24,7 @@ function App() {
           <Route path="/reservations" exact element={<Reservations/>}/>
           <Route path="/contactus" exact element={<ContactUs/>}/>
         </Routes>
+        <Footer/>
       </div>
     </Router>
   );
