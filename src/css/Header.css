@@ -1,0 +1,42 @@
+.header{
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    padding-top:5vh;
+    padding-bottom:5vh;
+    align-items: center;
+    background-color: #C4C4C44D;
+}
+
+.buttons-container{
+    display: flex;
+    margin-left: 1.75vw;
+}
+
+.button{
+    margin-left: 2.6vw;
+    margin-right:2.6vw;
+    font-size: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    color:black;
+}
+
+.title{
+    font-weight: bolder;
+    font-size:20px;
+    margin-left:7vw;
+}
+
+.logo-container{
+    display: flex;
+    margin-left: 9vw;
+}
+
+.logo-container p{
+    width:45px;
+    height:45px;
+    background-color: gray;
+    border-radius: 20px;
+    margin-left: 4vw;
+}
