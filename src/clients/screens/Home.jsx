@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Home.css';
+import '../../css/Home.css';
 import Scard from '../components/SmallCard';
 import Bcard from '../components/BigCard'
 

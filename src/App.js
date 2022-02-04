@@ -5,13 +5,13 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Header from './components/Header';
-import Footer from './components/Footer'
+import Header from './clients/components/Header';
+import Footer from './clients/components/Footer'
 
-import Home from './screens/Home';
-import Category from './screens/Category';
-import ContactUs from './screens/ContactUs';
-import Reservations from './screens/Reservations';
+import Home from './clients/screens/Home';
+import Category from './clients/screens/Category';
+import ContactUs from './clients/screens/ContactUs';
+import Reservations from './clients/screens/Reservations';
 
 function App() {
   return (
