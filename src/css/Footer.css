@@ -5,7 +5,8 @@
     padding-top:5vh;
     padding-bottom:5vh;
     align-items: center;
-    background-color: #0000004D;
+    background-color:black;
+    color:white;
 }
 
 .footer-buttons-container{
@@ -13,7 +14,7 @@
     margin-left: 1.75vw;
     padding-bottom:20px;
     font-weight: bold;
-    border-bottom:black 1px solid;
+    border-bottom:white 1px solid;
 }
 
 .title{
@@ -26,7 +27,7 @@
     font-size: 20px;
     cursor: pointer;
     text-decoration: none;
-    color:black;
+    color:white;
 }
 
 .footer-right-second{
@@ -59,7 +60,7 @@
     height:40px;
     width:100px;
     border: none;
-    background-color: #0000004D;
+    background-color: #FDD000;
     color:white;
     border-radius: 5px;
     margin-right: 2vw;

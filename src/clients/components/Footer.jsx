@@ -7,7 +7,7 @@ function Footer(){
         <div className='footer'>
 
             <div className="title">
-                <h2>WEBSITE TITLE</h2>
+                <h2>MG UNLIWINGS &amp;<br/>RAMSHAN'S CAFE</h2>
                 <p>ⒸPhoto, Inc. 2019. We Love Our Users!</p>
             </div>
 

@@ -1,3 +1,7 @@
+body{
+    background-color:  #F2EFE2;
+}
+
 .first-section{
     display: flex;
     flex-direction: column;
@@ -8,7 +12,6 @@
     padding-bottom: 3vh;
     font-size: 42px;
     font-weight: bolder;
-    background-color: #C4C4C44D;
 }
 
 .dots{
@@ -44,7 +47,7 @@
 }
 
 .featured-products{
-  background-color: #c4c4c4;
+  background-color: #F2EFE2;
   margin-left:3vw;
   margin-right: 3vw;
   border-radius:20px;
@@ -105,9 +108,13 @@
   margin-top: 3vh;
 }
 
+.reservationform{
+  color:#E3A765;
+}
+
 .reservation{
   width:100%;
-  background-color:#C4C4C44D;
+  background-color:#F2EFE2;
   padding-bottom: 10vh;
 }
 
@@ -158,6 +165,7 @@
   width:150px;
   height:30px;
   margin-top:10px;
+  border:solid #FDD000 3px;
 }
 
 .info-form{
@@ -170,6 +178,7 @@
   height:30px;
   margin-top:10px;
   margin-bottom: 10px;
+  border:solid #FDD000 3px;
 }
 
 .form-button{
@@ -178,8 +187,8 @@
   border-radius: 8px;
   width:80%;
   height:5vh;
-  background-color: #0000004D;
-  font-weight: bold;
+  background-color: black;
+  color:white;
 }
 
 

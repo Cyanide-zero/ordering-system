@@ -3,9 +3,9 @@
     justify-content: left;
     width: 100%;
     padding-top:5vh;
-    padding-bottom:5vh;
+    padding-bottom:4vh;
     align-items: center;
-    background-color: #C4C4C44D;
+    background-color:  #F2EFE2;;
 }
 
 .buttons-container{
@@ -16,6 +16,17 @@
 .button{
     margin-left: 2.6vw;
     margin-right:2.6vw;
+    margin-bottom:1vh;
+    font-size: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    color:black;
+}
+
+.button-active{
+    margin-left: 2.6vw;
+    margin-right:2.6vw;
+    border-bottom:#FDD000 1px solid;
     font-size: 20px;
     cursor: pointer;
     text-decoration: none;

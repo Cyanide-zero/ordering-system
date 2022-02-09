@@ -17,10 +17,10 @@ function Home(){
             <div className="second-section">
                 <h1 class="top-second">CATEGORIES</h1>
                 <div className="smallcard-container">
-                    <Scard food = "Nilagang Palaka"/>
-                    <Scard food = "Adobong Paniki"/>
-                    <Scard food = "Pininyahang Kalabaw"/>
-                    <Scard food = "Pinaupong Sawa"/>
+                    <Scard food = "PIZZA"/>
+                    <Scard food = "MAIN DISHES"/>
+                    <Scard food = "DESSERTS"/>
+                    <Scard food = "DRINKS"/>
                 </div>  
             </div>
 
@@ -31,15 +31,15 @@ function Home(){
                         <p class="viewallbutton">VIEW ALL</p>
                     </div>
                     <div className='featured-buttons-container'>
-                        <a class="featured-button">LOREM IPSUM</a>
-                        <a class="featured-button">LOREM IPSUM</a>
-                        <a class="featured-button">LOREM IPSUM</a>
+                        <a class="featured-button">NEW PRODUCTS</a>
+                        <a class="featured-button">BEST SELLERS</a>
+                        <a class="featured-button">ALL-TIME FAVORITES</a>
                     </div>
                 </div>
 
                 <div className='bigcard-container'>
-                    <Bcard food = "Malaking Burger" sub="Burger na super laki daw"/>
-                    <Bcard food = "Maliit na Burger" sub="Burger na Juts"/>
+                    <Bcard food = "Malaking Burger" price = "P 69.42" sub="Burger na super laki daw"/>
+                    <Bcard food = "Maliit na Burger" price = "P 6.66" sub="Burger na Juts"/>
                     <Bcard food = "French Fries" sub="Patatas ng mayaman"/>
                     <Bcard food = "French Kiss" sub="Halik ni Judas"/>
                 </div>
@@ -57,7 +57,7 @@ function Home(){
                 <div className='main-reservation'>
                     <p className="square"></p>
                     <div class="form-group-container">
-                        <h1>MAKE A RESERVATION</h1>
+                        <h1  className="reservationform">MAKE A RESERVATION</h1>
                         <p>For further questions, please contact us</p>
                         <div className='sched-form'>
                             <div className="sched-inputs">

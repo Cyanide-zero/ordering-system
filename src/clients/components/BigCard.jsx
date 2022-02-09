@@ -8,6 +8,7 @@ const Card = (props) =>{
             <div className="bottom">
                 <div className="textcontainer">
                     <p className="foodtext">{props.food}</p>
+                    <p className="pricetext">{props.price}</p>
                     <p className="subtext">{props.sub}</p>
                 </div>
                     <button class="addbutton">+</button>
