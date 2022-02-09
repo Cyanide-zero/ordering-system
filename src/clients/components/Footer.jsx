@@ -13,10 +13,10 @@ function Footer(){
 
             <div className="footer-right">
                 <div className="footer-buttons-container">
-                    <Link className="button" to='/'><p>HOME</p></Link>
-                    <Link className="button" to='/category'><p>CATEGORY</p></Link>
-                    <Link className="button" to='/reservations'><p>RESERVATIONS</p></Link>
-                    <Link className="button" to='/contactus'><p>CONTACT US</p></Link>
+                    <Link className="button-footer" to='/'><p>HOME</p></Link>
+                    <Link className="button-footer" to='/category'><p>CATEGORY</p></Link>
+                    <Link className="button-footer" to='/reservations'><p>RESERVATIONS</p></Link>
+                    <Link className="button-footer" to='/contactus'><p>CONTACT US</p></Link>
                 </div>
                 <div className="footer-right-second">
                     <div className='frs-1'>
