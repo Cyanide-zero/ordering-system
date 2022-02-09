@@ -1,7 +1,7 @@
 .small-card{
     height:300px;
     width:250px;
-    background-color: #c4c4c4;
+    background-color: black;
     border-radius:20px;
     display: flex;
     flex-direction: column;
@@ -18,5 +18,7 @@
 }
 
 .small-card p{
-    font-weight: bolder;
+    font-weight: thin;
+    font-size:32px;
+    color:white;
 }
