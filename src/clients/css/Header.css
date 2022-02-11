@@ -26,7 +26,7 @@
 .button-active{
     margin-left: 2.6vw;
     margin-right:2.6vw;
-    border-bottom:#FDD000 1px solid;
+    border-bottom:#FDD000 3px solid;
     font-size: 20px;
     cursor: pointer;
     text-decoration: none;

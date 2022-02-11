@@ -1,13 +1,15 @@
 import React from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function ContactUs(){
     return(
-        <div className = "header">
+        <div className = "contact-us">
+            <Header/>
                 <div className="">
                     Contact Us
                 </div>
-
-                
+            <Footer/>
         </div>
     );
 }

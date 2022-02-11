@@ -1,0 +1,30 @@
+.sidebar{
+    width:20vw;
+    height:100vh;
+    background-color: #FDD000;
+    position: absolute;
+    top:0;
+    left:0;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-heading{
+    margin-top: 8vh;
+    margin-left: 2vw;
+    margin-bottom:7.5vh;
+}
+
+.adminbutton-list{
+    height:70%;
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left:2vw;
+}
+
+.hr{
+    border:2px solid white;
+    margin-right: 2vw;
+}

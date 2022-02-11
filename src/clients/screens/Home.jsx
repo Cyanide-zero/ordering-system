@@ -1,11 +1,14 @@
 import React from 'react';
-import '../../css/Home.css';
+import '../css/Home.css';
 import Scard from '../components/SmallCard';
-import Bcard from '../components/BigCard'
+import Bcard from '../components/BigCard';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function Home(){
     return(
         <div className = "home">
+            <Header/>
             <div className="first-section">
                 ORDER KA NA
                 <div className = "dots">
@@ -86,6 +89,7 @@ function Home(){
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 }
