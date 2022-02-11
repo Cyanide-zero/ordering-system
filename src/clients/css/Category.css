@@ -1,0 +1,17 @@
+.categories-container{
+    width:100%;
+}
+
+.categories-top{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.categories-buttons{
+    width:60%;
+    display: flex;
+    justify-content: space-evenly;
+}
