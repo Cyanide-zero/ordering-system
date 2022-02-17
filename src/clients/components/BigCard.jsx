@@ -1,17 +1,17 @@
 import React from "react";
-import '../css/BigCard.css';
+import BigCardCss from '../css/BigCard.module.css';
 
 const Card = (props) =>{
     return(
-        <div className="big-card">
+        <div className={BigCardCss.bigCard}>
             <a></a>
-            <div className="bottom">
-                <div className="textcontainer">
-                    <p className="foodtext">{props.food}</p>
-                    <p className="pricetext">{props.price}</p>
-                    <p className="subtext">{props.sub}</p>
+            <div className={BigCardCss.bottom}>
+                <div className={BigCardCss.textContainer}>
+                    <p className={BigCardCss.foodText}>{props.food}</p>
+                    <p className={BigCardCss.priceText}>{props.price}</p>
+                    <p className={BigCardCss.subText}>{props.sub}</p>
                 </div>
-                    <button class="addbutton">+</button>
+                    <button class={BigCardCss.addButton}>+</button>
             </div>
         </div>
     )

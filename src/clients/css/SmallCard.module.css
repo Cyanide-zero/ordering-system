@@ -1,4 +1,4 @@
-.small-card{
+.container{
     height:300px;
     width:250px;
     background-color: black;
@@ -9,7 +9,7 @@
     justify-content: center;
 }
 
-.small-card a{
+.container a{
     width:70px;
     height:70px;
     background-color: white;
@@ -17,7 +17,7 @@
     margin-bottom: 43px;
 }
 
-.small-card p{
+.container p{
     font-weight: thin;
     font-size:32px;
     color:white;

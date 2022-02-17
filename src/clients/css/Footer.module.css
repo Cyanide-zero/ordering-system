@@ -1,4 +1,4 @@
-.footer{
+.container{
     display: flex;
     justify-content: left;
     width: 100%;
@@ -9,7 +9,7 @@
     color:white;
 }
 
-.footer-buttons-container{
+.buttonsContainer{
     display: flex;
     margin-left: 1.75vw;
     padding-bottom:20px;
@@ -21,7 +21,7 @@
     margin-left:7vw;
 }
 
-.button-footer{
+.button{
     margin-left: 2.6vw;
     margin-right:2.6vw;
     font-size: 20px;
@@ -30,21 +30,21 @@
     color:white;
 }
 
-.footer-right-second{
+.rightSecond{
     margin-left: 2vw;
     margin-top: 5vh;
     display: flex;
     justify-content: space-between;
 }
 
-.frs-1{
+.frs1{
     display: flex;
     align-items: center;
     margin-left: 1.75vw;
     margin-top: 2vh;
 }
 
-.footeremaillogo{
+.emailLogo{
     width:30px;
     height:30px;
     background-color: gray;
@@ -52,7 +52,7 @@
     margin-right: 10px;
 }
 
-.frs-2{
+.frs2{
     display: flex;
 }
 

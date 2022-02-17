@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../css/Header.css';
+import HeaderCSS from '../css/Header.module.css';
 import {Link, useLocation} from 'react-router-dom';
 
 
@@ -17,19 +17,19 @@ function Header(){
     });
 
     return(
-        <div className = "header">
-            <div className="buttons-container">
-                <Link className={location.pathname == "/" ? "button-active" : "button" } to='/'><p>HOME</p></Link>
-                <Link className={location.pathname == "/category"? "button-active": "button"} to='/category'><p>CATEGORY</p></Link>
-                <Link className={location.pathname == "/reservations" ? "button-active" : "button" } to='/reservations'><p>RESERVATIONS</p></Link>
-                <Link className={location.pathname == "/contactus" ? "button-active" : "button" } to='/contactus'><p>CONTACT US</p></Link>
+        <div className = {HeaderCSS.container}>
+            <div className={HeaderCSS.buttonsContainer}>
+                <Link className={location.pathname == "/" ? HeaderCSS.buttonActive : HeaderCSS.button } to='/'><p>HOME</p></Link>
+                <Link className={location.pathname == "/category"? HeaderCSS.buttonActive : HeaderCSS.button} to='/category'><p>CATEGORY</p></Link>
+                <Link className={location.pathname == "/reservations" ? HeaderCSS.buttonActive : HeaderCSS.button } to='/reservations'><p>RESERVATIONS</p></Link>
+                <Link className={location.pathname == "/contactus" ? HeaderCSS.buttonActive : HeaderCSS.button } to='/contactus'><p>CONTACT US</p></Link>
             </div>
 
-            <div className="header-title">
+            <div className={HeaderCSS.headerTitle}>
                 WEBSITE TITLE
             </div>
 
-            <div className = "logo-container">
+            <div className = {HeaderCSS.logoContainer}>
                 <p></p>
                 <p></p>
             </div>

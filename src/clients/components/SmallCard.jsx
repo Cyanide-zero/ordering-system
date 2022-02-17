@@ -1,9 +1,9 @@
 import React from "react";
-import '../css/SmallCard.css';
+import SCardCSS from '../css/SmallCard.module.css';
 
 const Card = (props) =>{
     return(
-        <div className="small-card">
+        <div className={SCardCSS.container}>
             <a></a>
             <p style={{wordBreak:'break-word'}}>{props.food}</p>
         </div>
