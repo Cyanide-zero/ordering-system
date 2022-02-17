@@ -1,4 +1,4 @@
-.big-card{
+.bigCard{
     height:360px;
     width:250px;
     background-color: #0000004D;
@@ -9,7 +9,7 @@
     justify-content: space-between;
 }
 
-.big-card a{
+.bigCard a{
     width:100%;
     height:70%;
     background-color: white;
@@ -21,23 +21,23 @@
     width: 100%;
 }
 
-.textcontainer{
+.textContainer{
     margin-left: 1vw;
     margin-bottom: 1vh;
     width: 80%;
     word-break: break-all;
 }
 
-.foodtext{
+.foodText{
     font-size: 18px;
     font-weight: bold;
 }
 
-.subtext{
+.subText{
     font-size: 12px;
 }
 
-.addbutton{
+.addButton{
     background-color: #FDD000;
     border:none;
     font-size: 30px;

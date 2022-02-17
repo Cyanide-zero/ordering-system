@@ -2,7 +2,7 @@ body{
     background-color:  #F2EFE2;
 }
 
-.first-section{
+.firstSection{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,25 +28,25 @@ body{
     margin-top: 33vh;
 }
 
-.second-section{
+.secondSection{
   height:100%;
   width:94%;
   margin-left:3vw;
   margin-right:3vw;
 }
 
-.top-second{
+.topSecond{
   padding-top: 5vh;
   padding-bottom:5vh;
 }
 
-.smallcard-container{
+.smallcardContainer{
   display: flex;
   justify-content: space-between;
   margin-bottom:8.5vh;
 }
 
-.featured-products{
+.featuredProducts{
   background-color: #F2EFE2;
   margin-left:3vw;
   margin-right: 3vw;
@@ -56,7 +56,7 @@ body{
   margin-bottom:8.5vh;
 }
 
-.top-feature{
+.topFeature{
   display: flex;
   align-items: center;
   margin-left:3vw;
@@ -65,7 +65,7 @@ body{
   margin-top:2vh;
 }
 
-.featured-buttons-container{
+.featuredButtonsContainer{
   margin-left: 3vw;
   margin-right:3vw ;
   justify-content: space-between;
@@ -73,17 +73,17 @@ body{
   padding-bottom: 1vh;
 }
 
-.featured-button{
+.featuredButton{
   margin-right: 31px;
   cursor: pointer;
 }
 
-.featured-button:hover{
+.featuredButton:hover{
   font-weight: bold;
   border-bottom: black 2px solid;
 }
 
-.bigcard-container{
+.bigcardContainer{
   margin-left: 3vw;
   margin-right: 3vw;
   margin-top: 5vh;
@@ -108,7 +108,7 @@ body{
   margin-top: 3vh;
 }
 
-.reservationform{
+.reservationForm{
   color:#E3A765;
 }
 
@@ -118,13 +118,13 @@ body{
   padding-bottom: 10vh;
 }
 
-.top-reservation{
+.topReservation{
   margin-left: 3vw;
   margin-top: 5vh;
   margin-bottom: 5vh;
 }
 
-.main-reservation{
+.mainReservation{
   margin-left: 3vw;
   margin-right: 3vw;
   display: flex;
@@ -137,7 +137,7 @@ body{
   background-color: #E5E5E5;
 }
 
-.form-group-container{
+.formGroupContainer{
   margin-left: 10vw;
   display: flex;
   flex-direction: column;
@@ -145,14 +145,14 @@ body{
   align-items: center;
 }
 
-.sched-form{
+.schedForm{
   display: flex;
   justify-content: space-between;
   margin-top: 6vh;
   margin-bottom: 6vh;
 }
 
-.sched-inputs{
+.schedInputs{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -160,7 +160,7 @@ body{
   margin-right: 1vw;
 }
 
-.sched-inputs input[type=text]{
+.schedInputs input[type=text]{
   border:none;
   width:150px;
   height:30px;
@@ -168,11 +168,11 @@ body{
   border:solid #FDD000 3px;
 }
 
-.info-form{
+.infoForm{
   width:80%;
 }
 
-.info-form input[type=text]{
+.infoForm input[type=text]{
   border:none;
   width:100%;
   height:30px;
@@ -181,7 +181,7 @@ body{
   border:solid #FDD000 3px;
 }
 
-.form-button{
+.formButton{
   margin-top: 2vh;
   border:none;
   border-radius: 8px;
