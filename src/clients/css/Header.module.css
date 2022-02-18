@@ -44,6 +44,15 @@
     margin-left: 9vw;
 }
 
+.logoIcon{
+    background-color:  #FDD000;
+    height:30px;
+    width:30px;
+    padding:8px 8px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
 .logoContainer p{
     width:45px;
     height:45px;

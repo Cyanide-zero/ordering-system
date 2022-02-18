@@ -30,7 +30,7 @@ function Header(){
             </div>
 
             <div className = {HeaderCSS.logoContainer}>
-                <p></p>
+                <img className={HeaderCSS.logoIcon} src={require('../../assets/icons/shopping-cart-check.png')} alt="Logo" />
                 <p></p>
             </div>
         </div>

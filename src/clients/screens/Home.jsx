@@ -3,27 +3,32 @@ import HomeCSS from '../css/Home.module.css';
 import Scard from '../components/SmallCard';
 import Bcard from '../components/BigCard';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Footer from '../components/Footer';  
 
 function Home(){
     return(
         <div className = "home">
             <Header/>
             <div className={HomeCSS.firstSection}>
-                ORDER KA NA
-                <div className = {HomeCSS.dots}>
-                    <p></p>
-                    <p></p>
+                <div className={HomeCSS.homeTitle}>
+                    MG UNLIWINGS &amp;<br/>
+                    RAMSHAN'S CAFE
+                    <p className={HomeCSS.italic}>lorem ipsum</p>
+                    <button className={HomeCSS.titleButton}>ORDER NOW</button>
                 </div>
+                <img className={HomeCSS.pizzaBG} src={require('../../assets/images/pizza-no-bg.png')}/>
+                <img className={HomeCSS.upArrow} src={require('../../assets/icons/up-arrow.png')}/>
+                <p className={HomeCSS.italicAbsolute}>try it now</p>
+                <div className={HomeCSS.circle}></div>
             </div>
 
             <div className={HomeCSS.secondSection}>
                 <h1 class={HomeCSS.topSecond}>CATEGORIES</h1>
                 <div className={HomeCSS.smallcardContainer}>
-                    <Scard food = "PIZZA"/>
-                    <Scard food = "MAIN DISHES"/>
-                    <Scard food = "DESSERTS"/>
-                    <Scard food = "DRINKS"/>
+                    <Scard source="pizza" food = "PIZZA"/>
+                    <Scard source="maindish"food = "MAIN DISHES"/>
+                    <Scard source="desserts"food = "DESSERTS"/>
+                    <Scard source="drinks"food = "DRINKS"/>
                 </div>  
             </div>
 
@@ -55,10 +60,12 @@ function Home(){
             <div className={HomeCSS.reservation}>
                 <div className={HomeCSS.topReservation}>
                     <h1>BOOK A TABLE</h1>
+                    
                 </div>
-
+                
                 <div className={HomeCSS.mainReservation}>
-                    <p className={HomeCSS.square}></p>
+                    {/* <div className={HomeCSS.circle1}></div> */}
+                    <img className={HomeCSS.resImage} src={require('../../assets/icons/reservation.png')}/>
                     <div class={HomeCSS.formGroupContainer}>
                         <h1  className={HomeCSS.reservationForm}>MAKE A RESERVATION</h1>
                         <p>For further questions, please contact us</p>
@@ -77,7 +84,7 @@ function Home(){
                             </div>
                         </div>
                         
-                        <div className='info-form'>
+                        <div className={HomeCSS.infoForm}>
                             <p>NAME</p>
                             <input type="text" name="name"/>
                             <p>EMAIL ADDRESS</p>

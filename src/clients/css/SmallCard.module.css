@@ -9,10 +9,9 @@
     justify-content: center;
 }
 
-.container a{
-    width:70px;
-    height:70px;
-    background-color: white;
+.cardLogo{
+    width:140px;
+    height:140px;
     border-radius: 50px;
     margin-bottom: 43px;
 }
