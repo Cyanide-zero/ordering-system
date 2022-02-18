@@ -16,12 +16,22 @@
 }
 
 .adminbutton-list{
-    height:70%;
+    height:55%;
     display: flex;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     margin-left:2vw;
+}
+
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.flex-container > p{
+    margin-left: 1vw;
 }
 
 .hr{

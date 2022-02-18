@@ -1,11 +1,259 @@
 .accounts,
 .addproduct,
-.adminhome,
+.editproduct,
 .adminreservation,
+.reservationdetails,
 .orderpage,
+.orderdetailspage,
 .productmanagement,
 .profile,
 .salesreport,
 .settings{
     margin-left:20vw;
 }
+
+.pagecontent{
+    margin: 10vh 5vw;
+}
+
+.flex-container-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-container-header input{
+    width: 25vw;
+    height: 2vh;
+    padding: 6px;
+    border-radius: 5px;
+}
+
+label{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* sign in page */
+.signin-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    height: 70vh;
+    width: 60vw;
+    border-radius: 10px;
+}
+
+.signin-content{
+    padding: 80px;
+}
+
+.signin-buttons{
+    margin-left: 40%;
+}
+
+.cashier-btn{
+    background-color: #e5e5e5;
+    border-radius: 5px 0px 0px 5px;
+    border: solid #e5e5e5;
+    width: 7vw;
+    height: auto;
+    padding:8px;
+    font-weight: 600;
+}
+
+.admin-btn{
+    background-color: #fdd000;
+    border-radius: 0px 5px 5px 0px;
+    border: solid #fdd000;
+    width: 7vw;
+    height: auto;
+    padding:8px;
+    font-weight: 600;
+}
+
+.signin-forms-container{
+    margin-top: 10%;
+    margin-left: 40%;
+}
+
+.signin-forms{
+    display: flex;
+    flex-direction: column;
+}
+
+.signin-forms input{
+    border-radius: 5px;
+    border:solid #fdd000;
+    height: auto;
+    width: auto;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.signin-btn{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    background-color: #fdd000;
+    border-radius: 5px;
+    border:solid #fdd000;
+    width: 8vw;
+    height: auto;
+    padding: 8px;
+}
+
+/* sales report page */
+.sales-content{
+    margin: 8vh 5vw;
+}
+
+.sales-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.sales-form input{
+    width: 58vw;
+    height: 3vh;
+    padding: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.sales-form > .submit-btn{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:15px;
+    background-color: black;
+    height: auto;
+    width: 12vw;
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+}
+
+/* view orders page */
+
+
+/* order details page */
+.cancelbtn{
+    background-color: black;
+    height: auto;
+    width: auto;
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+    margin-right: 10px;
+}
+
+.confirm-order-btn{
+    background-color: #fdd000;
+    height: auto;
+    width: auto;
+    border-color: #fdd000;
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+}
+
+/* product management page */
+.add-btn{
+    background-color: #fdd000;
+    height: auto;
+    width: 9vw;
+    border-color: #fdd000;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+}
+
+/* add product and edit product page */
+.add-product-forms, .edit-product-forms{
+    display: flex;
+    flex-direction: column;
+    margin: 5vh 5vw;
+}
+
+.flex-container-form{
+    display: flex;
+    flex-direction: row;
+}
+
+.inside-flex{
+    display: flex;
+    flex-direction: column;
+}
+
+.add-product-forms input, select, textarea,
+.edit-product-forms input, select, textarea{
+    width:auto;
+    height: auto;
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+textarea{
+    height: 20vh;
+    padding: 15px;
+}
+
+.price-form{
+    margin-right: 300px;
+}
+
+.form-buttons{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:15px;
+}
+
+.form-buttons > .cancel-btn{
+    background-color: #fdd000;
+    color: white;
+    border-radius: 5px;
+    border-color: #fdd000;
+    height: auto;
+    width: 7vw;
+    padding: 7px;
+    margin-right: 10px;
+}
+
+.form-buttons > .save-btn, .submit-btn{
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    height: auto;
+    width: 7vw;
+    padding: 7px;
+}
+
+/* table reservation page */
+
+/* table reservation details page */
+
+/* add accounts, profile and settings page */
+.account-content, .profile-content, .settings-content{
+    margin: 8vh 5vw;
+}
+
+.account-form, .settings-form, .profile-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.account-form input, .settings-form input, .profile-form input{
+    width: 58vw;
+    height: 3vh;
+    padding: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
