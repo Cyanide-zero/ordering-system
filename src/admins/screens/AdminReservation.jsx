@@ -6,7 +6,20 @@ function AdminReservation(){
     return(
         <div className="adminreservation">
             <Sidebar></Sidebar>
-            AdminReservation
+            
+            <div className="pagecontent">
+                <div className="flex-container-header">
+                    <h1>TABLE RESERVATION</h1>
+                    <form>
+                        <input 
+                            type="text"
+                            name="search"
+                            placeholder='Search'
+                        />
+                    </form>
+                </div>
+                <hr style={{height: 1, color:'black', backgroundColor:'black'}}></hr>
+            </div>
         </div>
     );
 }

@@ -10,10 +10,14 @@ import {
 import AdminHome from './admins/screens/AdminHome';
 import Accounts from './admins/screens/Accounts';
 import AddProduct from './admins/screens/AddProduct';
+import EditProduct from './admins/screens/EditProduct';
 import OrderPage from './admins/screens/OrderPage';
+import DetailedOrder from './admins/screens/DetailedOrder';
 import ProductManagement from './admins/screens/ProductManagement';
 import AdminReservation from './admins/screens/AdminReservation';
+import ReservationDetails from './admins/screens/ReservationDetails';
 import SalesReport from './admins/screens/SalesReport';
+import DetailedSalesReport from './admins/screens/DetailedSalesReport';
 import Settings from './admins/screens/Settings';
 import Profile from './admins/screens/Profile'
 
@@ -45,13 +49,17 @@ function App() {
           <Route path="/category/maindishes" exact element={<MainDishes/>}/>
           <Route path="/category/drinks" exact element={<Drinks/>}/>
           {/* Admin Routes */}
-          <Route path="/admin/home" exact element={<AdminHome/>}/>
+          <Route path="/admin" exact element={<AdminHome/>}/>
           <Route path="/admin/addproduct" exact element={<AddProduct/>}/>
+          <Route path="/admin/editproduct" exact element={<EditProduct/>}/>
           <Route path="/admin/account" exact element={<Accounts/>}/>
           <Route path="/admin/reservation" exact element={<AdminReservation/>}/>
+          <Route path="/admin/reservationdetails" exact element={<ReservationDetails/>}/>
           <Route path="/admin/order" exact element={<OrderPage/>}/>
+          <Route path="/admin/orderdetails" exact element={<DetailedOrder/>}/>
           <Route path="/admin/products" exact element={<ProductManagement/>}/>
           <Route path="/admin/sales" exact element={<SalesReport/>}/>
+          <Route path="/admin/detailedsales" exact element={<DetailedSalesReport/>}/>
           <Route path="/admin/profile" exact element={<Profile/>}/>
           <Route path="/admin/settings" exact element={<Settings/>}/>
         </Routes>
