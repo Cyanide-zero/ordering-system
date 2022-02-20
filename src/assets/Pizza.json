@@ -1,0 +1,16 @@
+[
+    {
+        "pizza":[
+            {
+                "id":1,
+                "menuName":"Hawaiian",
+                "folder":"pizza","price":199
+            },
+            {
+                "id":2,
+                "menuName":"Pepperoni",
+                "folder":"pizza","price":199
+            }
+        ]
+    }
+]

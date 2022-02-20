@@ -1,11 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import HomeCSS from '../css/Home.module.css';
 import Scard from '../components/SmallCard';
 import Bcard from '../components/BigCard';
 import Header from '../components/Header';
 import Footer from '../components/Footer';  
+import Drinks from '../../assets/Drinks.json';
 
 function Home(){
+    useEffect(() => {
+       Drinks.map((post) =>{
+        console.log(post.drinks.length)
+       })
+      });
     return(
         <div className = "home">
             <Header/>
@@ -23,7 +29,7 @@ function Home(){
             </div>
 
             <div className={HomeCSS.secondSection}>
-                <h1 class={HomeCSS.topSecond}>CATEGORIES</h1>
+                <h1 className={HomeCSS.topSecond}>CATEGORIES</h1>
                 <div className={HomeCSS.smallcardContainer}>
                     <Scard source="pizza" food = "PIZZA"/>
                     <Scard source="maindish"food = "MAIN DISHES"/>
@@ -36,7 +42,7 @@ function Home(){
                 <div className={HomeCSS.featuredContainer}>
                     <div className={HomeCSS.topFeature}>
                         <h1>FEATURED PRODUCTS</h1>
-                        <p>VIEW ALL</p>
+                        <p className={HomeCSS.viewAllButton}>VIEW ALL</p>
                     </div>
                     <div className={HomeCSS.featuredButtonsContainer}>
                         <a className={HomeCSS.featuredButton}>NEW PRODUCTS</a>
@@ -46,10 +52,26 @@ function Home(){
                 </div>
 
                 <div className={HomeCSS.bigcardContainer}>
-                    <Bcard food = "Malaking Burger" price = "P 69.42" sub="Burger na super laki daw"/>
+                    {/* <Bcard food = "Malaking Burger" price = "P 69.42" sub="Burger na super laki daw"/>
                     <Bcard food = "Maliit na Burger" price = "P 6.66" sub="Burger na Juts"/>
                     <Bcard food = "French Fries" sub="Patatas ng mayaman"/>
-                    <Bcard food = "French Kiss" sub="Halik ni Judas"/>
+                    <Bcard food = "French Kiss" sub="Halik ni Judas"/> */}
+                    {
+                        Drinks.map((post,index) =>{
+                            return post.drinks.map(item => {
+                                if(item.id<=4){
+                                    return(
+                                        <Bcard
+                                            key={item.id}
+                                            food={item.menuName}
+                                            price={item.price}
+                                            folder={item.folder}
+                                        />
+                                    )
+                                }
+                            });
+                        })
+                    }
                 </div>
                 <div className = {HomeCSS.dots1}>
                     <p></p>
@@ -66,7 +88,7 @@ function Home(){
                 <div className={HomeCSS.mainReservation}>
                     {/* <div className={HomeCSS.circle1}></div> */}
                     <img className={HomeCSS.resImage} src={require('../../assets/icons/reservation.png')}/>
-                    <div class={HomeCSS.formGroupContainer}>
+                    <div className={HomeCSS.formGroupContainer}>
                         <h1  className={HomeCSS.reservationForm}>MAKE A RESERVATION</h1>
                         <p>For further questions, please contact us</p>
                         <div className={HomeCSS.schedForm}>
