@@ -1,17 +1,38 @@
 import React from 'react';
 import Header from '../../components/Header';
+import CategoryCSS from '../../css/Category.module.css'
+import Bcard from '../../components/BigCard';
 
-function ContactUs(){
+import PizzaData from '../../../assets/Pizza.json'
+
+function Pizza(){
     return(
-        <div className = "header">
+        <div className = {CategoryCSS.container}>
             <Header/>
-                <div className="">
-                    Pizza
-                </div>
-
-                
+            <div className={CategoryCSS.pizzaContainer}>
+            <div className={CategoryCSS.pizzaTop}>
+                <h1>MAIN DISHES</h1>
+                <p className={CategoryCSS.viewAllButton}>VIEW ALL</p>
+            </div>
+            <div className={CategoryCSS.bigcardContainer}>
+                    {
+                        PizzaData.map((post,index) =>{
+                            return post.pizza.map(item => {
+                                return(
+                                    <Bcard
+                                        key={item.id}
+                                        food={item.menuName}
+                                        folder={item.folder}
+                                        // price={item.price}
+                                    />
+                                )
+                            });
+                        })
+                    }
+            </div>
+        </div>
         </div>
     );
 }
 
-export default ContactUs;
+export default Pizza;
