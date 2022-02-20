@@ -1,5 +1,21 @@
+@font-face {
+    font-family: 'Boiling';
+    src:url(/src/assets/fonts/Boiling-BlackDemo.ttf) format('truetype');
+}
+
+h1{
+    font-family: "Boiling";
+    color: #E3A765;
+}
+
+
+
 .container{
     width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5vh;
 }
 
 .top{
@@ -10,8 +26,71 @@
     justify-content: center;
 }
 
+.top h1{
+    margin-bottom: 36px;
+}
+
+
 .buttons{
     width:60%;
     display: flex;
     justify-content: space-evenly;
+    margin-bottom: 54px;
 }
+
+.buttonIcon{
+    width:82px;
+    height:82px;
+    background-color: black;
+    padding:10px;
+    border-radius: 50px;
+}
+
+.pizzaContainer,
+.mainDishContainer,
+.dessertsContainer,
+.drinksContainer{
+    width:85vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pizzaTop,
+.mainDishTop,
+.dessertsTop,
+.drinksTop{
+    display: flex;
+    width:100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 36px;
+}
+
+.viewAllButton{
+    cursor: pointer;
+    background-color: #FDD000;
+    border-radius: 8px;
+    height:20px;
+    padding-top:5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color:white;
+}
+
+.bigcardContainer{
+    display: flex;
+    flex-wrap: wrap;
+    width:100%;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    margin-bottom: 3vh;
+    display: flex;
+    justify-content: center;
+  }
+
+
+
+
+

@@ -1,0 +1,16 @@
+[
+    {
+        "desserts":[
+            {
+                "id":1,
+                "menuName":"Cakes",
+                "folder":"desserts"
+            },
+            {
+                "id":2,
+                "menuName":"Donuts",
+                "folder":"desserts"
+            }
+        ]
+    }
+]

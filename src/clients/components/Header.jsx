@@ -4,17 +4,9 @@ import {Link, useLocation} from 'react-router-dom';
 
 
 function Header(){
-    // const [url,setUrl] = useState('')
-    // useEffect(() => {
-    //     setUrl(window.location.pathname)
-    //     console.log(url)
-    // });
 
     const location = useLocation();
     
-    useEffect(() => {
-        console.log(location.pathname);
-    });
 
     return(
         <div className = {HeaderCSS.container}>
