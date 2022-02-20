@@ -91,7 +91,7 @@ function Home(){
                     <div className={HomeCSS.formGroupContainer}>
                         <h1  className={HomeCSS.reservationForm}>MAKE A RESERVATION</h1>
                         <p>For further questions, please contact us</p>
-                        <div className={HomeCSS.schedForm}>
+                        <form className={HomeCSS.schedForm}>
                             <div className={HomeCSS.schedInputs}>
                                 DATE
                                 <input type="text" name="date"/>
@@ -104,7 +104,7 @@ function Home(){
                                 PARTY SIZE
                                 <input type="text" name="size"/>
                             </div>
-                        </div>
+                        </form>
                         
                         <div className={HomeCSS.infoForm}>
                             <p>NAME</p>

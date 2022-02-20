@@ -1,16 +1,38 @@
 import React from 'react';
 import Header from '../../components/Header';
-import BCard from '../../components/BigCard';
+import CategoryCSS from '../../css/Category.module.css'
+import Bcard from '../../components/BigCard';
 
-function ContactUs(){
+import MainDishesData from '../../../assets/MainDishes.json'
+
+function MainDishes(){
     return(
-        <div className = "header">
+        <div className = {CategoryCSS.container}>
             <Header/>
-                <div className="">
-                    Main Dishes
-                </div>
+            <div className={CategoryCSS.mainDishContainer}>
+            <div className={CategoryCSS.mainDishTop}>
+                <h1>MAIN DISHES</h1>
+                <p className={CategoryCSS.viewAllButton}>VIEW ALL</p>
+            </div>
+            <div className={CategoryCSS.bigcardContainer}>
+                    {
+                        MainDishesData.map((post,index) =>{
+                            return post.maindishes.map(item => {
+                                return(
+                                    <Bcard
+                                        key={item.id}
+                                        food={item.menuName}
+                                        folder={item.folder}
+                                        // price={item.price}
+                                    />
+                                )
+                            });
+                        })
+                    }
+            </div>
+        </div>
         </div>
     );
 }
 
-export default ContactUs;
+export default MainDishes;
