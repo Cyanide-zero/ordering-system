@@ -19,7 +19,7 @@ function SignIn(){
                                 active1:true,
                                 active2:false
                             })}
-                            className={data.active1==true? styles.selectorActive: styles.selector}>
+                            className={data.active1===true? styles.selectorActive: styles.selector}>
                             SIGN UP
                         </button>
                         <button 
@@ -28,13 +28,13 @@ function SignIn(){
                                 active2:true,
                                 active1:false
                             })}
-                            className={data.active2==true? styles.selectorActive: styles.selector}>
+                            className={data.active2===true? styles.selectorActive: styles.selector}>
                             SIGN IN
                         </button>
                     </div>
                     {/* CONDITIONAL RENDERING */}
                     {
-                        data.active1 == true?
+                        data.active1 === true?
                         (
                             <div className={styles.signinFormsContainer}>
                                 <form className={styles.signinForms}>
