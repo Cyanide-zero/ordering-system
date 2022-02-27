@@ -19,14 +19,20 @@ import ReservationDetails from './admins/screens/ReservationDetails';
 import SalesReport from './admins/screens/SalesReport';
 import DetailedSalesReport from './admins/screens/DetailedSalesReport';
 import Settings from './admins/screens/Settings';
-import Profile from './admins/screens/Profile'
+import Profile from './admins/screens/Profile';
 
 
 //User Landing Pages
 import Home from './clients/screens/Home';
 import Category from './clients/screens/Category';
 import ContactUs from './clients/screens/ContactUs';
+import EditProfile from './clients/screens/EditProfile';
+import Order from './clients/screens/Order';
+import OrderStatus from './clients/screens/OrderStatus';
 import Reservations from './clients/screens/Reservations';
+import SignIn from './clients/screens/SignIn';
+import UserProfile from './clients/screens/UserProfile';
+
 
 //Category Pages
 import Pizza from './clients/screens/CategoryScreens/Pizza';
@@ -44,6 +50,11 @@ function App() {
           <Route path="/category" exact element={<Category/>}/>
           <Route path="/reservations" exact element={<Reservations/>}/>
           <Route path="/contactus" exact element={<ContactUs/>}/>
+          <Route path="/editprofile" exact element={<EditProfile/>}/>
+          <Route path="/order" exact element={<Order/>}/>
+          <Route path="/orderstatus" exact element={<OrderStatus/>}/>
+          <Route path="/signin" exact element={<SignIn/>}/>
+          <Route path="/profile" exact element={<UserProfile/>}/>
           <Route path="/category/pizza" exact element={<Pizza/>}/>
           <Route path="/category/desserts" exact element={<Desserts/>}/>
           <Route path="/category/maindishes" exact element={<MainDishes/>}/>

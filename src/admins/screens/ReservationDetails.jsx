@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
-import '../css/AdminIndent.css'
+import '../css/AdminIndent.css';
+import ReservationCard from '../components/reservationcard';
 
 function ReservationDetails(){
     return(
@@ -21,9 +22,7 @@ function ReservationDetails(){
                 
                 {/* Page body */}
                 <div className="reservation-details-content">
-                    <div className="reservation-details-container">
-
-                    </div>
+                    <ReservationCard></ReservationCard>
                 </div>
             </div>
         </div>

@@ -138,8 +138,10 @@ label{
     color: white;
 }
 
+.selected-sales-content{
+    margin-top: 25px;
+}
 /* view orders page */
-
 
 /* order details page */
 .cancelbtn{
@@ -162,6 +164,13 @@ label{
     color: white;
 }
 
+.orderdetails{
+    margin-top: 20px;
+}
+
+.orderdetails h2{
+    text-align: center;
+}
 /* product management page */
 .add-btn{
     background-color: #fdd000;
@@ -174,7 +183,8 @@ label{
 }
 
 /* add product and edit product page */
-.add-product-forms, .edit-product-forms{
+.add-product-forms, 
+.edit-product-forms{
     display: flex;
     flex-direction: column;
     margin: 5vh 5vw;
@@ -183,6 +193,7 @@ label{
 .flex-container-form{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .inside-flex{
@@ -192,7 +203,6 @@ label{
 
 .add-product-forms input, select, textarea,
 .edit-product-forms input, select, textarea{
-    width:auto;
     height: auto;
     padding: 8px;
     margin-bottom: 15px;
@@ -204,8 +214,10 @@ textarea{
     padding: 15px;
 }
 
-.price-form{
-    margin-right: 300px;
+.category-form, 
+.price-form, 
+.quantity-form{
+    width: 18vw;
 }
 
 .form-buttons{
@@ -226,7 +238,8 @@ textarea{
     margin-right: 10px;
 }
 
-.form-buttons > .save-btn, .submit-btn{
+.form-buttons > .save-btn, 
+.submit-btn{
     background-color: black;
     color: white;
     border-radius: 5px;
@@ -240,16 +253,22 @@ textarea{
 /* table reservation details page */
 
 /* add accounts, profile and settings page */
-.account-content, .profile-content, .settings-content{
+.account-content, 
+.profile-content, 
+.settings-content{
     margin: 8vh 5vw;
 }
 
-.account-form, .settings-form, .profile-form{
+.account-form, 
+.settings-form, 
+.profile-form{
     display: flex;
     flex-direction: column;
 }
 
-.account-form input, .settings-form input, .profile-form input{
+.account-form input, 
+.settings-form input, 
+.profile-form input{
     width: 58vw;
     height: 3vh;
     padding: 5px;

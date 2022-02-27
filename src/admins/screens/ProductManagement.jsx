@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from '../components/Sidebar';
 import '../css/AdminIndent.css';
 import { Link } from "react-router-dom";
+import ProductTable from '../components/product-table';
 
 function ProductManagement(){
     return(
@@ -15,7 +16,9 @@ function ProductManagement(){
                 </div>
                 <hr style={{height: 1, color:'black', backgroundColor:'black'}}></hr>
             
-            
+            <div className="product-table">
+                <ProductTable></ProductTable>
+            </div>
             </div>
         </div>
     );

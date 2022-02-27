@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
-import '../css/AdminIndent.css'
+import '../css/AdminIndent.css';
+import OrderCard from '../components/ordercard';
 
 function DetailedOrder(){
     return(
@@ -27,17 +28,7 @@ function DetailedOrder(){
                         <p>lorem ipsum dolor...</p>
                     </div>
 
-                    <div className="customer-details-container">
-
-                    </div>
-
-                    <div className="orders-info-container">
-
-                    </div>
-
-                    <div className="payment-info-container">
-
-                    </div>
+                    <OrderCard></OrderCard>
                 </div>
             </div>
         </div>

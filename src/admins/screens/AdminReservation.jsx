@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
 import '../css/AdminIndent.css'
+import ReservationTable from '../components/reservation-table';
 
 function AdminReservation(){
     return(
@@ -19,6 +20,10 @@ function AdminReservation(){
                     </form>
                 </div>
                 <hr style={{height: 1, color:'black', backgroundColor:'black'}}></hr>
+            
+                <div className="reservation-table">
+                    <ReservationTable></ReservationTable>
+                </div>
             </div>
         </div>
     );

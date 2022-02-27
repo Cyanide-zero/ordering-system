@@ -22,6 +22,16 @@ function AddProduct(){
 
                         <div className="flex-container-form">
                             <div className="inside-flex">
+                                <label>CATEGORY</label>
+                                <select className="category-form">
+                                    <option value="pizza">Pizza</option>
+                                    <option value="drinks">Drinks</option>
+                                    <option value="desserts">Desserts</option>
+                                    <option value="maindishes">Main Dishes</option>
+                                </select>
+                            </div>
+
+                            <div className="inside-flex">
                                 <label>PRODUCT PRICE</label>
                                 <input
                                     type="number"
@@ -30,32 +40,25 @@ function AddProduct(){
                                     required 
                                 />
                             </div>
-                            
-                            <div className="inside-flex">
-                                <label>CATEGORY</label>
-                                <select>
-                                    <option value="pizza">Pizza</option>
-                                    <option value="drinks">Drinks</option>
-                                    <option value="desserts">Desserts</option>
-                                    <option value="maindishes">Main Dishes</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div className="flex-container-form">
-                            <div className="inside-flex">
-                                <label>PRODUCT IMAGE</label>
-                                <input type="file" />
-                            </div>
 
                             <div className="inside-flex">
                                 <label>QUANTITY</label>
                                 <input
                                     type="number"
+                                    className="quantity-form"
                                     name="quantity"
                                 />
                             </div>
                         </div>
+                        
+
+                        <label>PRODUCT IMAGE</label>
+                            <input 
+                                type="file"
+                                className="image-form"
+                                required 
+                        />
+
                         
                         <label>PRODUCT DESCRIPTION</label>
                         <textarea className="description"></textarea>

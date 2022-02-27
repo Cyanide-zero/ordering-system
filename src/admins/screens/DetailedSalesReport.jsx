@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
-import '../css/AdminIndent.css'
+import '../css/AdminIndent.css';
+import SalesTable from '../components/sales-table';
 
 function DetailedSalesReport(){
     return(
@@ -14,7 +15,8 @@ function DetailedSalesReport(){
                 
                 {/* Page body */}
                 <div className="selected-sales-content">
-                    
+                    <h3>Total: </h3>
+                    <SalesTable></SalesTable>
                 </div>
             </div>
         </div>
