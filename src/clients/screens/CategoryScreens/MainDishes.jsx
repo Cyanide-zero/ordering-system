@@ -12,7 +12,7 @@ function MainDishes(){
             <div className={CategoryCSS.mainDishContainer}>
             <div className={CategoryCSS.mainDishTop}>
                 <h1>MAIN DISHES</h1>
-                <p className={CategoryCSS.viewAllButton}>VIEW ALL</p>
+                {/* <p className={CategoryCSS.viewAllButton}>VIEW ALL</p> */}
             </div>
             <div className={CategoryCSS.bigcardContainer}>
                     {

@@ -4,7 +4,7 @@ import {Link, useLocation} from 'react-router-dom';
 
 
 function Header(){
-
+    const [toggle,setToggle] = useState(false)
     const location = useLocation();
     
 
@@ -23,7 +23,13 @@ function Header(){
 
             <div className = {HeaderCSS.logoContainer}>
                 <Link to="/order"><img className={HeaderCSS.logoIcon} src={require('../../assets/icons/shopping-cart-check.png')} alt="Logo" /></Link>
-                <p></p>
+                <button onClick={()=>setToggle(!toggle)} className={HeaderCSS.menuButton}>Menu</button>
+                {toggle && (
+                    <div className={HeaderCSS.dropDownContainer}>
+                        <Link to="/" className={HeaderCSS.dropDownButton}>LOGOUT</Link>
+                        <Link to="/" className={HeaderCSS.dropDownButton}>PROFILE</Link>
+                    </div>
+                )}
             </div>
         </div>
     );

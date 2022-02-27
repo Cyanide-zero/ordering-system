@@ -12,7 +12,7 @@ function Desserts(){
             <div className={CategoryCSS.dessertsContainer}>
             <div className={CategoryCSS.dessertsTop}>
                 <h1>DESSERTS</h1>
-                <p className={CategoryCSS.viewAllButton}>VIEW ALL</p>
+                {/* <p className={CategoryCSS.viewAllButton}>VIEW ALL</p> */}
             </div>
             <div className={CategoryCSS.bigcardContainer}>
                     {
