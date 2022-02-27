@@ -1,29 +1,30 @@
 /* sign in page */
 .container{
+    margin-top: 10vh;
     width:100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.signin-container{
+.signinContainer{
     background-color: white;
     height: 70vh;
     width: 60vw;
     border-radius: 10px;
 }
 
-.signin-content{
+.signinContent{
     padding: 80px;
 }
 
-.signin-buttons{
+.signinButtons{
     margin-left: 40%;
 }
 
-.cashier-btn{
+.selector{
     background-color: #e5e5e5;
-    border-radius: 5px 0px 0px 5px;
+    /* border-radius: 5px 0px 0px 5px; */
     border: solid #e5e5e5;
     width: 7vw;
     height: auto;
@@ -31,9 +32,9 @@
     font-weight: 600;
 }
 
-.admin-btn{
+.selectorActive{
     background-color: #fdd000;
-    border-radius: 0px 5px 5px 0px;
+    /* border-radius: 0px 5px 5px 0px; */
     border: solid #fdd000;
     width: 7vw;
     height: auto;
@@ -41,17 +42,17 @@
     font-weight: 600;
 }
 
-.signin-forms-container{
+.signinFormsContainer{
     margin-top: 10%;
     margin-left: 40%;
 }
 
-.signin-forms{
+.signinForms{
     display: flex;
     flex-direction: column;
 }
 
-.signin-forms input{
+.signinForms input{
     border-radius: 5px;
     border:solid #fdd000;
     height: auto;
@@ -60,7 +61,7 @@
     margin-bottom: 15px;
 }
 
-.signin-btn{
+.signinBtn{
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -72,3 +73,4 @@
     height: auto;
     padding: 8px;
 }
+

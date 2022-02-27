@@ -6,14 +6,19 @@
 .orderpage,
 .orderdetailspage,
 .productmanagement,
-.profile,
 .salesreport,
+.profileContainer,
 .settings{
     margin-left:20vw;
 }
 
 .pagecontent{
     margin: 10vh 5vw;
+}
+
+.pagecontent h1{
+    font-family: "montserrat";
+    color:black;
 }
 
 .flex-container-header{

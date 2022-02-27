@@ -11,7 +11,7 @@ function Header(){
     return(
         <div className = {HeaderCSS.container}>
             <div className={HeaderCSS.buttonsContainer}>
-                <Link className={location.pathname == "/" ? HeaderCSS.buttonActive : HeaderCSS.button } to='/'><p>HOME</p></Link>
+                <Link className={location.pathname == "/home" ? HeaderCSS.buttonActive : HeaderCSS.button } to='/home'><p>HOME</p></Link>
                 <Link className={location.pathname == "/category"? HeaderCSS.buttonActive : HeaderCSS.button} to='/category'><p>CATEGORY</p></Link>
                 <Link className={location.pathname == "/reservations" ? HeaderCSS.buttonActive : HeaderCSS.button } to='/reservations'><p>RESERVATIONS</p></Link>
                 <Link className={location.pathname == "/contactus" ? HeaderCSS.buttonActive : HeaderCSS.button } to='/contactus'><p>CONTACT US</p></Link>

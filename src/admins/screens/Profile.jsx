@@ -1,11 +1,11 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
-import '../css/AdminIndent.css'
+import '../css/AdminIndent.css' 
 
 function Profile(){
     return(
-        <div className="profile">
-            <Sidebar></Sidebar>
+        <div className="profileContainer">
+            <Sidebar/>
             
             <div className="pagecontent">
                 <h1>PROFILE</h1>

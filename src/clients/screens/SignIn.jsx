@@ -1,41 +1,86 @@
-import React from 'react';
-import '../css/SignIn.css';
-
-//COMPONENT IMPORTS
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React, { useState } from 'react';
+import styles from '../css/SignIn.module.css';
 
 function SignIn(){
-    return(
-        <div className="container">
-            <Header/>
-            <div className="signin-container">
-                <div className="signin-content">
-                    <div className="signin-buttons">
-                        <button className="cashier-btn">SIGN UP</button>
-                        <button className="admin-btn">SIGN IN</button>
-                    </div>
+    const [data,setData] = useState({
+        active1:false,
+        active2:true,
+    })
 
-                    <div className="signin-forms-container">
-                        <form className="signin-forms">
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="Email Address"
-                                required
-                            />
-                            <input
-                                type="password"
-                                name="password"
-                                placeholder="Password"
-                                required
-                            />
-                            <button className="signin-btn">SIGN IN</button>
-                        </form>
+
+    return(
+        <div className={styles.container}>
+            <div className={styles.signinContainer}>
+                <div className={styles.signinContent}>
+                    <div className={styles.signinButtons}>
+                        <button 
+                            onClick={() => setData({
+                                ...data,
+                                active1:true,
+                                active2:false
+                            })}
+                            className={data.active1==true? styles.selectorActive: styles.selector}>
+                            SIGN UP
+                        </button>
+                        <button 
+                            onClick={() => setData({
+                                ...data,
+                                active2:true,
+                                active1:false
+                            })}
+                            className={data.active2==true? styles.selectorActive: styles.selector}>
+                            SIGN IN
+                        </button>
                     </div>
+                    {/* CONDITIONAL RENDERING */}
+                    {
+                        data.active1 == true?
+                        (
+                            <div className={styles.signinFormsContainer}>
+                                <form className={styles.signinForms}>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="Email Address"
+                                        required
+                                    />
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        placeholder="Password"
+                                        required
+                                    />
+                                     <input
+                                        type="cpassword"
+                                        name="cpassword"
+                                        placeholder="Confirm Password"
+                                        required
+                                    />
+                                    <button className={styles.signinBtn}>SIGN UP</button>
+                                </form>
+                            </div>
+                        ):(
+                            <div className={styles.signinFormsContainer}>
+                                <form className={styles.signinForms}>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="Email Address"
+                                        required
+                                    />
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        placeholder="Password"
+                                        required
+                                    />
+                                    <button className={styles.signinBtn}>SIGN IN</button>
+                                </form>
+                            </div>
+                        )
+                    }
                 </div>
             </div>
-            {/* <Footer/> */}
         </div>
     );
 }

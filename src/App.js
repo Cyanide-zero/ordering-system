@@ -46,14 +46,14 @@ function App() {
       <div className="App">
         <Routes>
           {/* User Routes */}
-          <Route path="/" exact element={<Home/>}/>
+          <Route path="/" exact element={<SignIn/>}/>
           <Route path="/category" exact element={<Category/>}/>
           <Route path="/reservations" exact element={<Reservations/>}/>
           <Route path="/contactus" exact element={<ContactUs/>}/>
           <Route path="/editprofile" exact element={<EditProfile/>}/>
           <Route path="/order" exact element={<Order/>}/>
           <Route path="/orderstatus" exact element={<OrderStatus/>}/>
-          <Route path="/signin" exact element={<SignIn/>}/>
+          <Route path="/home" exact element={<Home/>}/>
           <Route path="/profile" exact element={<UserProfile/>}/>
           <Route path="/category/pizza" exact element={<Pizza/>}/>
           <Route path="/category/desserts" exact element={<Desserts/>}/>
