@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/Order.css';
 
@@ -10,22 +10,49 @@ import OrdersCard from '../components/OrdersCard';
 import PaymentCard from '../components/PaymentCard';
 
 function Order(){
+    const [data,setData] = useState({
+        deliverTo:true,
+        orders:false,
+        payment:false,
+    })
+    
     return(
         <div className="order">
             <Header/>
                 <div className="ordercontainer">
                     <div className="orderheader">
                         <h1>ORDER SUMMARY</h1>
-                        <div className = "headerbuttons">
-                            <Link style={{textDecoration:'none', color: 'black'}} to ="/">DELIVER TO</Link>
-                            <Link style={{textDecoration:'none', color: 'black'}} to ="/">ORDERS</Link>
-                            <Link style={{textDecoration:'none', color: 'black'}} to ="/">PAYMENT</Link>
+                        <div className='headerbuttons'>
+                            <button
+                            onClick={() => setData({
+                                ...data,
+                                deliverTo:true,
+                                orders:false,
+                                payment:false
+                            })}
+                            className={data.deliverTo?"orderButtonActive":"orderButton"}>DELIVER TO</button>
+                            <button
+                            onClick={() => setData({
+                                ...data,
+                                deliverTo:false,
+                                orders:true,
+                                payment:false
+                            })}
+                            className={data.orders?"orderButtonActive":"orderButton"}>ORDERS</button>
+                            <button
+                            onClick={() => setData({
+                                ...data,
+                                deliverTo:false,
+                                orders:false,
+                                payment:true
+                            })}
+                            className={data.payment?"orderButtonActive":"orderButton"}>PAYMENT</button>
                         </div>
                     </div>
                     
-                    <DeliverTo/>
-                    <OrdersCard/>
-                    <PaymentCard/>
+                    {data.deliverTo && <DeliverTo/>}
+                    {data.orders && <OrdersCard/>}
+                    {data.payment && <PaymentCard/>}
                 </div>
             <Footer/>
         </div>

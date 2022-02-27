@@ -15,6 +15,17 @@
     margin-top: 10px;
 }
 
+.orderButton{
+    border:none;
+    cursor: pointer;
+}
+
+.orderButtonActive{
+    font-weight: bold;
+    border:none;
+    cursor: pointer;
+}
+
 /* DELIVER TO  */
 .pagecontainer{
     background-color: black;

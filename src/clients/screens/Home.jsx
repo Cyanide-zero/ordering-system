@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import HomeCSS from '../css/Home.module.css';
 import Scard from '../components/SmallCard';
 import Bcard from '../components/BigCard';
@@ -31,10 +32,10 @@ function Home(){
             <div className={HomeCSS.secondSection}>
                 <h1 className={HomeCSS.topSecond}>CATEGORIES</h1>
                 <div className={HomeCSS.smallcardContainer}>
-                    <Scard source="pizza" food = "PIZZA"/>
-                    <Scard source="maindish"food = "MAIN DISHES"/>
-                    <Scard source="desserts"food = "DESSERTS"/>
-                    <Scard source="drinks"food = "DRINKS"/>
+                    <Link to="/category/pizza" style={{textDecoration:"none"}}><Scard source="pizza" food = "PIZZA"/></Link>
+                    <Link to="/category/maindishes" style={{textDecoration:"none"}}><Scard source="maindish"food = "MAIN DISHES"/></Link>
+                    <Link to="/category/desserts" style={{textDecoration:"none"}}><Scard source="desserts"food = "DESSERTS"/></Link>
+                    <Link to="/category/drinks" style={{textDecoration:"none"}}><Scard source="drinks"food = "DRINKS"/></Link>
                 </div>  
             </div>
 

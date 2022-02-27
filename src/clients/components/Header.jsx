@@ -22,7 +22,7 @@ function Header(){
             </div>
 
             <div className = {HeaderCSS.logoContainer}>
-                <img className={HeaderCSS.logoIcon} src={require('../../assets/icons/shopping-cart-check.png')} alt="Logo" />
+                <Link to="/order"><img className={HeaderCSS.logoIcon} src={require('../../assets/icons/shopping-cart-check.png')} alt="Logo" /></Link>
                 <p></p>
             </div>
         </div>
