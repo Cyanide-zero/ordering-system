@@ -60,3 +60,41 @@
     border-radius: 20px;
     margin-left: 4vw;
 }
+
+.menuButton{
+    background-color: #FDD000;
+    border: none;
+    border-radius: 30px;
+    padding-left:5px;
+    padding-right:5px;
+    cursor: pointer;
+    width:45px;
+    height:45px;
+    margin-left: 4vw;
+    color:white;
+}
+
+.dropDownContainer{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: white;
+    margin-top: 7vh;
+    margin-left:4vw;
+    padding-top:1vh;
+    padding-bottom:1vh;
+    padding-right: 1vw;
+    padding-left:1vw;
+    z-index: 5;
+}
+
+.dropDownButton{
+    text-decoration: none;
+    color:black;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+}
+
+.dropDownButton:hover{
+    border-bottom:#FDD000 solid 3px;
+}

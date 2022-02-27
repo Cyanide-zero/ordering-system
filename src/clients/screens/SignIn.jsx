@@ -70,13 +70,15 @@ function SignIn(){
                                         placeholder="Password"
                                         required
                                     />
-                                     <input
+                                    <input
                                         type="password"
                                         name="cpassword"
+                                        value={pass}
+                                        onChange={(e)=>{console.log(e.target.value)}}
                                         placeholder="Confirm Password"
                                         required
                                     />
-                                    <button className={styles.signinBtn}>SIGN UP</button>
+                                    <input type="submit" className={styles.signinBtn} value="SIGN UP"/>
                                 </form>
                             </div>
                         ):(
