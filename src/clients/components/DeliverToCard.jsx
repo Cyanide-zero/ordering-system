@@ -6,7 +6,7 @@ function DeliverTo (){
         <div className = "deliverto">
             <div className= "pagecontainer">
                 <form className="forms-container">
-                    <div className="flex-container">
+                    <div className="orderflex-container">
                         <div className="inside-flex">
                             <label>NAME</label>
                             <input
