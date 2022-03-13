@@ -54,13 +54,13 @@ function SignIn(){
         if (!values.email) {
           errors.email = "Email is required!";
         } else if (!regex.test(values.email)) {
-          errors.email = "This is not a valid email format!";
-        } else if (values.email != creds.email){
+          errors.email = "Invalid Email";
+        } else if (values.email !== creds.email){
             errors.email = "Incorrect Email"
         }
         if (!values.password) {
           errors.password = "Password is required";
-        } else if (values.password != creds.password){
+        } else if (values.password !== creds.password){
             errors.password = "Incorrect Password"
         }
         

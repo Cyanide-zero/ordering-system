@@ -281,3 +281,9 @@ textarea{
     border-radius: 5px;
 }
 
+.adminLoginError{
+    color:red;
+    margin-bottom:1vh;
+    font-size: 12px;
+}
+

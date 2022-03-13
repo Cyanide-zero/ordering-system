@@ -43,6 +43,7 @@ import { useEffect, useState } from 'react/cjs/react.development';
 
 function App() {
   const [token,setToken] = useState(0);
+  const [admin,setAdmin] = useState(0);
   const refreshPage = () => {
     window.location.reload();
   }
@@ -50,7 +51,9 @@ function App() {
   useEffect(() => {
     let getToken = localStorage.getItem("dummyToken");
     setToken(parseInt(getToken));
-    console.log(token, typeof(token))
+    let getAdminToken = localStorage.getItem("adminDummyToken");
+    setAdmin(parseInt(getAdminToken));
+    console.log(admin, typeof(admin))
   });
   return (
     <Router>
@@ -80,19 +83,26 @@ function App() {
             )
           }
           {/* Admin Routes */}
-          <Route path="/admin" exact element={<AdminHome/>}/>
-          <Route path="/admin/addproduct" exact element={<AddProduct/>}/>
-          <Route path="/admin/editproduct" exact element={<EditProduct/>}/>
-          <Route path="/admin/account" exact element={<Accounts/>}/>
-          <Route path="/admin/reservation" exact element={<AdminReservation/>}/>
-          <Route path="/admin/reservationdetails" exact element={<ReservationDetails/>}/>
-          <Route path="/admin/order" exact element={<OrderPage/>}/>
-          <Route path="/admin/orderdetails" exact element={<DetailedOrder/>}/>
-          <Route path="/admin/products" exact element={<ProductManagement/>}/>
-          <Route path="/admin/sales" exact element={<SalesReport/>}/>
-          <Route path="/admin/detailedsales" exact element={<DetailedSalesReport/>}/>
-          <Route path="/admin/profile" exact element={<Profile/>}/>
-          <Route path="/admin/settings" exact element={<Settings/>}/>
+          {
+            admin===1?
+            (<>
+              <Route path="/admin" exact element={<AdminHome/>}/>
+              <Route path="/admin/addproduct" exact element={<AddProduct/>}/>
+              <Route path="/admin/editproduct" exact element={<EditProduct/>}/>
+              <Route path="/admin/account" exact element={<Accounts/>}/>
+              <Route path="/admin/reservation" exact element={<AdminReservation/>}/>
+              <Route path="/admin/reservationdetails" exact element={<ReservationDetails/>}/>
+              <Route path="/admin/order" exact element={<OrderPage/>}/>
+              <Route path="/admin/orderdetails" exact element={<DetailedOrder/>}/>
+              <Route path="/admin/products" exact element={<ProductManagement/>}/>
+              <Route path="/admin/sales" exact element={<SalesReport/>}/>
+              <Route path="/admin/detailedsales" exact element={<DetailedSalesReport/>}/>
+              <Route path="/admin/profile" exact element={<Profile/>}/>
+              <Route path="/admin/settings" exact element={<Settings/>}/>
+            </>):(
+              <Route path="/admin/*" exact element={<AdminHome/>}/>
+            )
+          }
         </Routes>
       </div>
     </Router>
