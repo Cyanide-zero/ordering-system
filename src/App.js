@@ -39,26 +39,46 @@ import Pizza from './clients/screens/CategoryScreens/Pizza';
 import Desserts from './clients/screens/CategoryScreens/Desserts';
 import Drinks from './clients/screens/CategoryScreens/Drinks';
 import MainDishes from './clients/screens/CategoryScreens/MainDishes';
+import { useEffect, useState } from 'react/cjs/react.development';
 
 function App() {
+  const [token,setToken] = useState(0);
+  const refreshPage = () => {
+    window.location.reload();
+  }
+
+  useEffect(() => {
+    let getToken = localStorage.getItem("dummyToken");
+    setToken(parseInt(getToken));
+    console.log(token, typeof(token))
+  });
   return (
     <Router>
       <div className="App">
         <Routes>
           {/* User Routes */}
-          <Route path="/" exact element={<SignIn/>}/>
-          <Route path="/category" exact element={<Category/>}/>
-          <Route path="/reservations" exact element={<Reservations/>}/>
-          <Route path="/contactus" exact element={<ContactUs/>}/>
-          <Route path="/editprofile" exact element={<EditProfile/>}/>
-          <Route path="/order" exact element={<Order/>}/>
-          <Route path="/orderstatus" exact element={<OrderStatus/>}/>
-          <Route path="/home" exact element={<Home/>}/>
-          <Route path="/profile" exact element={<UserProfile/>}/>
-          <Route path="/category/pizza" exact element={<Pizza/>}/>
-          <Route path="/category/desserts" exact element={<Desserts/>}/>
-          <Route path="/category/maindishes" exact element={<MainDishes/>}/>
-          <Route path="/category/drinks" exact element={<Drinks/>}/>
+          {
+            token===1?
+            (
+              <>
+                <Route path="/" exact element={<SignIn/>}/>
+                <Route path="/category" exact element={<Category/>}/>
+                <Route path="/reservations" exact element={<Reservations/>}/>
+                <Route path="/contactus" exact element={<ContactUs/>}/>
+                <Route path="/editprofile" exact element={<EditProfile/>}/>
+                <Route path="/order" exact element={<Order/>}/>
+                <Route path="/orderstatus" exact element={<OrderStatus/>}/>
+                <Route path="/home" exact element={<Home/>}/>
+                <Route path="/profile" exact element={<UserProfile/>}/>
+                <Route path="/category/pizza" exact element={<Pizza/>}/>
+                <Route path="/category/desserts" exact element={<Desserts/>}/>
+                <Route path="/category/maindishes" exact element={<MainDishes/>}/>
+                <Route path="/category/drinks" exact element={<Drinks/>}/>
+              </>
+            ):(
+              <Route path="*" exact element={<SignIn/>}/>
+            )
+          }
           {/* Admin Routes */}
           <Route path="/admin" exact element={<AdminHome/>}/>
           <Route path="/admin/addproduct" exact element={<AddProduct/>}/>
