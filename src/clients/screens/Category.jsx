@@ -1,22 +1,43 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import CategoryCSS from '../css/Category.module.css';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 //COMPONENT IMPORTS
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Bcard from '../components/BigCard';
 
-//DATA IMPORTS
-import Drinks from '../../assets/Drinks.json';
-import MainDishes from '../../assets/MainDishes.json';
-import Desserts from '../../assets/Desserts.json';
-import Pizza from '../../assets/Pizza.json';
-
-
 function Category(){
-    return(
+    const [drinksArr, setDrinksArr] = useState([]);
+    const [dessertsArr, setDessertArr] = useState([]);
+    const [pizzaArr, setPizzaArr] = useState([]);
+    const [mainDishArr, setMainDishArr] = useState([]);
 
+    const getMenu = () =>{
+        axios.get("http://localhost:5000/api/drinks/get")
+            .then((response) => {
+               setDrinksArr(response.data)
+        });
+        axios.get("http://localhost:5000/api/maindishes/get")
+            .then((response) => {
+               setMainDishArr(response.data)
+        });
+        axios.get("http://localhost:5000/api/desserts/get")
+            .then((response) => {
+               setDessertArr(response.data)
+        });
+        axios.get("http://localhost:5000/api/pizza/get")
+            .then((response) => {
+               setPizzaArr(response.data)
+        });
+    }
+    
+    useEffect(() => {
+        getMenu();
+    }, []);
+
+    return(
     <div className = {CategoryCSS.container}>
         <Header/>
         <div className={CategoryCSS.top}>
@@ -34,20 +55,16 @@ function Category(){
                 <p className={CategoryCSS.viewAllButton}>VIEW ALL</p>
             </div>
             <div className={CategoryCSS.bigcardContainer}>
-                    {
-                        Pizza.map((post,index) =>{
-                            return post.pizza.map(item => {
-                                if(item.id<=2){
-                                    return(
-                                        <Bcard
-                                            key={item.id}
-                                            food={item.menuName}
-                                            price={item.price}
-                                            folder={item.folder}
-                                        />
-                                    )
-                                }
-                            });
+            {
+                        pizzaArr.map((item, index) =>{
+                                return(
+                                    <Bcard
+                                        key={item.id}
+                                        food={item.menuName}
+                                        price={item.price}
+                                        folder={item.folder}
+                                    />
+                                )
                         })
                     }
             </div>
@@ -58,20 +75,16 @@ function Category(){
                 <p className={CategoryCSS.viewAllButton}>VIEW ALL</p>
             </div>
             <div className={CategoryCSS.bigcardContainer}>
-                    {
-                        MainDishes.map((post,index) =>{
-                            return post.maindishes.map(item => {
-                                if(item.id<=4){
-                                    return(
-                                        <Bcard
-                                            key={item.id}
-                                            food={item.menuName}
-                                            folder={item.folder}
-                                            // price={item.price}
-                                        />
-                                    )
-                                }
-                            });
+            {
+                        mainDishArr.map((item, index) =>{
+                                return(
+                                    <Bcard
+                                        key={item.id}
+                                        food={item.menuName}
+                                        price={item.price}
+                                        folder={item.folder}
+                                    />
+                                )
                         })
                     }
             </div>
@@ -83,19 +96,15 @@ function Category(){
             </div>
             <div className={CategoryCSS.bigcardContainer}>
                     {
-                        Desserts.map((post,index) =>{
-                            return post.desserts.map(item => {
-                                if(item.id<=4){
-                                    return(
-                                        <Bcard
-                                            key={item.id}
-                                            food={item.menuName}
-                                            folder={item.folder}
-                                            // price={item.price}
-                                        />
-                                    )
-                                }
-                            });
+                        dessertsArr.map((item, index) =>{
+                                return(
+                                    <Bcard
+                                        key={item.id}
+                                        food={item.menuName}
+                                        price={item.price}
+                                        folder={item.folder}
+                                    />
+                                )
                         })
                     }
             </div>
@@ -107,19 +116,15 @@ function Category(){
             </div>
             <div className={CategoryCSS.bigcardContainer}>
                     {
-                        Drinks.map((post,index) =>{
-                            return post.drinks.map(item => {
-                                if(item.id<=4){
-                                    return(
-                                        <Bcard
-                                            key={item.id}
-                                            food={item.menuName}
-                                            price={item.price}
-                                            folder={item.folder}
-                                        />
-                                    )
-                                }
-                            });
+                        drinksArr.map((item, index) =>{
+                                return(
+                                    <Bcard
+                                        key={item.id}
+                                        food={item.menuName}
+                                        price={item.price}
+                                        folder={item.folder}
+                                    />
+                                )
                         })
                     }
             </div>

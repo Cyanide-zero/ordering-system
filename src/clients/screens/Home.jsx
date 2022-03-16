@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import HomeCSS from '../css/Home.module.css';
 import Scard from '../components/SmallCard';
@@ -6,13 +6,23 @@ import Bcard from '../components/BigCard';
 import Header from '../components/Header';
 import Footer from '../components/Footer';  
 import Drinks from '../../assets/Drinks.json';
+import axios from "axios";
 
 function Home(){
+
+    const [arr,setArr] = useState([])
+
+    const getDrinks = () =>{
+        axios.get("http://localhost:5000/api/drinks/get")
+            .then((response) => {
+               setArr(response.data)
+        });
+    }
+    
     useEffect(() => {
-       Drinks.map((post) =>{
-        console.log(post.drinks.length)
-       })
-      });
+        getDrinks();
+    }, []);
+
     return(
         <div className = "home">
             <Header/>
@@ -53,15 +63,10 @@ function Home(){
                 </div>
 
                 <div className={HomeCSS.bigcardContainer}>
-                    {/* <Bcard food = "Malaking Burger" price = "P 69.42" sub="Burger na super laki daw"/>
-                    <Bcard food = "Maliit na Burger" price = "P 6.66" sub="Burger na Juts"/>
-                    <Bcard food = "French Fries" sub="Patatas ng mayaman"/>
-                    <Bcard food = "French Kiss" sub="Halik ni Judas"/> */}
                     {
-                        Drinks.map((post,index) =>{
-                            return post.drinks.map(item => {
-                                if(item.id<=4){
-                                    return(
+                        arr.map((item, index) =>{
+                            if(item.id<=4){
+                                return(
                                         <Bcard
                                             key={item.id}
                                             food={item.menuName}
@@ -69,8 +74,7 @@ function Home(){
                                             folder={item.folder}
                                         />
                                     )
-                                }
-                            });
+                            }
                         })
                     }
                 </div>
