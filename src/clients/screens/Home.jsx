@@ -24,7 +24,7 @@ function Home(){
     }, []);
 
     return(
-        <div className = "home">
+        <div className = {HomeCSS.home}>
             <Header/>
             <div className={HomeCSS.firstSection}>
                 <div className={HomeCSS.homeTitle}>

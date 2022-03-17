@@ -1,11 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import HeaderCSS from '../css/Header.module.css';
 import {Link, useLocation} from 'react-router-dom';
+import { useDetectClickOutside } from 'react-detect-click-outside';
 
 
 function Header(){
     const [toggle,setToggle] = useState(false)
     const location = useLocation();
+
+    const closeDropdown = () => {
+        setToggle(false)
+    }
+
+    const Dropdown = () => {
+        const ref = useDetectClickOutside({ onTriggered: closeDropdown });
+        return (
+            <div className={HeaderCSS.dropDownContainer} ref={ref}>
+                <Link to="/" className={HeaderCSS.dropDownButton}
+                    onClick={()=>{localStorage.setItem("dummyToken", 0)}}
+                >LOGOUT</Link>
+                <Link to="/" className={HeaderCSS.dropDownButton}>PROFILE</Link>
+            </div>
+        );
+    };
+
+    
     
 
     return(
@@ -23,15 +42,8 @@ function Header(){
 
             <div className = {HeaderCSS.logoContainer}>
                 <Link to="/order"><img className={HeaderCSS.logoIcon} src={require('../../assets/icons/shopping-cart-check.png')} alt="Logo" /></Link>
-                <button onClick={()=>setToggle(!toggle)} onmo className={HeaderCSS.menuButton}>Menu</button>
-                {toggle && (
-                    <div className={HeaderCSS.dropDownContainer}>
-                        <Link to="/" className={HeaderCSS.dropDownButton}
-                             onClick={()=>{localStorage.setItem("dummyToken", 0)}}
-                        >LOGOUT</Link>
-                        <Link to="/" className={HeaderCSS.dropDownButton}>PROFILE</Link>
-                    </div>
-                )}
+                <button onClick={()=>setToggle(!toggle)} onmo className={HeaderCSS.menuButton}>🔻</button>
+                {toggle && <Dropdown/>}
             </div>
         </div>
     );

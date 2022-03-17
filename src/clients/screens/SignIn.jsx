@@ -1,22 +1,87 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../css/SignIn.module.css';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import Swal from 'sweetalert2'
+
 
 function SignIn(){
+    const [addEmail, setAddEmail] = useState("");
+    const [addPass, setAddPass] = useState("");
+    const [addCPass, setAddCPass] = useState("");
+
+    const userRegister = (e) =>{
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        e.preventDefault();
+        if(addCPass !== addPass){
+            Swal.fire({
+                title: 'Registration Failed',
+                text: 'Passwords did not match.',
+                icon: 'error',
+                confirmButtonText: 'Edi Sorry',
+                customClass:{
+                    icon: styles.swalertIcon
+                }
+            })
+        }
+        else if(!regex.test(addEmail)){
+            Swal.fire({
+                title: 'Registration Failed',
+                text: 'Invalid Email Format',
+                icon: 'error',
+                confirmButtonText: 'Edi Sorry',
+                customClass:{
+                    icon: styles.swalertIcon
+                }
+            })
+        }
+        else{
+            axios.post("http://localhost:5000/api/user/register", {
+                email: addEmail,
+                password: addPass,
+            }).then((response) => {
+                console.log(response)
+                if(response.data.message){
+                    Swal.fire({
+                        title: 'Registration Failed',
+                        text: response.data.message,
+                        icon: 'warning',
+                        button:"OK",
+                        customClass:{
+                            icon: styles.swalertIcon
+                        }
+                    })
+                }
+            })
+
+            //Dito mo nalang siguro lagay si Captcha
+            Swal.fire({
+                title: 'Registration Successful',
+                text: 'Account successfully created.',
+                icon: 'success',
+                timer:2000,
+                showConfirmButton: false,
+                customClass:{
+                    icon: styles.swalertIcon
+                }
+            })
+        }
+    }
+
     const navigate = useNavigate();
     const [creds,setCreds] = useState({
         email:"KEIPOGIMASARAP@GMAIL.COM",
         password:"123123123"
     });
     const initialValues = {email: "", password: "" };
-    const [formValues, setFormValues] = useState(initialValues);
-    const [formErrors, setFormErrors] = useState({});
+    const [loginValues, setloginValues] = useState(initialValues);
+    const [loginErrors, setloginErrors] = useState({});
     const [isSubmit, setSubmit] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormValues({ ...formValues, [name]: value });
-      }
+        setloginValues({ ...loginValues, [name]: value });
+    }
 
     const [data,setData] = useState({
         active1:false,
@@ -24,28 +89,42 @@ function SignIn(){
     })
 
     useEffect(() => {
-        console.log(formErrors)
-        if(Object.keys(formErrors).length === 0 && isSubmit){
-            console.log(formValues)
+        console.log(loginErrors)
+        if(Object.keys(loginErrors).length === 0 && isSubmit){
+            console.log(loginValues)
         }
-    }, [formErrors]);
+    }, [loginErrors]);
 
-    const submitHandler = (e)=>{
+    const login = (e)=>{
         e.preventDefault();
-        setFormErrors(validate(formValues));
+        setloginErrors(validate(loginValues));
         setSubmit(true);
 
-        let capsEmail = formValues.email.toUpperCase();
-        if(capsEmail === creds.email && formValues.password === creds.password){
-            console.log("PASSED")
-            localStorage.setItem("dummyToken", 1);
-            navigate("/home");
-            window.location.reload();
-        }else{
-            console.log("X")
-            console.log("EMAIL : ", formValues.email);
-            console.log("PASS : ", formValues.password);
-        }
+        let capsEmail = loginValues.email.toUpperCase();
+        // if(capsEmail === creds.email && loginValues.password === creds.password){
+        //     console.log("PASSED")
+        //     localStorage.setItem("dummyToken", 1);
+        //     // navigate("/home");
+        //     // window.location.reload();
+        // }else{
+        //     console.log("X")
+        //     console.log("EMAIL : ", loginValues.email);
+        //     console.log("PASS : ", loginValues.password);
+        // }
+
+        axios.post("http://localhost:5000/api/user/login", {
+            email: capsEmail,
+            password: loginValues.password
+        }).then((response) => {
+            console.log(response);
+            // console.log(response.data.message)
+            if(!response.data.message){
+                localStorage.setItem("dummyToken", 1);
+                navigate("/home");
+                window.location.reload();
+            }
+        })
+        console.log(capsEmail,loginValues.password)
     }
 
     const validate = (values) => {
@@ -55,12 +134,12 @@ function SignIn(){
           errors.email = "Email is required!";
         } else if (!regex.test(values.email)) {
           errors.email = "Invalid Email";
-        } else if (values.email !== creds.email){
+        } else if (values.email != creds.email){
             errors.email = "Incorrect Email"
         }
         if (!values.password) {
           errors.password = "Password is required";
-        } else if (values.password !== creds.password){
+        } else if (values.password != creds.password){
             errors.password = "Incorrect Password"
         }
         
@@ -101,47 +180,53 @@ function SignIn(){
                         data.active1 === true?
                         (
                             <div className={styles.signinFormsContainer}>
-                                <form className={styles.signinForms} >
+                                <form className={styles.signinForms} onSubmit={userRegister}>
                                     <input
-                                        type="email"
+                                        type="text"
                                         name="email"
                                         placeholder="Email Address"
-                                        required
+                                        onChange={(e) => {
+                                            setAddEmail(e.target.value.toUpperCase())
+                                        }}
                                     />
                                     <input
                                         type="password"
                                         name="password"
                                         placeholder="Password"
-                                        required
+                                        onChange={(e) => {
+                                            setAddPass(e.target.value)
+                                        }}
                                     />
                                     <input
                                         type="password"
                                         name="cpassword"
                                         placeholder="Confirm Password"
-                                        required
+                                        onChange={(e) => {
+                                            setAddCPass(e.target.value)
+                                        }}
                                     />
                                     <input type="submit" className={styles.signinBtn} value="SIGN UP"/>
                                 </form>
                             </div>
                         ):(
                             <div className={styles.signinFormsContainer}>
-                                <form className={styles.signinForms} onSubmit={submitHandler}>
+                                <form className={styles.signinForms} onSubmit={login}>
                                     <input
                                         type="text"
                                         name="email"
                                         placeholder="Email Address"
-                                        value={formValues.email}
+                                        value={loginValues.email}
                                         onChange={handleChange}
                                     />
-                                    <p className={styles.errorTxt}>{formErrors.email}</p>
+                                    <p className={styles.errorTxt}>{loginErrors.email}</p>
                                     <input
                                         type="password"
                                         name="password"
                                         placeholder="Password"
-                                        value={formValues.password}
+                                        value={loginValues.password}
                                         onChange={handleChange}
                                     />
-                                    <p className={styles.errorTxt}>{formErrors.password}</p>
+                                    <p className={styles.errorTxt}>{loginErrors.password}</p>
                                     <input type="submit" className={styles.signinBtn} value="SIGN IN"/>
                                 </form>
                             </div>

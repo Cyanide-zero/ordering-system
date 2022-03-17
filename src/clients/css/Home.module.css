@@ -5,7 +5,11 @@
 
 body{
     background-color:  #F2EFE2;
-    height:inherit  ;
+    height:inherit ;
+}
+
+.home{
+  width:100vw;
 }
 
 .firstSection{
@@ -53,6 +57,7 @@ body{
   width:53.9608vw;
   height:79.102vh;
   object-fit: fill;
+  z-index: -1;
 }
 
 .upArrow{

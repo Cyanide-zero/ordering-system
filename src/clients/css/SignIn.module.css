@@ -1,4 +1,8 @@
 /* sign in page */
+body{
+    overflow: hidden;
+}
+
 .container{
     margin-top: 10vh;
     width:100%;
@@ -80,5 +84,9 @@
     color:red;
     margin-bottom:1vh;
     font-size: 12px;
+}
+
+.swalertIcon{
+    overflow:hidden ;
 }
 
