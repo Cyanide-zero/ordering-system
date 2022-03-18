@@ -50,6 +50,7 @@ label{
     height: 70vh;
     width: 60vw;
     border-radius: 10px;
+    overflow-y: hidden;
 }
 
 .signin-content{

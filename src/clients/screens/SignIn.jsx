@@ -52,6 +52,7 @@ function SignIn(){
                         }
                     })
                 }
+                
             })
 
             //Dito mo nalang siguro lagay si Captcha
@@ -134,9 +135,10 @@ function SignIn(){
           errors.email = "Email is required!";
         } else if (!regex.test(values.email)) {
           errors.email = "Invalid Email";
-        } else if (values.email != creds.email){
-            errors.email = "Incorrect Email"
-        }
+        } 
+        // else if (values.email != creds.email){
+        //     errors.email = "Incorrect Email"
+        // }
         if (!values.password) {
           errors.password = "Password is required";
         } else if (values.password != creds.password){

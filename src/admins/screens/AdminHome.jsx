@@ -2,52 +2,67 @@ import React, {useState, useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
 // import Sidebar from '../components/Sidebar';
 import '../css/AdminIndent.css'
+import axios from 'axios';
 
 function AdminHome(){
 
     const navigate = useNavigate();
     const [creds,setCreds] = useState({
-        email:"ADMIN@ADMIN.COM",
-        password:"admin"
+        email:"KEIPOGIMASARAP@GMAIL.COM",
+        password:"123123123"
     });
     const initialValues = {email: "", password: "" };
-    const [formValues, setFormValues] = useState(initialValues);
-    const [formErrors, setFormErrors] = useState({});
+    const [loginValues, setloginValues] = useState(initialValues);
+    const [loginErrors, setloginErrors] = useState({});
     const [isSubmit, setSubmit] = useState(false);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setloginValues({ ...loginValues, [name]: value });
+    }
 
     const [data,setData] = useState({
         active1:false,
         active2:true,
-    });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormValues({ ...formValues, [name]: value });
-    }
+    })
 
     useEffect(() => {
-        console.log(formErrors)
-        if(Object.keys(formErrors).length === 0 && isSubmit){
-            console.log(formValues)
+        console.log(loginErrors)
+        if(Object.keys(loginErrors).length === 0 && isSubmit){
+            console.log(loginValues)
         }
-    }, [formErrors]);
+    }, [loginErrors]);
 
-    const submitHandler = (e)=>{
+    const login = (e)=>{
         e.preventDefault();
-        setFormErrors(validate(formValues));
+        setloginErrors(validate(loginValues));
         setSubmit(true);
 
-        let capsEmail = formValues.email.toUpperCase();
-        if(capsEmail === creds.email && formValues.password === creds.password){
-            console.log("PASSED")
-            localStorage.setItem("adminDummyToken", 1);
-            navigate("/admin/sales");
-            window.location.reload();
-        }else{
-            console.log("X")
-            console.log("EMAIL : ", formValues.email);
-            console.log("PASS : ", formValues.password);
-        }
+        let capsEmail = loginValues.email.toUpperCase();
+        // if(capsEmail === creds.email && loginValues.password === creds.password){
+        //     console.log("PASSED")
+        //     localStorage.setItem("dummyToken", 1);
+        //     // navigate("/home");
+        //     // window.location.reload();
+        // }else{
+        //     console.log("X")
+        //     console.log("EMAIL : ", loginValues.email);
+        //     console.log("PASS : ", loginValues.password);
+        // }
+
+        axios.post("http://localhost:5000/api/user/login", {
+            email: capsEmail,
+            password: loginValues.password
+        }).then((response) => {
+            console.log(response);
+            // console.log(response.data.message)
+            if(!response.data.message){
+                localStorage.setItem("adminDummyToken", 1);
+                navigate("/admin/sales");
+                window.location.reload();
+            }
+        })
+        console.log(capsEmail,loginValues.password)
     }
 
     const validate = (values) => {
@@ -57,9 +72,10 @@ function AdminHome(){
           errors.email = "Email is required!";
         } else if (!regex.test(values.email)) {
           errors.email = "Invalid Email";
-        } else if (values.email != creds.email){
-            errors.email = "Incorrect Email"
-        }
+        } 
+        // else if (values.email != creds.email){
+        //     errors.email = "Incorrect Email"
+        // }
         if (!values.password) {
           errors.password = "Password is required";
         } else if (values.password != creds.password){
@@ -121,24 +137,24 @@ function AdminHome(){
                             </div>
                         ):(
                             <div className="signin-forms-container">
-                                <form className="signin-forms" onSubmit={submitHandler}>
+                                <form className="signin-forms" onSubmit={login}>
                                     <p>ADMIN</p>
                                     <input
                                         type="email"
                                         name="email"
                                         placeholder="Email Address"
-                                        value={formValues.email}
+                                        value={loginValues.email}
                                         onChange={handleChange}
                                     />
-                                    <p className='adminLoginError'>{formErrors.email}</p>
+                                    <p className='adminLoginError'>{loginErrors.email}</p>
                                     <input
                                         type="password"
                                         name="password"
                                         placeholder="Password"
-                                        value={formValues.password}
+                                        value={loginValues.password}
                                         onChange={handleChange} 
                                     />
-                                    <p className='adminLoginError'>{formErrors.password}</p>
+                                    <p className='adminLoginError'>{loginErrors.password}</p>
                                     <input type="submit" className="signin-btn" value="ADMIN SIGN IN"/>
                                 </form>
                             </div>

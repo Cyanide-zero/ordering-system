@@ -42,7 +42,7 @@ function Header(){
 
             <div className = {HeaderCSS.logoContainer}>
                 <Link to="/order"><img className={HeaderCSS.logoIcon} src={require('../../assets/icons/shopping-cart-check.png')} alt="Logo" /></Link>
-                <button onClick={()=>setToggle(!toggle)} onmo className={HeaderCSS.menuButton}>🔻</button>
+                <button onClick={()=>setToggle(!toggle)} className={HeaderCSS.menuButton}>🔻</button>
                 {toggle && <Dropdown/>}
             </div>
         </div>
