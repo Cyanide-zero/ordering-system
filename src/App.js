@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -39,7 +39,6 @@ import Pizza from './clients/screens/CategoryScreens/Pizza';
 import Desserts from './clients/screens/CategoryScreens/Desserts';
 import Drinks from './clients/screens/CategoryScreens/Drinks';
 import MainDishes from './clients/screens/CategoryScreens/MainDishes';
-import React, { useEffect, useState } from 'react';
 
 function App() {
   const [token,setToken] = useState(0);
