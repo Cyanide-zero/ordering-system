@@ -42,10 +42,10 @@ function Home(){
             <div className={HomeCSS.secondSection}>
                 <h1 className={HomeCSS.topSecond}>CATEGORIES</h1>
                 <div className={HomeCSS.smallcardContainer}>
-                    <Link to="/ordering-system//category/pizza" style={{textDecoration:"none"}}><Scard source="pizza" food = "PIZZA"/></Link>
-                    <Link to="/ordering-system//category/maindishes" style={{textDecoration:"none"}}><Scard source="maindish"food = "MAIN DISHES"/></Link>
-                    <Link to="/ordering-system//category/desserts" style={{textDecoration:"none"}}><Scard source="desserts"food = "DESSERTS"/></Link>
-                    <Link to="/ordering-system//category/drinks" style={{textDecoration:"none"}}><Scard source="drinks"food = "DRINKS"/></Link>
+                    <Link to="/ordering-system/category/pizza" style={{textDecoration:"none"}}><Scard source="pizza" food = "PIZZA"/></Link>
+                    <Link to="/ordering-system/category/maindishes" style={{textDecoration:"none"}}><Scard source="maindish"food = "MAIN DISHES"/></Link>
+                    <Link to="/ordering-system/category/desserts" style={{textDecoration:"none"}}><Scard source="desserts"food = "DESSERTS"/></Link>
+                    <Link to="/ordering-system/category/drinks" style={{textDecoration:"none"}}><Scard source="drinks"food = "DRINKS"/></Link>
                 </div>  
             </div>
 

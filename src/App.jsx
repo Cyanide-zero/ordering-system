@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -68,7 +68,6 @@ function App() {
                 <Route path="/ordering-system/contactus" exact element={<ContactUs/>}/>
                 <Route path="/ordering-system/editprofile" exact element={<EditProfile/>}/>
                 <Route path="/ordering-system/order" exact element={<Order/>}/>
-                <Route path="/ordering-system/orderstatus" exact element={<OrderStatus/>}/>
                 <Route path="/ordering-system/home" exact element={<Home/>}/>
                 <Route path="/ordering-system/profile" exact element={<UserProfile/>}/>
                 <Route path="/ordering-system/category/pizza" exact element={<Pizza/>}/>

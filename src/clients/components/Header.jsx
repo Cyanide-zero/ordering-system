@@ -19,7 +19,7 @@ function Header(){
                 <Link to="/ordering-system/" className={HeaderCSS.dropDownButton}
                     onClick={()=>{localStorage.setItem("dummyToken", 0)}}
                 >LOGOUT</Link>
-                <Link to="/ordering-system/" className={HeaderCSS.dropDownButton}>PROFILE</Link>
+                {/* <Link to="/ordering-system/" className={HeaderCSS.dropDownButton}>PROFILE</Link> */}
             </div>
         );
     };
