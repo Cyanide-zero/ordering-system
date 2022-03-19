@@ -1,11 +1,19 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import Header from '../../components/Header';
 import CategoryCSS from '../../css/Category.module.css'
 import Bcard from '../../components/BigCard';
-
-import MainDishesData from '../../../assets/MainDishes.json'
+import axios from 'axios';
 
 function MainDishes(){
+    const [mainDishArr, setMainDishArr] = useState([]);
+
+    useEffect(() => {
+        axios.get("https://ordering-system-database.herokuapp.com/api/maindishes/get")
+            .then((response) => {
+            setMainDishArr(response.data);
+        });
+    }, []);
+
     return(
         <div className = {CategoryCSS.container}>
             <Header/>
@@ -16,17 +24,17 @@ function MainDishes(){
             </div>
             <div className={CategoryCSS.bigcardContainer}>
                     {
-                        MainDishesData.map((post,index) =>{
-                            return post.maindishes.map(item => {
+                        mainDishArr.map((item) =>{
+                            if(item.id <= 4){
                                 return(
                                     <Bcard
                                         key={item.id}
                                         food={item.menuName}
+                                        price={item.price}
                                         folder={item.folder}
-                                        // price={item.price}
                                     />
                                 )
-                            });
+                            }
                         })
                     }
             </div>

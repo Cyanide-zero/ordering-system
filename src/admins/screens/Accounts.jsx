@@ -26,7 +26,7 @@ function Accounts(){
             })
         }
         else{
-            axios.post("http://localhost:5000/api/admin/accounts", {
+            axios.post("https://ordering-system-database.herokuapp.com/api/admin/accounts", {
                 email: addEmail,
                 password: addPassword,
                 username: addUser,

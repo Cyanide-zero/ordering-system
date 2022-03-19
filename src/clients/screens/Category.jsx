@@ -15,19 +15,19 @@ function Category(){
     const [mainDishArr, setMainDishArr] = useState([]);
 
     const getMenu = () =>{
-        axios.get("http://localhost:5000/api/drinks/get")
+        axios.get("https://ordering-system-database.herokuapp.com/api/drinks/get")
             .then((response) => {
                setDrinksArr(response.data)
         });
-        axios.get("http://localhost:5000/api/maindishes/get")
+        axios.get("https://ordering-system-database.herokuapp.com/api/maindishes/get")
             .then((response) => {
                setMainDishArr(response.data)
         });
-        axios.get("http://localhost:5000/api/desserts/get")
+        axios.get("https://ordering-system-database.herokuapp.com/api/desserts/get")
             .then((response) => {
                setDessertArr(response.data)
         });
-        axios.get("http://localhost:5000/api/pizza/get")
+        axios.get("https://ordering-system-database.herokuapp.com/api/pizza/get")
             .then((response) => {
                setPizzaArr(response.data)
         });
@@ -57,6 +57,7 @@ function Category(){
             <div className={CategoryCSS.bigcardContainer}>
             {
                         pizzaArr.map((item, index) =>{
+                            if(item.id <= 4){
                                 return(
                                     <Bcard
                                         key={item.id}
@@ -65,6 +66,8 @@ function Category(){
                                         folder={item.folder}
                                     />
                                 )
+                            }
+                                
                         })
                     }
             </div>
@@ -77,6 +80,7 @@ function Category(){
             <div className={CategoryCSS.bigcardContainer}>
             {
                         mainDishArr.map((item, index) =>{
+                            if(item.id <= 4){
                                 return(
                                     <Bcard
                                         key={item.id}
@@ -85,6 +89,7 @@ function Category(){
                                         folder={item.folder}
                                     />
                                 )
+                            }
                         })
                     }
             </div>
@@ -97,6 +102,7 @@ function Category(){
             <div className={CategoryCSS.bigcardContainer}>
                     {
                         dessertsArr.map((item, index) =>{
+                            if(item.id <= 4){
                                 return(
                                     <Bcard
                                         key={item.id}
@@ -105,6 +111,7 @@ function Category(){
                                         folder={item.folder}
                                     />
                                 )
+                            }
                         })
                     }
             </div>
@@ -117,6 +124,7 @@ function Category(){
             <div className={CategoryCSS.bigcardContainer}>
                     {
                         drinksArr.map((item, index) =>{
+                            if(item.id <= 4){
                                 return(
                                     <Bcard
                                         key={item.id}
@@ -125,6 +133,7 @@ function Category(){
                                         folder={item.folder}
                                     />
                                 )
+                            }
                         })
                     }
             </div>

@@ -50,7 +50,7 @@ function AdminHome(){
         //     console.log("PASS : ", loginValues.password);
         // }
 
-        axios.post("http://localhost:5000/api/admin/login", {
+        axios.post("https://ordering-system-database.herokuapp.com/api/admin/login", {
             email: capsEmail,
             password: loginValues.password
         }).then((response) => {

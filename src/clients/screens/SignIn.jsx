@@ -36,7 +36,7 @@ function SignIn(){
             })
         }
         else{
-            axios.post("http://localhost:5000/api/user/register", {
+            axios.post("https://ordering-system-database.herokuapp.com/api/user/register", {
                 email: addEmail,
                 password: addPass,
             }).then((response) => {
@@ -113,7 +113,7 @@ function SignIn(){
         //     console.log("PASS : ", loginValues.password);
         // }
 
-        axios.post("http://localhost:5000/api/user/login", {
+        axios.post("https://ordering-system-database.herokuapp.com/api/user/login", {
             email: capsEmail,
             password: loginValues.password
         }).then((response) => {
@@ -141,9 +141,10 @@ function SignIn(){
         // }
         if (!values.password) {
           errors.password = "Password is required";
-        } else if (values.password != creds.password){
-            errors.password = "Incorrect Password"
-        }
+        } 
+        // else if (values.password != creds.password){
+        //     errors.password = "Incorrect Password"
+        // }
         
         // else if (values.password.length < 4) {
         //   errors.password = "Password must be more than 4 characters";
