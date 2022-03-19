@@ -62,43 +62,43 @@ function App() {
             token===1?
             (
               <>
-                <Route path="/ordering-system/" exact element={<SignIn/>}/>
-                <Route path="/ordering-system/category" exact element={<Category/>}/>
-                <Route path="/ordering-system/reservations" exact element={<Reservations/>}/>
-                <Route path="/ordering-system/contactus" exact element={<ContactUs/>}/>
-                <Route path="/ordering-system/editprofile" exact element={<EditProfile/>}/>
-                <Route path="/ordering-system/order" exact element={<Order/>}/>
-                <Route path="/ordering-system/orderstatus" exact element={<OrderStatus/>}/>
-                <Route path="/ordering-system/home" exact element={<Home/>}/>
-                <Route path="/ordering-system/profile" exact element={<UserProfile/>}/>
-                <Route path="/ordering-system/category/pizza" exact element={<Pizza/>}/>
-                <Route path="/ordering-system/category/desserts" exact element={<Desserts/>}/>
-                <Route path="/ordering-system/category/maindishes" exact element={<MainDishes/>}/>
-                <Route path="/ordering-system/category/drinks" exact element={<Drinks/>}/>
+                <Route path="/" exact element={<SignIn/>}/>
+                <Route path="/category" exact element={<Category/>}/>
+                <Route path="/reservations" exact element={<Reservations/>}/>
+                <Route path="/contactus" exact element={<ContactUs/>}/>
+                <Route path="/editprofile" exact element={<EditProfile/>}/>
+                <Route path="/order" exact element={<Order/>}/>
+                <Route path="/orderstatus" exact element={<OrderStatus/>}/>
+                <Route path="/home" exact element={<Home/>}/>
+                <Route path="/profile" exact element={<UserProfile/>}/>
+                <Route path="/category/pizza" exact element={<Pizza/>}/>
+                <Route path="/category/desserts" exact element={<Desserts/>}/>
+                <Route path="/category/maindishes" exact element={<MainDishes/>}/>
+                <Route path="/category/drinks" exact element={<Drinks/>}/>
               </>
             ):(
-              <Route path="/ordering-system/*" exact element={<SignIn/>}/>
+              <Route path="*" exact element={<SignIn/>}/>
             )
           }
           {/* Admin Routes */}
           {
             admin===1?
             (<>
-              <Route path="/ordering-system/admin" exact element={<AdminHome/>}/>
-              <Route path="/ordering-system/admin/addproduct" exact element={<AddProduct/>}/>
-              <Route path="/ordering-system/admin/editproduct" exact element={<EditProduct/>}/>
-              <Route path="/ordering-system/admin/account" exact element={<Accounts/>}/>
-              <Route path="/ordering-system/admin/reservation" exact element={<AdminReservation/>}/>
-              <Route path="/ordering-system/admin/reservationdetails" exact element={<ReservationDetails/>}/>
-              <Route path="/ordering-system/admin/order" exact element={<OrderPage/>}/>
-              <Route path="/ordering-system/admin/orderdetails" exact element={<DetailedOrder/>}/>
-              <Route path="/ordering-system/admin/products" exact element={<ProductManagement/>}/>
-              <Route path="/ordering-system/admin/sales" exact element={<SalesReport/>}/>
-              <Route path="/ordering-system/admin/detailedsales" exact element={<DetailedSalesReport/>}/>
-              <Route path="/ordering-system/admin/profile" exact element={<Profile/>}/>
-              <Route path="/ordering-system/admin/settings" exact element={<Settings/>}/>
+              <Route path="/admin" exact element={<AdminHome/>}/>
+              <Route path="/admin/addproduct" exact element={<AddProduct/>}/>
+              <Route path="/admin/editproduct" exact element={<EditProduct/>}/>
+              <Route path="/admin/account" exact element={<Accounts/>}/>
+              <Route path="/admin/reservation" exact element={<AdminReservation/>}/>
+              <Route path="/admin/reservationdetails" exact element={<ReservationDetails/>}/>
+              <Route path="/admin/order" exact element={<OrderPage/>}/>
+              <Route path="/admin/orderdetails" exact element={<DetailedOrder/>}/>
+              <Route path="/admin/products" exact element={<ProductManagement/>}/>
+              <Route path="/admin/sales" exact element={<SalesReport/>}/>
+              <Route path="/admin/detailedsales" exact element={<DetailedSalesReport/>}/>
+              <Route path="/admin/profile" exact element={<Profile/>}/>
+              <Route path="/admin/settings" exact element={<Settings/>}/>
             </>):(
-              <Route path="/ordering-system/admin/*" exact element={<AdminHome/>}/>
+              <Route path="/admin/*" exact element={<AdminHome/>}/>
             )
           }
         </Routes>
