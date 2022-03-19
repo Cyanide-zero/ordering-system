@@ -16,7 +16,7 @@ function Header(){
         const ref = useDetectClickOutside({ onTriggered: closeDropdown });
         return (
             <div className={HeaderCSS.dropDownContainer} ref={ref}>
-                <Link to="/" className={HeaderCSS.dropDownButton}
+                <Link to="/ordering-system/" className={HeaderCSS.dropDownButton}
                     onClick={()=>{localStorage.setItem("dummyToken", 0)}}
                 >LOGOUT</Link>
                 <Link to="/ordering-system/" className={HeaderCSS.dropDownButton}>PROFILE</Link>
@@ -30,10 +30,10 @@ function Header(){
     return(
         <div className = {HeaderCSS.container}>
             <div className={HeaderCSS.buttonsContainer}>
-                <Link className={location.pathname == "/ordering-system/home" ? HeaderCSS.buttonActive : HeaderCSS.button } to='/home'><p>HOME</p></Link>
-                <Link className={location.pathname == "/ordering-system/category"? HeaderCSS.buttonActive : HeaderCSS.button} to='/category'><p>CATEGORY</p></Link>
-                <Link className={location.pathname == "/ordering-system/reservations" ? HeaderCSS.buttonActive : HeaderCSS.button } to='/reservations'><p>RESERVATIONS</p></Link>
-                <Link className={location.pathname == "/ordering-system/contactus" ? HeaderCSS.buttonActive : HeaderCSS.button } to='/contactus'><p>CONTACT US</p></Link>
+                <Link className={location.pathname == "/ordering-system/home" ? HeaderCSS.buttonActive : HeaderCSS.button } to='/ordering-system/home'><p>HOME</p></Link>
+                <Link className={location.pathname == "/ordering-system/category"? HeaderCSS.buttonActive : HeaderCSS.button} to='/ordering-system/category'><p>CATEGORY</p></Link>
+                <Link className={location.pathname == "/ordering-system/reservations" ? HeaderCSS.buttonActive : HeaderCSS.button } to='/ordering-system/reservations'><p>RESERVATIONS</p></Link>
+                <Link className={location.pathname == "/ordering-system/contactus" ? HeaderCSS.buttonActive : HeaderCSS.button } to='/ordering-system/contactus'><p>CONTACT US</p></Link>
             </div>
 
             <div className={HeaderCSS.headerTitle}>
