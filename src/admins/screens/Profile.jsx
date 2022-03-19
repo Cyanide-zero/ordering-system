@@ -1,8 +1,30 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Sidebar from '../components/Sidebar';
-import '../css/AdminIndent.css' 
+import '../css/AdminIndent.css'
+import axios from "axios";
 
 function Profile(){
+
+    const [email, setEmail] = useState('')
+    const [name, setName] = useState("");
+    const [date, setDate] = useState("")
+
+    // const getContent = () =>{
+    //     axios.get("http://localhost:5000/api/admin/profile")
+    //         .then((response) => {
+    //             setEmail(response.data[0].email);
+    //             setName(response.data[0].username);
+    //             setDate(response.data[0].date);
+    //     });
+    // }
+
+    useEffect(() => {
+        setEmail(localStorage.getItem("adminEmail"));
+        setName(localStorage.getItem("adminName"));
+        setDate(localStorage.getItem("adminDate"));
+        // getContent();
+    }, []);
+
     return(
         <div className="profileContainer">
             <Sidebar/>
@@ -16,21 +38,24 @@ function Profile(){
                     <label>ACCOUNT NAME</label>
                         <input 
                             type="text" 
+                            value={name}
                             name="accname"
                             disabled={true}
                         />
                         
                     <label>EMAIL ADDRESS</label>
                         <input 
-                            type="email" 
+                            type="email"
+                            value={email}
                             name="email"
                             disabled={true} 
                         />
 
                     <label>REGISTRATION DATE</label>
                         <input 
-                            type="date" 
+                            type="text" 
                             name="date"
+                            value={date}
                             disabled={true} 
                         />
                 </form>

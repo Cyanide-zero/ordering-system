@@ -50,7 +50,7 @@ function AdminHome(){
         //     console.log("PASS : ", loginValues.password);
         // }
 
-        axios.post("http://localhost:5000/api/user/login", {
+        axios.post("http://localhost:5000/api/admin/login", {
             email: capsEmail,
             password: loginValues.password
         }).then((response) => {
@@ -58,6 +58,9 @@ function AdminHome(){
             // console.log(response.data.message)
             if(!response.data.message){
                 localStorage.setItem("adminDummyToken", 1);
+                localStorage.setItem("adminName", response.data[0].username);
+                localStorage.setItem("adminEmail", response.data[0].email);
+                localStorage.setItem("adminDate", response.data[0].date);
                 navigate("/admin/sales");
                 window.location.reload();
             }
