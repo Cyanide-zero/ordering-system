@@ -5,9 +5,9 @@ import Bcard from '../../components/BigCard';
 import axios from 'axios';
 
 function MainDishes(){
-    const [mainDishArr, setMainDishArr] = useState([]);
+    const [mainDishArr, setMainDishArr] = React.useState([]);
 
-    useEffect(() => {
+    React.useEffect(() => {
         axios.get("https://ordering-system-database.herokuapp.com/api/maindishes/get")
             .then((response) => {
             setMainDishArr(response.data);

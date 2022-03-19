@@ -41,18 +41,17 @@ import Drinks from './clients/screens/CategoryScreens/Drinks';
 import MainDishes from './clients/screens/CategoryScreens/MainDishes';
 
 function App() {
-  const [token,setToken] = useState(0);
-  const [admin,setAdmin] = useState(0);
+  const [token,setToken] = React.useState(0);
+  const [admin,setAdmin] = React.useState(0);
   const refreshPage = () => {
     window.location.reload();
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     let getToken = localStorage.getItem("dummyToken");
     setToken(parseInt(getToken));
     let getAdminToken = localStorage.getItem("adminDummyToken");
     setAdmin(parseInt(getAdminToken));
-    console.log(admin, typeof(admin))
   });
   return (
     <Router>

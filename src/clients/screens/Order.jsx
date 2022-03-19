@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/Order.css';
 
@@ -10,7 +10,7 @@ import OrdersCard from '../components/OrdersCard';
 import PaymentCard from '../components/PaymentCard';
 
 function Order(){
-    const [data,setData] = useState({
+    const [data,setData] = React.useState({
         deliverTo:true,
         orders:false,
         payment:false,

@@ -5,9 +5,9 @@ import axios from "axios";
 
 function Profile(){
 
-    const [email, setEmail] = useState('')
-    const [name, setName] = useState("");
-    const [date, setDate] = useState("")
+    const [email, setEmail] = React.useState('')
+    const [name, setName] = React.useState("");
+    const [date, setDate] = React.useState("")
 
     // const getContent = () =>{
     //     axios.get("http://localhost:5000/api/admin/profile")
@@ -18,7 +18,7 @@ function Profile(){
     //     });
     // }
 
-    useEffect(() => {
+    React.useEffect(() => {
         setEmail(localStorage.getItem("adminEmail"));
         setName(localStorage.getItem("adminName"));
         setDate(localStorage.getItem("adminDate"));

@@ -5,7 +5,7 @@ import axios from "axios";
 
 const Card = (props) =>{
 
-    // useEffect(()=>{
+    // React.useEffect(()=>{
     //     axios.get("http://localhost:5000/")
     //         .then((response) => {
     //             let i = 0;

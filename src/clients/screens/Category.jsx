@@ -9,10 +9,10 @@ import Footer from '../components/Footer';
 import Bcard from '../components/BigCard';
 
 function Category(){
-    const [drinksArr, setDrinksArr] = useState([]);
-    const [dessertsArr, setDessertArr] = useState([]);
-    const [pizzaArr, setPizzaArr] = useState([]);
-    const [mainDishArr, setMainDishArr] = useState([]);
+    const [drinksArr, setDrinksArr] = React.useState([]);
+    const [dessertsArr, setDessertArr] = React.useState([]);
+    const [pizzaArr, setPizzaArr] = React.useState([]);
+    const [mainDishArr, setMainDishArr] = React.useState([]);
 
     const getMenu = () =>{
         axios.get("https://ordering-system-database.herokuapp.com/api/drinks/get")
@@ -33,7 +33,7 @@ function Category(){
         });
     }
     
-    useEffect(() => {
+    React.useEffect(() => {
         getMenu();
     }, []);
 

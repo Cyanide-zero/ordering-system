@@ -10,7 +10,7 @@ import axios from "axios";
 
 function Home(){
 
-    const [arr,setArr] = useState([])
+    const [arr,setArr] = React.useState([])
 
     const getDrinks = () =>{
         axios.get("https://ordering-system-database.herokuapp.com/api/drinks/get")
@@ -19,7 +19,7 @@ function Home(){
         });
     }
     
-    useEffect(() => {
+    React.useEffect(() => {
         getDrinks();
     }, []);
 

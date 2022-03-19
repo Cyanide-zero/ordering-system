@@ -6,9 +6,9 @@ import axios from 'axios'
 
 function Desserts(){
 
-    const [dessertsArr, setDessertArr] = useState([]);
+    const [dessertsArr, setDessertArr] = React.useState([]);
 
-    useEffect(() => {
+    React.useEffect(() => {
         axios.get("https://ordering-system-database.herokuapp.com/api/desserts/get")
             .then((response) => {
             setDessertArr(response.data);

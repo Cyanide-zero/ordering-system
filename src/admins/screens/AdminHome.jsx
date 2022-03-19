@@ -7,26 +7,26 @@ import axios from 'axios';
 function AdminHome(){
 
     const navigate = useNavigate();
-    const [creds,setCreds] = useState({
+    const [creds,setCreds] = React.useState({
         email:"KEIPOGIMASARAP@GMAIL.COM",
         password:"123123123"
     });
     const initialValues = {email: "", password: "" };
-    const [loginValues, setloginValues] = useState(initialValues);
-    const [loginErrors, setloginErrors] = useState({});
-    const [isSubmit, setSubmit] = useState(false);
+    const [loginValues, setloginValues] = React.useState(initialValues);
+    const [loginErrors, setloginErrors] = React.useState({});
+    const [isSubmit, setSubmit] = React.useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setloginValues({ ...loginValues, [name]: value });
     }
 
-    const [data,setData] = useState({
+    const [data,setData] = React.useState({
         active1:false,
         active2:true,
     })
 
-    useEffect(() => {
+    React.useEffect(() => {
         console.log(loginErrors)
         if(Object.keys(loginErrors).length === 0 && isSubmit){
             console.log(loginValues)

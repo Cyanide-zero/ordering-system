@@ -5,9 +5,9 @@ import Bcard from '../../components/BigCard';
 import axios from 'axios';
 
 function Pizza(){
-    const [pizzaArr, setPizzaArr] = useState([]);
+    const [pizzaArr, setPizzaArr] = React.useState([]);
 
-    useEffect(() => {
+    React.useEffect(() => {
         axios.get("https://ordering-system-database.herokuapp.com/api/maindishes/get")
             .then((response) => {
             setPizzaArr(response.data);
