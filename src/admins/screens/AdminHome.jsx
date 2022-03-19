@@ -61,7 +61,7 @@ function AdminHome(){
                 localStorage.setItem("adminName", response.data[0].username);
                 localStorage.setItem("adminEmail", response.data[0].email);
                 localStorage.setItem("adminDate", response.data[0].date);
-                navigate("/admin/sales");
+                navigate("/ordering-system/admin/sales");
                 window.location.reload();
             }
         })

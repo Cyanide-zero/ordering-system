@@ -121,7 +121,7 @@ function SignIn(){
             // console.log(response.data.message)
             if(!response.data.message){
                 localStorage.setItem("dummyToken", 1);
-                navigate("/home");
+                navigate("/ordering-system/home");
                 window.location.reload();
             }
         })
