@@ -122,7 +122,7 @@ function SignIn(){
             if(!response.data.message){
                 localStorage.setItem("dummyToken", 1);
                 navigate("/ordering-system/home");
-                window.location.reload();
+                // window.location.reload();
             }
         })
         console.log(capsEmail,loginValues.password)

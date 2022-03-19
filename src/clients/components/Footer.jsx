@@ -13,10 +13,10 @@ function Footer(){
 
             <div>
                 <div className={FooterCSS.buttonsContainer}>
-                    <Link className={FooterCSS.button} to='/home'><p>HOME</p></Link>
-                    <Link className={FooterCSS.button} to='/category'><p>CATEGORY</p></Link>
-                    <Link className={FooterCSS.button} to='/reservations'><p>RESERVATIONS</p></Link>
-                    <Link className={FooterCSS.button} to='/contactus'><p>CONTACT US</p></Link>
+                    <Link className={FooterCSS.button} to='/ordering-system/home'><p>HOME</p></Link>
+                    <Link className={FooterCSS.button} to='/ordering-system/category'><p>CATEGORY</p></Link>
+                    <Link className={FooterCSS.button} to='/ordering-system/reservations'><p>RESERVATIONS</p></Link>
+                    <Link className={FooterCSS.button} to='/ordering-system/contactus'><p>CONTACT US</p></Link>
                 </div>
                 <div className={FooterCSS.rightSecond}>
                     <div className={FooterCSS.frs1}>
