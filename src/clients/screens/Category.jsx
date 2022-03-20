@@ -52,7 +52,7 @@ function Category(){
         <div className={CategoryCSS.pizzaContainer}>
             <div className={CategoryCSS.pizzaTop}>
                 <h1>PIZZA</h1>
-                <p className={CategoryCSS.viewAllButton}>VIEW ALL</p>
+                
             </div>
             <div className={CategoryCSS.bigcardContainer}>
             {
@@ -75,7 +75,7 @@ function Category(){
         <div className={CategoryCSS.mainDishContainer}>
             <div className={CategoryCSS.mainDishTop}>
                 <h1>MAIN DISHES</h1>
-                <p className={CategoryCSS.viewAllButton}>VIEW ALL</p>
+                
             </div>
             <div className={CategoryCSS.bigcardContainer}>
             {
@@ -97,7 +97,7 @@ function Category(){
         <div className={CategoryCSS.dessertsContainer}>
             <div className={CategoryCSS.dessertsTop}>
                 <h1>DESSERTS</h1>
-                <p className={CategoryCSS.viewAllButton}>VIEW ALL</p>
+                
             </div>
             <div className={CategoryCSS.bigcardContainer}>
                     {
@@ -119,7 +119,7 @@ function Category(){
         <div className={CategoryCSS.drinksContainer}>
             <div className={CategoryCSS.drinksTop}>
                 <h1>DRINKS</h1>
-                <p className={CategoryCSS.viewAllButton}>VIEW ALL</p>
+                
             </div>
             <div className={CategoryCSS.bigcardContainer}>
                     {

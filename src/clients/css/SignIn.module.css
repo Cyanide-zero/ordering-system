@@ -86,7 +86,14 @@ body{
     font-size: 12px;
 }
 
+/* Sweet Alerts */
+
 .swalertIcon{
     overflow:hidden ;
+}
+
+.swalertLoader{
+    overflow-y:hidden ;
+    background-color: #fdd000;
 }
 

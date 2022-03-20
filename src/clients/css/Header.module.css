@@ -1,16 +1,16 @@
 .container{
     display: flex;
-    justify-content: left;
-    width: 100%;
+    justify-content: space-around;
+    width: 98%;
     padding-top:5vh;
     padding-bottom:4vh;
     align-items: center;
-    background-color:  #F2EFE2;;
+    background-color:  #F2EFE2;
+    
 }
 
 .buttonsContainer{
     display: flex;
-    margin-left: 1.75vw;
 }
 
 .button{

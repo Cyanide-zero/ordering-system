@@ -101,31 +101,35 @@ function SignIn(){
         setloginErrors(validate(loginValues));
         setSubmit(true);
 
-        let capsEmail = loginValues.email.toUpperCase();
-        // if(capsEmail === creds.email && loginValues.password === creds.password){
-        //     console.log("PASSED")
-        //     localStorage.setItem("dummyToken", 1);
-        //     // navigate("/home");
-        //     // window.location.reload();
-        // }else{
-        //     console.log("X")
-        //     console.log("EMAIL : ", loginValues.email);
-        //     console.log("PASS : ", loginValues.password);
-        // }
-
-        axios.post("https://ordering-system-database.herokuapp.com/api/user/login", {
-            email: capsEmail,
-            password: loginValues.password
-        }).then((response) => {
-            console.log(response);
-            // console.log(response.data.message)
-            if(!response.data.message){
-                localStorage.setItem("dummyToken", 1);
-                navigate("/ordering-system/home");
-                // window.location.reload();
+        Swal.fire({
+            title: 'Verifying...',
+            text: 'Please wait.',
+            timer: 2000,
+            didOpen: () => {
+              Swal.showLoading()
+              let capsEmail = loginValues.email.toUpperCase();
+                axios.post("https://ordering-system-database.herokuapp.com/api/user/login", {
+                    email: capsEmail,
+                    password: loginValues.password
+                }).then((response) => {
+                    console.log(response);
+                    // console.log(response.data.message)
+                    if(!response.data.message){
+                        localStorage.setItem("dummyToken", 1);
+                        navigate("/ordering-system/home");
+                        window.location.reload();
+                    }else{
+                        {
+                            Swal.fire({
+                                title: 'Login Failed',
+                                text: response.data.message,
+                                timer: 2000,
+                            })
+                        }
+                    }
+                })
             }
-        })
-        console.log(capsEmail,loginValues.password)
+          })
     }
 
     const validate = (values) => {
