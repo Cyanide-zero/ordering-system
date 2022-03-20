@@ -10,7 +10,6 @@ function useKey(key,cb){
 
     React.useEffect(()=>{
         callbackRef.current = cb;
-        
     })
 
     React.useEffect(()=>{
@@ -28,7 +27,7 @@ function SignIn(){
     function handleEscape(){
         navigate("/ordering-system/admin");
     }
-    useKey("Escape", handleEscape)
+    useKey("Escape", handleEscape);
     const [addEmail, setAddEmail] = React.useState("");
     const [addPass, setAddPass] = React.useState("");
     const [addCPass, setAddCPass] = React.useState("");
@@ -141,7 +140,7 @@ function SignIn(){
                     if(!response.data.message){
                         localStorage.setItem("dummyToken", 1);
                         navigate("/ordering-system/home");
-                        // window.location.reload();
+                        window.location.reload();
                         // console.log("GUMAGANA AKO BETCHasda");
                     }else{
                         {

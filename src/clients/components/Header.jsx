@@ -17,7 +17,10 @@ function Header(){
         return (
             <div className={HeaderCSS.dropDownContainer} ref={ref}>
                 <Link to="/ordering-system/" className={HeaderCSS.dropDownButton}
-                    onClick={()=>{localStorage.setItem("dummyToken", 0)}}
+                    onClick={()=>{
+                        localStorage.setItem("dummyToken", 0);
+                        localStorage.setItem("Total", 0);
+                    }}
                 >LOGOUT</Link>
                 {/* <Link to="/ordering-system/" className={HeaderCSS.dropDownButton}>PROFILE</Link> */}
             </div>

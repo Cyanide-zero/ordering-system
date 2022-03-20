@@ -25,6 +25,8 @@ function useKey(key,cb){
 }
 
 function AdminHome(){
+    const md5 = require('md5');
+
     function handleEscape(){
         navigate("/ordering-system/home");
     }
@@ -84,6 +86,7 @@ function AdminHome(){
                 localStorage.setItem("adminName", response.data[0].username);
                 localStorage.setItem("adminEmail", response.data[0].email);
                 localStorage.setItem("adminDate", response.data[0].date);
+                sessionStorage.setItem("currPass", md5(loginValues.password));
                 navigate("/ordering-system/admin/sales");
                 window.location.reload();
             }
@@ -104,9 +107,10 @@ function AdminHome(){
         // }
         if (!values.password) {
           errors.password = "Password is required";
-        } else if (values.password != creds.password){
-            errors.password = "Incorrect Password"
-        }
+        } 
+        // else if (values.password != creds.password){
+        //     errors.password = "Incorrect Password"
+        // }
         
         // else if (values.password.length < 4) {
         //   errors.password = "Password must be more than 4 characters";
