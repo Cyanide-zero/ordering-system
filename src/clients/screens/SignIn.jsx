@@ -100,6 +100,7 @@ function SignIn(){
         e.preventDefault();
         setloginErrors(validate(loginValues));
         setSubmit(true);
+        let capsEmail = loginValues.email.toUpperCase();
 
         Swal.fire({
             title: 'Verifying...',
@@ -107,7 +108,6 @@ function SignIn(){
             timer: 2000,
             didOpen: () => {
               Swal.showLoading()
-              let capsEmail = loginValues.email.toUpperCase();
                 axios.post("https://ordering-system-database.herokuapp.com/api/user/login", {
                     email: capsEmail,
                     password: loginValues.password
@@ -117,8 +117,8 @@ function SignIn(){
                     if(!response.data.message){
                         localStorage.setItem("dummyToken", 1);
                         navigate("/ordering-system/home");
-                        window.location.reload();
-                        console.log("GUMAGANA AKO BETCH")
+                        // window.location.reload();
+                        console.log("GUMAGANA AKO BETCHasda");
                     }else{
                         {
                             Swal.fire({
