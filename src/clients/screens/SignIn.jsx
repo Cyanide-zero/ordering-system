@@ -118,6 +118,7 @@ function SignIn(){
                         localStorage.setItem("dummyToken", 1);
                         navigate("/ordering-system/home");
                         window.location.reload();
+                        console.log("GUMAGANA AKO BETCH")
                     }else{
                         {
                             Swal.fire({
