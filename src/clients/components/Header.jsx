@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React from 'react';
 import HeaderCSS from '../css/Header.module.css';
 import {Link, useLocation} from 'react-router-dom';
 import { useDetectClickOutside } from 'react-detect-click-outside';

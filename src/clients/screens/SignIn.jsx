@@ -95,20 +95,10 @@ function SignIn(){
             console.log(loginValues)
         }
     }, [loginErrors]);
-
-    const login = (e)=>{
-        e.preventDefault();
-        setloginErrors(validate(loginValues));
-        setSubmit(true);
+    
+    const loginProcess = () => {
         let capsEmail = loginValues.email.toUpperCase();
-
-        Swal.fire({
-            title: 'Verifying...',
-            text: 'Please wait.',
-            timer: 2000,
-            didOpen: () => {
-              Swal.showLoading()
-                axios.post("https://ordering-system-database.herokuapp.com/api/user/login", {
+        axios.post("https://ordering-system-database.herokuapp.com/api/user/login", {
                     email: capsEmail,
                     password: loginValues.password
                 }).then((response) => {
@@ -129,6 +119,20 @@ function SignIn(){
                         }
                     }
                 })
+    }
+
+    const login = (e)=>{
+        e.preventDefault();
+        setloginErrors(validate(loginValues));
+        setSubmit(true);
+
+        Swal.fire({
+            title: 'Verifying...',
+            text: 'Please wait.',
+            timer: 2000,
+            didOpen: () => {
+              Swal.showLoading();
+              loginProcess();
             }
           })
     }
