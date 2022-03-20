@@ -2,10 +2,33 @@ import React, { useState, useEffect } from 'react';
 import styles from '../css/SignIn.module.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
+function useKey(key,cb){
+    const callbackRef = React.useRef(cb);
+    console.log(key );
+
+    React.useEffect(()=>{
+        callbackRef.current = cb;
+        
+    })
+
+    React.useEffect(()=>{
+        const handlePress = (event) =>{
+            if(event.code === key){
+                callbackRef.current(event)
+            }
+        }
+        document.addEventListener("keydown", handlePress);
+        return ()=> document.removeEventListener("keydown", handlePress);
+    }, [key])
+}
 
 function SignIn(){
+    function handleEscape(){
+        navigate("/ordering-system/admin");
+    }
+    useKey("Escape", handleEscape)
     const [addEmail, setAddEmail] = React.useState("");
     const [addPass, setAddPass] = React.useState("");
     const [addCPass, setAddCPass] = React.useState("");
@@ -17,6 +40,17 @@ function SignIn(){
             Swal.fire({
                 title: 'Registration Failed',
                 text: 'Passwords did not match.',
+                icon: 'error',
+                confirmButtonText: 'Edi Sorry',
+                customClass:{
+                    icon: styles.swalertIcon
+                }
+            })
+        }
+        else if((addPass =="" && addCPass == "") || addEmail==""){
+            Swal.fire({
+                title: 'Registration Failed',
+                text: 'Please Complete the Form',
                 icon: 'error',
                 confirmButtonText: 'Edi Sorry',
                 customClass:{
@@ -107,7 +141,7 @@ function SignIn(){
                     if(!response.data.message){
                         localStorage.setItem("dummyToken", 1);
                         navigate("/ordering-system/home");
-                        window.location.reload();
+                        // window.location.reload();
                         // console.log("GUMAGANA AKO BETCHasda");
                     }else{
                         {

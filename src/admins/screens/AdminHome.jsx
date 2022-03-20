@@ -4,8 +4,31 @@ import { useNavigate } from "react-router-dom";
 import '../css/AdminIndent.css'
 import axios from 'axios';
 
-function AdminHome(){
+function useKey(key,cb){
+    const callbackRef = React.useRef(cb);
+    console.log(key );
 
+    React.useEffect(()=>{
+        callbackRef.current = cb;
+        
+    })
+
+    React.useEffect(()=>{
+        const handlePress = (event) =>{
+            if(event.code === key){
+                callbackRef.current(event)
+            }
+        }
+        document.addEventListener("keydown", handlePress);
+        return ()=> document.removeEventListener("keydown", handlePress);
+    }, [key])
+}
+
+function AdminHome(){
+    function handleEscape(){
+        navigate("/ordering-system/home");
+    }
+    useKey("ArrowRight", handleEscape)
     const navigate = useNavigate();
     const [creds,setCreds] = React.useState({
         email:"KEIPOGIMASARAP@GMAIL.COM",
