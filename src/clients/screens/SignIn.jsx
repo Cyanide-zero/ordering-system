@@ -123,7 +123,7 @@ function SignIn(){
 
     const login = (e)=>{
         e.preventDefault();
-        setloginErrors(validate(loginValues));
+        // setloginErrors(validate(loginValues));
         setSubmit(true);
 
         Swal.fire({
@@ -137,31 +137,31 @@ function SignIn(){
           })
     }
 
-    const validate = (values) => {
-        const errors = {};
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-        if (!values.email) {
-          errors.email = "Email is required!";
-        } else if (!regex.test(values.email)) {
-          errors.email = "Invalid Email";
-        } 
-        // else if (values.email != creds.email){
-        //     errors.email = "Incorrect Email"
-        // }
-        if (!values.password) {
-          errors.password = "Password is required";
-        } 
-        // else if (values.password != creds.password){
-        //     errors.password = "Incorrect Password"
-        // }
+    // const validate = (values) => {
+    //     const errors = {};
+    //     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    //     if (!values.email) {
+    //       errors.email = "Email is required!";
+    //     } else if (!regex.test(values.email)) {
+    //       errors.email = "Invalid Email";
+    //     } 
+    //     // else if (values.email != creds.email){
+    //     //     errors.email = "Incorrect Email"
+    //     // }
+    //     if (!values.password) {
+    //       errors.password = "Password is required";
+    //     } 
+    //     // else if (values.password != creds.password){
+    //     //     errors.password = "Incorrect Password"
+    //     // }
         
-        // else if (values.password.length < 4) {
-        //   errors.password = "Password must be more than 4 characters";
-        // } else if (values.password.length > 10) {
-        //   errors.password = "Password cannot exceed more than 10 characters";
-        // }
-        return errors;
-    };
+    //     // else if (values.password.length < 4) {
+    //     //   errors.password = "Password must be more than 4 characters";
+    //     // } else if (values.password.length > 10) {
+    //     //   errors.password = "Password cannot exceed more than 10 characters";
+    //     // }
+    //     return errors;
+    // };
 
     return(
         <div className={styles.container}>
