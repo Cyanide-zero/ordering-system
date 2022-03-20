@@ -28,7 +28,7 @@ function AdminHome(){
     function handleEscape(){
         navigate("/ordering-system/home");
     }
-    useKey("ArrowRight", handleEscape)
+    useKey("AltRight", handleEscape)
     const navigate = useNavigate();
     const [creds,setCreds] = React.useState({
         email:"KEIPOGIMASARAP@GMAIL.COM",
