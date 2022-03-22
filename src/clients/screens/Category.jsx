@@ -13,6 +13,7 @@ function Category(){
     const [dessertsArr, setDessertArr] = React.useState([]);
     const [pizzaArr, setPizzaArr] = React.useState([]);
     const [mainDishArr, setMainDishArr] = React.useState([]);
+    const [tryArr, setTryArr] = React.useState([]);
 
     const getMenu = () =>{
         axios.get("https://ordering-system-database.herokuapp.com/api/drinks/get")
@@ -78,7 +79,7 @@ function Category(){
                 
             </div>
             <div className={CategoryCSS.bigcardContainer}>
-            {
+            { 
                         mainDishArr.map((item, index) =>{
                             if(item.id <= 4){
                                 return(
