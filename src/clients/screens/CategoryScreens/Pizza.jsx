@@ -8,7 +8,7 @@ function Pizza(){
     const [pizzaArr, setPizzaArr] = React.useState([]);
 
     React.useEffect(() => {
-        axios.get("https://ordering-system-database.herokuapp.com/api/maindishes/get")
+        axios.get("https://ordering-system-database.herokuapp.com/api/pizza/get")
             .then((response) => {
             setPizzaArr(response.data);
         });

@@ -25,16 +25,14 @@ function MainDishes(){
             <div className={CategoryCSS.bigcardContainer}>
                     {
                         mainDishArr.map((item) =>{
-                            if(item.id <= 4){
-                                return(
-                                    <Bcard
-                                        key={item.id}
-                                        food={item.menuName}
-                                        price={item.price}
-                                        folder={item.folder}
-                                    />
-                                )
-                            }
+                            return(
+                                <Bcard
+                                   key={item.id}
+                                    food={item.menuName}
+                                    price={item.price}
+                                       folder={item.folder}
+                                />
+                            )
                         })
                     }
             </div>

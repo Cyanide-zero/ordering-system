@@ -1,5 +1,7 @@
 import React from "react";
 import BigCardCss from '../css/BigCard.module.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 
 
@@ -9,6 +11,15 @@ const Card = (props) =>{
     const [total, setTotal] = React.useState(0);
     const [added, setAdded] = React.useState(false);
     const setter = parseInt(localStorage.getItem("Total"));
+    const notify = () => toast.success(`${props.food} has been added to your cart.`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
 
     React.useEffect(()=>{
         console.log(total);
@@ -21,6 +32,9 @@ const Card = (props) =>{
     })
     // galing local storage, pass to post, generate nalang galing db
     const handleClick = () =>{
+        if(added === true){
+            notify()
+        }
         setCount(count+1)
         console.log(props.food, count+1);
         setAdded(true);
@@ -61,6 +75,22 @@ const Card = (props) =>{
                         <button className={BigCardCss.addButton} onClick={handleClick}>🛍</button>
                     )
                 }
+                    <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="dark"
+                    progressStyle={{
+                        backgroundColor:'#FDD000'
+                    }}
+                    
+                    />
             </div>
         </div>
     )

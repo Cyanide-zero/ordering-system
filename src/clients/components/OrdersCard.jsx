@@ -2,6 +2,7 @@ import React from 'react';
 import '../css/Order.css';
 import menu from '../../assets/Data.json'
 
+
 function OrdersCard (props){
     let localArr = Object.keys(localStorage);
     let result = [];
@@ -12,7 +13,12 @@ function OrdersCard (props){
             localArr.filter(menu => menu === item.menuName).forEach((filtered) => {
                 console.log(filtered);
                 if(parseInt(localStorage.getItem(filtered)) !== 0){
-                    result = result.concat(filtered);
+                    result = result.concat({name:filtered,
+                        folder:item.folder, 
+                        qty: parseInt(localStorage.getItem(`${filtered}`)),
+                        price: item.price
+                    });
+                    console.log(resArr)
                 }else{
                     return
                 }
@@ -22,6 +28,12 @@ function OrdersCard (props){
 
     const onConfirm = () => {
         props.confirmHandler();
+    }
+
+    const removeHandler = (e) => {
+        const name = e.target.getAttribute("name")
+        setResArr(resArr.filter(item=>item.name !==name));
+        localStorage.removeItem(`${name}`)
     }
 
     React.useEffect(()=>{
@@ -38,12 +50,103 @@ function OrdersCard (props){
                 <div className="orderData">
                     <div className="productInfo">
                         <h3>Your Orders</h3>
-                        <div>
+                        <div style={{
+                            marginTop:'1vh',
+                            backgroundColor:'#F2EFE2',
+                            paddingLeft:'2vw',
+                            paddingTop:'2vh',
+                            paddingBottom:'2vh',
+                            paddingRight:'2vh',
+                            borderRadius:'1vw'
+                        }}>
+                            {resArr.length === 0 && <p style={{color:'black'}}> Your Cart is Empty</p>}
                         {
+                            
                             resArr.map((item, index) => {
+                                    console.log(resArr)
                                     return(
-                                        <p key={index}>{item}</p>
+                                        <div style={{
+                                            display:'flex',
+                                            alignItems:'center',
+                                            justifyContent:'space-between',
+                                            marginTop:'1vw',
+                                            marginBottom:'1vw'
+                                        }}>
+                                           <div style={{
+                                               display:'flex',
+                                               alignItems:'center',
+                                           }}>
+                                           <img 
+                                            style={{
+                                                height:'7vw',
+                                                width:'7vw',
+                                                marginRight:'1vw',
+                                                border:'1px solid black'
+                                            }}
+                                            src={require(`../../assets/images/${item.folder}/${item.name}.jpg`)}/>
+                                            <p style={{
+                                                color:'black'
+                                            }} key={index}>{item.name} <br/> x{item.qty} {item.price * item.qty}</p>
+                                           </div>
+                                           <div style={{
+                                               display:'flex',
+                                               alignItems:'center',
+                                               width:'10vw',
+                                               justifyContent:'space-around'
+                                           }}>
+                                               <button 
+                                               style={{
+                                                   width:'2vw',
+                                                   height:'2vw',
+                                                   backgroundColor:'black',
+                                                   color:'white',
+                                                   border:'none',
+                                                   borderRadius:'10px',
+                                                   cursor:'pointer'
+                                               }}
+                                               onClick={()=>{
+                                                   setResArr(oldArr => {
+                                                       const newArr = [...oldArr];
+                                                       newArr[index].qty = resArr[index].qty + 0.5;
+                                                       return newArr;
+                                                   })
+                                               }}
+                                               >+</button>
+                                               <button 
+                                               style={{
+                                                   width:'2vw',
+                                                   height:'2vw',
+                                                   backgroundColor:'black',
+                                                   color:'white',
+                                                   border:'none',
+                                                   borderRadius:'10px',
+                                                   cursor:'pointer'
+                                               }}
+                                               onClick={()=>{
+                                                setResArr(oldArr => {
+                                                    const newArr = [...oldArr];
+                                                    newArr[index].qty = resArr[index].qty - 0.5;
+                                                    return newArr;
+                                                })
+                                            }}
+                                               >-</button>
+                                               <button 
+                                               name = {item.name}
+                                               style={{
+                                                   width:'2vw',
+                                                   height:'2vw',
+                                                   backgroundColor:'red',
+                                                   color:'white',
+                                                   border:'none',
+                                                   borderRadius:'10px',
+                                                   cursor:'pointer'
+                                               }}
+                                               onClick={removeHandler}
+                                               >x</button>
+                                           </div>
+                                        </div>
                                     )
+                                    
                             })
                         }
                         </div>
