@@ -15,6 +15,15 @@ function Order(){
         orders:false,
         payment:false,
     })
+
+    // const confirm = () => {
+    //     setData({
+    //         ...data,
+    //         deliverTo:false,
+    //         orders:false,
+    //         payment:true
+    //     })
+    // }
     
     return(
         <div className="order">
@@ -51,7 +60,14 @@ function Order(){
                     </div>
                     <div className='contentContainer'>
                         {data.deliverTo && <DeliverTo/>}
-                        {data.orders && <OrdersCard/>}
+                        {data.orders && <OrdersCard confirmHandler={()=>{
+                            setData({
+                                ...data,
+                                deliverTo:false,
+                                orders:false,
+                                payment:true
+                            })
+                        }}/>}
                         {data.payment && <PaymentCard/>}
                     </div>
                 </div>
