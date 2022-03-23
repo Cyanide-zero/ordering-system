@@ -1,6 +1,7 @@
 import React from 'react';
 import '../css/Order.css';
-import menu from '../../assets/Data.json'
+import menu from '../../assets/Data.json';
+import Swal from 'sweetalert2';
 
 
 function OrdersCard (props){
@@ -31,10 +32,35 @@ function OrdersCard (props){
     }
 
     const removeHandler = (e) => {
-        const name = e.target.getAttribute("name")
-        setResArr(resArr.filter(item=>item.name !==name));
-        localStorage.removeItem(`${name}`)
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+            customClass:{
+                icon: 'swalertIcon'
+            }
+          }).then((result) => {
+            if (result.isConfirmed) {
+                const name = e.target.getAttribute("name")
+                setResArr(resArr.filter(item=>item.name !==name));
+                localStorage.removeItem(`${name}`)
+              Swal.fire({
+                    title: "Item Removed",
+                    text: `${name} has been removed from your cart.`,
+                    icon: 'success',
+                    customClass:{
+                    icon: 'swalertIcon'
+                    }
+              })
+            }
+          })
+        
     }
+    
 
     React.useEffect(()=>{
         getResult();
@@ -63,88 +89,92 @@ function OrdersCard (props){
                         {
                             
                             resArr.map((item, index) => {
-                                    console.log(resArr)
                                     return(
-                                        <div style={{
-                                            display:'flex',
-                                            alignItems:'center',
-                                            justifyContent:'space-between',
-                                            marginTop:'1vw',
-                                            marginBottom:'1vw'
-                                        }}>
-                                           <div style={{
-                                               display:'flex',
-                                               alignItems:'center',
-                                           }}>
-                                           <img 
-                                            style={{
-                                                height:'7vw',
-                                                width:'7vw',
-                                                marginRight:'1vw',
-                                                border:'1px solid black'
-                                            }}
-                                            src={require(`../../assets/images/${item.folder}/${item.name}.jpg`)}/>
-                                            <p style={{
-                                                color:'black'
-                                            }} key={index}>{item.name} <br/> x{item.qty} {item.price * item.qty}</p>
-                                           </div>
-                                           <div style={{
-                                               display:'flex',
-                                               alignItems:'center',
-                                               width:'10vw',
-                                               justifyContent:'space-around'
-                                           }}>
-                                               <button 
-                                               style={{
-                                                   width:'2vw',
-                                                   height:'2vw',
-                                                   backgroundColor:'black',
-                                                   color:'white',
-                                                   border:'none',
-                                                   borderRadius:'10px',
-                                                   cursor:'pointer'
-                                               }}
-                                               onClick={()=>{
-                                                   setResArr(oldArr => {
-                                                       const newArr = [...oldArr];
-                                                       newArr[index].qty = resArr[index].qty + 0.5;
-                                                       return newArr;
-                                                   })
-                                               }}
-                                               >+</button>
-                                               <button 
-                                               style={{
-                                                   width:'2vw',
-                                                   height:'2vw',
-                                                   backgroundColor:'black',
-                                                   color:'white',
-                                                   border:'none',
-                                                   borderRadius:'10px',
-                                                   cursor:'pointer'
-                                               }}
-                                               onClick={()=>{
-                                                setResArr(oldArr => {
-                                                    const newArr = [...oldArr];
-                                                    newArr[index].qty = resArr[index].qty - 0.5;
-                                                    return newArr;
-                                                })
-                                            }}
-                                               >-</button>
-                                               <button 
-                                               name = {item.name}
-                                               style={{
-                                                   width:'2vw',
-                                                   height:'2vw',
-                                                   backgroundColor:'red',
-                                                   color:'white',
-                                                   border:'none',
-                                                   borderRadius:'10px',
-                                                   cursor:'pointer'
-                                               }}
-                                               onClick={removeHandler}
-                                               >x</button>
-                                           </div>
-                                        </div>
+                                        
+                                        item.qty > 0?
+                                        (
+                                            
+                                            <div style={{
+                                                display:'flex',
+                                                alignItems:'center',
+                                                justifyContent:'space-between',
+                                                marginTop:'1vw',
+                                                marginBottom:'1vw'
+                                            }}>
+                                               <div style={{
+                                                   display:'flex',
+                                                   alignItems:'center',
+                                               }}>
+                                               <img 
+                                                style={{
+                                                    height:'7vw',
+                                                    width:'7vw',
+                                                    marginRight:'1vw',
+                                                    border:'1px solid black'
+                                                }}
+                                                src={require(`../../assets/images/${item.folder}/${item.name}.jpg`)}/>
+                                                <p style={{
+                                                    color:'black'
+                                                }} key={index}>{item.name} <br/> x{item.qty} {item.price * item.qty}</p>
+                                               </div>
+                                               <div style={{
+                                                   display:'flex',
+                                                   alignItems:'center',
+                                                   width:'10vw',
+                                                   justifyContent:'space-around'
+                                               }}>
+                                                   <button 
+                                                   style={{
+                                                       width:'2vw',
+                                                       height:'2vw',
+                                                       backgroundColor:'black',
+                                                       color:'white',
+                                                       border:'none',
+                                                       borderRadius:'10px',
+                                                       cursor:'pointer'
+                                                   }}
+                                                   onClick={()=>{
+                                                       setResArr(oldArr => {
+                                                           const newArr = [...oldArr];
+                                                           newArr[index].qty = resArr[index].qty + 0.5;
+                                                           return newArr;
+                                                       })
+                                                   }}
+                                                   >+</button>
+                                                   <button 
+                                                   style={{
+                                                       width:'2vw',
+                                                       height:'2vw',
+                                                       backgroundColor:'black',
+                                                       color:'white',
+                                                       border:'none',
+                                                       borderRadius:'10px',
+                                                       cursor:'pointer'
+                                                   }}
+                                                   onClick={()=>{
+                                                    setResArr(oldArr => {
+                                                        const newArr = [...oldArr];
+                                                        newArr[index].qty = resArr[index].qty - 0.5;
+                                                        return newArr;
+                                                    })
+                                                }}
+                                                   >-</button>
+                                                   <button 
+                                                   name = {item.name}
+                                                   style={{
+                                                       width:'2vw',
+                                                       height:'2vw',
+                                                       backgroundColor:'red',
+                                                       color:'white',
+                                                       border:'none',
+                                                       borderRadius:'10px',
+                                                       cursor:'pointer'
+                                                   }}
+                                                   onClick={removeHandler}
+                                                   >x</button>
+                                               </div>
+                                            </div>
+                                        ):localStorage.removeItem(`${item.name}`)
                                     )
                                     
                             })

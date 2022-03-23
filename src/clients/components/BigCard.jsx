@@ -2,6 +2,7 @@ import React from "react";
 import BigCardCss from '../css/BigCard.module.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import axios from "axios";
 
 
@@ -13,7 +14,7 @@ const Card = (props) =>{
     const setter = parseInt(localStorage.getItem("Total"));
     const notify = () => toast.success(`${props.food} has been added to your cart.`, {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -72,12 +73,12 @@ const Card = (props) =>{
                     added === true?
                         <button className={BigCardCss.addButton} onClick={handleClick}>+</button>
                     :(
-                        <button className={BigCardCss.addButton} onClick={handleClick}>Add</button>
+                        <button className={BigCardCss.addButton} onClick={handleClick}><AiOutlineShoppingCart/></button>
                     )
                 }
                     <ToastContainer
                     position="top-right"
-                    autoClose={5000}
+                    autoClose={3000}
                     hideProgressBar={false}
                     newestOnTop={false}
                     closeOnClick
