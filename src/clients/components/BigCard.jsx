@@ -72,7 +72,7 @@ const Card = (props) =>{
                     added === true?
                         <button className={BigCardCss.addButton} onClick={handleClick}>+</button>
                     :(
-                        <button className={BigCardCss.addButton} onClick={handleClick}>🛍</button>
+                        <button className={BigCardCss.addButton} onClick={handleClick}>Add</button>
                     )
                 }
                     <ToastContainer
