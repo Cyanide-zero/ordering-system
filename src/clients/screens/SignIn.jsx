@@ -124,6 +124,7 @@ function SignIn(){
 
     React.useEffect(() => {
         console.log(loginErrors)
+        console.log("march 24, 2022")
         if(Object.keys(loginErrors).length === 0 && isSubmit){
             console.log(loginValues)
         }
