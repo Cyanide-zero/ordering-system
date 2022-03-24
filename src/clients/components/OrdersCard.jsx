@@ -33,7 +33,7 @@ function OrdersCard (props){
 
     const removeHandler = (e) => {
         Swal.fire({
-            title: 'Are you sure?',
+            title: 'Remove Item?',
             text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
@@ -181,6 +181,13 @@ function OrdersCard (props){
                                                                   })
                                                                 }
                                                               })
+                                                        }else{
+                                                            setResArr(oldArr => {
+                                                                const newArr = [...oldArr];
+                                                                newArr[index].qty = resArr[index].qty - 0.5;
+                                                                return newArr;
+                                                                })
+                                                            localStorage.removeItem(`${item.name}`)
                                                         }
                                                 }}
                                                    >-</button>

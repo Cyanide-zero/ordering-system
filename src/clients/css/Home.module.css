@@ -235,7 +235,7 @@ body{
 
 .resImage{
   margin-left: 2vw;
-  z-index: 2;
+  z-index: 1;
 }
 
 /* .circle1{

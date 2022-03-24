@@ -49,7 +49,7 @@ body{
 }
 
 .signinFormsContainer{
-    margin-top: 10%;
+    margin-top: 4%;
     margin-left: 40%;
 }
 
@@ -66,6 +66,34 @@ body{
     padding: 10px;
     margin-bottom: 15px;
 }
+
+.checkBoxDiv{
+    display:flex;
+}
+
+.checkBoxDiv input[type=checkbox]{
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+}
+
+.checkBoxDiv p {
+    font-size: 14px;   
+    margin-left: 1vw;
+    cursor: pointer;
+}
+
+.checkBoxDiv p:hover {
+    font-size: 14px;   
+    margin-left: 1vw;
+    cursor: pointer;
+    color:#fdd000;
+}
+
+.termDial{
+    color:red
+}
+
 
 .signinBtn{
     display: block;
@@ -96,4 +124,9 @@ body{
     overflow-y:hidden ;
     background-color: #fdd000;
 }
+
+.swalertHTMLContainer p{
+    text-align: justify;
+}
+
 
