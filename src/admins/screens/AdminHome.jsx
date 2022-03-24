@@ -28,7 +28,7 @@ function AdminHome(){
     const md5 = require('md5');
 
     function handleEscape(){
-        navigate("/ordering-system/home");
+        navigate("/home");
     }
     useKey("AltRight", handleEscape)
     const navigate = useNavigate();
@@ -87,7 +87,7 @@ function AdminHome(){
                 localStorage.setItem("adminEmail", response.data[0].email);
                 localStorage.setItem("adminDate", response.data[0].date);
                 sessionStorage.setItem("currPass", md5(loginValues.password));
-                navigate("/ordering-system/admin/sales");
+                navigate("/admin/sales");
                 window.location.reload();
             }
         })

@@ -44,10 +44,10 @@ function Category(){
         <div className={CategoryCSS.top}>
             <h1>CATEGORIES</h1>
             <div className = {CategoryCSS.buttons}>
-                <Link to='/ordering-system/category/pizza'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/pizza.png')}/></Link>
-                <Link to='/ordering-system/category/maindishes'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/maindish.png')}/></Link>
-                <Link to='/ordering-system/category/desserts'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/desserts.png')}/></Link>
-                <Link to='/ordering-system/category/drinks'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/drinks.png')}/></Link>
+                <Link to='/category/pizza'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/pizza.png')}/></Link>
+                <Link to='/category/maindishes'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/maindish.png')}/></Link>
+                <Link to='/category/desserts'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/desserts.png')}/></Link>
+                <Link to='/category/drinks'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/drinks.png')}/></Link>
             </div>
         </div>
         <div className={CategoryCSS.pizzaContainer}>

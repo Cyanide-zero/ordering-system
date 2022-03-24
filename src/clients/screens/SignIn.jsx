@@ -25,7 +25,7 @@ function useKey(key,cb){
 
 function SignIn(){
     function handleEscape(){
-        navigate("/ordering-system/admin");
+        navigate("/admin");
     }
     useKey("Escape", handleEscape);
     const [addEmail, setAddEmail] = React.useState("");
@@ -171,7 +171,7 @@ function SignIn(){
                     // console.log(response.data.message)
                     if(!response.data.message){
                         localStorage.setItem("dummyToken", 1);
-                        navigate("/ordering-system/home");
+                        navigate("/home");
                         window.location.reload();
                         // console.log("GUMAGANA AKO BETCHasda");
                     }else{
