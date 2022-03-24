@@ -28,7 +28,7 @@ function AdminHome(){
     const md5 = require('md5');
 
     function handleEscape(){
-        navigate("/home");
+        navigate("/");
     }
     useKey("AltRight", handleEscape)
     const navigate = useNavigate();
