@@ -135,7 +135,7 @@ function OrdersCard (props){
                                                    onClick={()=>{
                                                             setResArr(oldArr => {
                                                             const newArr = [...oldArr];
-                                                            newArr[index].qty = resArr[index].qty + 0.5;
+                                                            newArr[index].qty = resArr[index].qty + 1;
                                                             return newArr;
                                                        })
                                                    }}
@@ -167,7 +167,7 @@ function OrdersCard (props){
                                                                 if (result.isConfirmed) {
                                                                     setResArr(oldArr => {
                                                                         const newArr = [...oldArr];
-                                                                        newArr[index].qty = resArr[index].qty - 0.5;
+                                                                        newArr[index].qty = resArr[index].qty - 1;
                                                                         return newArr;
                                                                         })
                                                                     localStorage.removeItem(`${item.name}`)
@@ -184,7 +184,7 @@ function OrdersCard (props){
                                                         }else{
                                                             setResArr(oldArr => {
                                                                 const newArr = [...oldArr];
-                                                                newArr[index].qty = resArr[index].qty - 0.5;
+                                                                newArr[index].qty = resArr[index].qty - 1;
                                                                 return newArr;
                                                                 })
                                                             localStorage.removeItem(`${item.name}`)
