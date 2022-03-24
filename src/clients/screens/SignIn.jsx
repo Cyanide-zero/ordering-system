@@ -3,12 +3,51 @@ import styles from '../css/SignIn.module.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import Captcha from "captcha-image";
 
 
 function SignIn(){
     const [addEmail, setAddEmail] = useState("");
     const [addPass, setAddPass] = useState("");
     const [addCPass, setAddCPass] = useState("");
+    const [addCaptcha, setAddCaptcha] = useState("");
+    const [datas, setDatas] = useState({ image: null });
+    const { image } = datas;
+    var captchaImageValue;
+    
+
+    function handleClick() {
+        const captchaImage = new Captcha(
+            "30px Courier",
+            "center",
+            "middle",
+            150,
+            75,
+            "#fdd000",
+            "black",
+            5
+          ).createImage();
+          setDatas({ ...datas, image: captchaImage });
+          console.log(captchaImage);
+        
+      }
+
+      function createMarkup(source) {
+        return { __html: source };
+      }
+      function MyCaptcha() {
+        if (image === null)
+          return <p id="returnValue">Please click to generate captcha image.</p>;
+        else
+        {
+            captchaImageValue = image.slice(-15,-10);
+            console.log(captchaImageValue);
+        }
+        return <div dangerouslySetInnerHTML={createMarkup(image)} />;
+               
+      }
+
+
 
     const userRegister = (e) =>{
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -35,6 +74,19 @@ function SignIn(){
                 }
             })
         }
+
+        else if(captchaImageValue !== addCaptcha){
+            Swal.fire({
+                title: 'Registration Failed',
+                text: 'Invalid Captcha!',
+                icon: 'error',
+                confirmButtonText: 'Edi Sorry',
+                customClass:{
+                    icon: styles.swalertIcon
+                }
+            })
+        }
+
         else{
             axios.post("http://localhost:5000/api/user/register", {
                 email: addEmail,
@@ -154,6 +206,8 @@ function SignIn(){
     };
 
     return(
+
+        
         <div className={styles.container}>
             <div className={styles.signinContainer}>
                 <div className={styles.signinContent}>
@@ -207,6 +261,21 @@ function SignIn(){
                                             setAddCPass(e.target.value)
                                         }}
                                     />
+                                     
+                                    <a onClick={() => handleClick()}>Generate Captcha</a>
+                                    <MyCaptcha />
+                                    
+
+                                    <input
+                                        type="text"
+                                        name="captcha"
+                                        placeholder="Insert Captcha"
+                                        onChange={(e) => {
+                                            setAddCaptcha(e.target.value)
+                                        }}
+                                    />
+    
+
                                     <input type="submit" className={styles.signinBtn} value="SIGN UP"/>
                                 </form>
                             </div>
