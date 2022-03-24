@@ -13,7 +13,7 @@ const Card = (props) =>{
     const [added, setAdded] = React.useState(false);
     const setter = parseInt(localStorage.getItem("Total"));
     const notify = () => toast.success(`${props.food} has been added to your cart.`, {
-        position: "top-right",
+        position: "bottom-left",
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
