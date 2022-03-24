@@ -49,10 +49,11 @@ function Order(){
                             className={data.payment?"orderButtonActive":"orderButton"}>PAYMENT</button>
                         </div>
                     </div>
-                    
-                    {data.deliverTo && <DeliverTo/>}
-                    {data.orders && <OrdersCard/>}
-                    {data.payment && <PaymentCard/>}
+                    <div className='contentContainer'>
+                        {data.deliverTo && <DeliverTo/>}
+                        {data.orders && <OrdersCard/>}
+                        {data.payment && <PaymentCard/>}
+                    </div>
                 </div>
             <Footer/>
         </div>

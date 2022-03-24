@@ -76,3 +76,9 @@
     padding: 8px;
 }
 
+.errorTxt{
+    color:red;
+    margin-bottom:1vh;
+    font-size: 12px;
+}
+

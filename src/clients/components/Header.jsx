@@ -23,10 +23,12 @@ function Header(){
 
             <div className = {HeaderCSS.logoContainer}>
                 <Link to="/order"><img className={HeaderCSS.logoIcon} src={require('../../assets/icons/shopping-cart-check.png')} alt="Logo" /></Link>
-                <button onClick={()=>setToggle(!toggle)} className={HeaderCSS.menuButton}>Menu</button>
+                <button onClick={()=>setToggle(!toggle)} onmo className={HeaderCSS.menuButton}>Menu</button>
                 {toggle && (
                     <div className={HeaderCSS.dropDownContainer}>
-                        <Link to="/" className={HeaderCSS.dropDownButton}>LOGOUT</Link>
+                        <Link to="/" className={HeaderCSS.dropDownButton}
+                             onClick={()=>{localStorage.setItem("dummyToken", 0)}}
+                        >LOGOUT</Link>
                         <Link to="/" className={HeaderCSS.dropDownButton}>PROFILE</Link>
                     </div>
                 )}

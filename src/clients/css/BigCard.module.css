@@ -24,6 +24,8 @@
     justify-content: space-between;
     width: 100%;
     z-index: 2;
+    padding-top:0.5vh;
+    padding-bottom:0.5vb;
 }
 
 .textContainer{
@@ -31,6 +33,7 @@
     margin-bottom: 1vh;
     width: 80%;
     word-break: break-all;
+    
 }
 
 .foodText{
@@ -47,7 +50,7 @@
     border:none;
     font-size: 30px;
     width:20%;
-    margin-left: 2vw;
+    margin-left: 1vw;
     border-top-left-radius: 20px;
     color:white;
 }
