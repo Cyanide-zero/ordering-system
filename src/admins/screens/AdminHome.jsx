@@ -5,7 +5,7 @@ import '../css/AdminIndent.css'
 import axios from 'axios';
 
 function AdminHome(){
-
+    const md5 = require('md5');
     const navigate = useNavigate();
     const [creds,setCreds] = useState({
         email:"KEIPOGIMASARAP@GMAIL.COM",
@@ -61,6 +61,8 @@ function AdminHome(){
                 localStorage.setItem("adminName", response.data[0].username);
                 localStorage.setItem("adminEmail", response.data[0].email);
                 localStorage.setItem("adminDate", response.data[0].date);
+                localStorage.setItem("adminID", response.data[0].id);
+                sessionStorage.setItem("currPass", md5(loginValues.password));
                 navigate("/admin/sales");
                 window.location.reload();
             }
