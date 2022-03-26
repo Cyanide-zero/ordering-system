@@ -23,6 +23,8 @@ function useKey(key,cb){
         return ()=> document.removeEventListener("keydown", handlePress);
     }, [key])
 }
+
+export default function SignIn(){
     function handleEscape(){
         navigate("/admin");
     }
@@ -269,8 +271,6 @@ function useKey(key,cb){
     }
 
     return(
-
-        
         <div className={styles.container}>
             <div className={styles.signinContainer}>
                 <div className={styles.signinContent}>
@@ -384,7 +384,6 @@ function useKey(key,cb){
     );
 }
 
-export default SignIn;
 
 
     // const validate = (values) => {

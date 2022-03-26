@@ -33,8 +33,10 @@ a, img, p{
 }
 
 .signinButtons{
+    margin-top:5vh;
     align-self: center;
     margin-left:20%;
+    overflow-y: hidden;
 }
 
 .selector{
@@ -45,6 +47,7 @@ a, img, p{
     height: auto;
     padding:8px;
     font-weight: 600;
+    
 }
 
 .selectorActive{
@@ -69,6 +72,8 @@ a, img, p{
     display: flex;
     align-items: center;
     justify-content: space-around;
+    padding-bottom: 5%;
+    padding-top: 5%;
 }
 
 .signinFormsContainer{
