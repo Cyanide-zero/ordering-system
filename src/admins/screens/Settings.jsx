@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Sidebar from '../components/Sidebar';
 import '../css/AdminIndent.css'
 import axios from 'axios';
@@ -7,19 +7,19 @@ import styles from '../../clients/css/SignIn.module.css';
 
 function Settings(){
     const md5 = require('md5');
-    const [addPassword, setaddPassword] = useState("");
-    const [addCPass, setAddCPass] = useState("");
+    const [addPassword, setaddPassword] =  React.useState("");
+    const [addCPass, setAddCPass] = React. useState("");
     const initialValues = {password: ""};
-    const [loginValues, setloginValues] = useState(initialValues);
-    const [loginErrors, setloginErrors] = useState({});
-    const [isSubmit, setSubmit] = useState(false);
+    const [loginValues, setloginValues] =  React.useState(initialValues);
+    const [loginErrors, setloginErrors] =  React.useState({});
+    const [isSubmit, setSubmit] =  React.useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setloginValues({ ...loginValues, [name]: value });
     }
 
-    useEffect(() => {
+    React.useEffect(() => {
         console.log(loginErrors)
         if(Object.keys(loginErrors).length === 0 && isSubmit){
         }
@@ -42,7 +42,7 @@ function Settings(){
             })
         }
 
-        axios.post("http://localhost:5000/api/user/login", {
+        axios.post("https://ordering-system-database.herokuapp.com/api/user/login", {
             password: loginValues.password
         }).then((response) => {
             console.log(response);
@@ -54,7 +54,7 @@ function Settings(){
             }
         })
 
-        axios.post("http://localhost:5000/api/admin/settings", {
+        axios.post("https://ordering-system-database.herokuapp.com/api/admin/settings", {
                 password: addPassword,
                 id: localStorage.getItem("adminID"),
             }).then((response) => {
@@ -104,7 +104,7 @@ function Settings(){
                             name="newpassword" 
                             placeholder="New Password"
                             onChange={(e) => {
-                                setaddPassword(e.target.value.toUpperCase())
+                                setaddPassword(e.target.value())
                             }}
                             required
                         />
@@ -115,7 +115,7 @@ function Settings(){
                             name="confirmpassword" 
                             placeholder="Confirm Password"
                             onChange={(e) => {
-                                setAddCPass(e.target.value.toUpperCase())
+                                setAddCPass(e.target.value())
                             }}
                             required
                         />

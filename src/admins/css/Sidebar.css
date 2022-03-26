@@ -10,6 +10,10 @@
     flex-direction: column;
 }
 
+.sidebar a{
+    overflow-y: hidden;
+}
+
 .sidebar-heading{
     margin-top: 8vh;
     margin-left: 2vw;
@@ -35,6 +39,7 @@
     padding-top:1vh;
     padding-bottom:1vh;
     transition: 0.5s;
+    overflow-y: hidden;
 }
 
 .flex-container-active{
@@ -50,6 +55,7 @@
     color:white;
     border-radius: 10px;
     transition: 0.5s;
+    overflow-y: hidden;
 }
 
 .flex-container p,

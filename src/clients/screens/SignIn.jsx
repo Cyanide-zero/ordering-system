@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styles from '../css/SignIn.module.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
@@ -29,12 +29,12 @@ export default function SignIn(){
         navigate("/admin");
     }
     useKey("Escape", handleEscape);
-    const [addEmail, setAddEmail] = useState("");
-    const [addPass, setAddPass] = useState("");
-    const [addCPass, setAddCPass] = useState("");
+    const [addEmail, setAddEmail] = React.useState("");
+    const [addPass, setAddPass] =  React.useState("");
+    const [addCPass, setAddCPass] =  React.useState("");
     const [terms,setTerms] = React.useState(false);
-    const [addCaptcha, setAddCaptcha] = useState("");
-    const [datas, setDatas] = useState({ image: null });
+    const [addCaptcha, setAddCaptcha] =  React.useState("");
+    const [datas, setDatas] =  React.useState({ image: null });
     const { image } = datas;
     var captchaImageValue;
     
@@ -84,7 +84,7 @@ export default function SignIn(){
                 }
             })
         }
-        else if((addPass =="" && addCPass == "") || addEmail==""){
+        else if((addPass ==="" && addCPass === "") || addEmail===""){
             Swal.fire({
                 title: 'Registration Failed',
                 text: 'Please Complete the Form',
@@ -159,14 +159,8 @@ export default function SignIn(){
     }
 
     const navigate = useNavigate();
-    // const [creds,setCreds] = React.useState({
-    //     email:"KEIPOGIMASARAP@GMAIL.COM",
-    //     password:"123123123"
-    // });
     const initialValues = {email: "", password: "" };
     const [loginValues, setloginValues] = React.useState(initialValues);
-    const [loginErrors, setloginErrors] = React.useState({});
-    const [isSubmit, setSubmit] = React.useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -179,12 +173,8 @@ export default function SignIn(){
     })
 
     React.useEffect(() => {
-        console.log(loginErrors)
-        console.log("march 24, 2022")
-        if(Object.keys(loginErrors).length === 0 && isSubmit){
-            console.log(loginValues)
-        }
-    }, [loginErrors]);
+        console.log("march 27, 2022");
+    }, []);
 
     const showTerms = () =>{
         Swal.fire({
@@ -243,22 +233,17 @@ export default function SignIn(){
                         window.location.reload();
                         // console.log("GUMAGANA AKO BETCHasda");
                     }else{
-                        {
                             Swal.fire({
                                 title: 'Login Failed',
                                 text: response.data.message,
                                 timer: 2000,
                             })
-                        }
                     }
                 })
     }
 
     const login = (e)=>{
         e.preventDefault();
-        // setloginErrors(validate(loginValues));
-        setSubmit(true);
-
         Swal.fire({
             title: 'Verifying...',
             text: 'Please wait.',
@@ -295,7 +280,7 @@ export default function SignIn(){
                         </button>
                     </div>
                     <div className={styles.imgSignInContainer}>
-                    <img className={styles.imgSignIn} src={require('../../assets/images/bag.png')}/>
+                    <img alt="bag" className={styles.imgSignIn} src={require('../../assets/images/bag.png')}/>
                     {/* CONDITIONAL RENDERING */}
                     {
                         data.active1 === true?
@@ -338,7 +323,7 @@ export default function SignIn(){
                                     <p onClick={showTerms}>Terms and Agreement</p>
                                     </div>
                                      
-                                    <a onClick={() => handleClick()}>Generate Captcha</a>
+                                    <p className={styles.captchaGenText} onClick={() => handleClick()}>Generate Captcha</p>
                                     <MyCaptcha />
                                     
 
@@ -363,7 +348,6 @@ export default function SignIn(){
                                         value={loginValues.email}
                                         onChange={handleChange}
                                     />
-                                    <p className={styles.errorTxt}>{loginErrors.email}</p>
                                     <input
                                         type="password"
                                         name="password"
@@ -371,7 +355,6 @@ export default function SignIn(){
                                         value={loginValues.password}
                                         onChange={handleChange}
                                     />
-                                    <p className={styles.errorTxt}>{loginErrors.password}</p>
                                     <input type="submit" className={styles.signinBtn} value="SIGN IN"/>
                                 </form>
                             </div>
@@ -383,31 +366,3 @@ export default function SignIn(){
         </div>
     );
 }
-
-
-
-    // const validate = (values) => {
-    //     const errors = {};
-    //     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    //     if (!values.email) {
-    //       errors.email = "Email is required!";
-    //     } else if (!regex.test(values.email)) {
-    //       errors.email = "Invalid Email";
-    //     } 
-    //     // else if (values.email != creds.email){
-    //     //     errors.email = "Incorrect Email"
-    //     // }
-    //     if (!values.password) {
-    //       errors.password = "Password is required";
-    //     } 
-    //     // else if (values.password != creds.password){
-    //     //     errors.password = "Incorrect Password"
-    //     // }
-        
-    //     // else if (values.password.length < 4) {
-    //     //   errors.password = "Password must be more than 4 characters";
-    //     // } else if (values.password.length > 10) {
-    //     //   errors.password = "Password cannot exceed more than 10 characters";
-    //     // }
-    //     return errors;
-    // };
