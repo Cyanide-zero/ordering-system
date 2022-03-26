@@ -3,7 +3,6 @@ import BigCardCss from '../css/BigCard.module.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import axios from "axios";
 
 
 const Card = (props) =>{

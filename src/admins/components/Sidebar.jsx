@@ -60,7 +60,10 @@ function Sidebar(){
                             <p>SETTINGS</p>
                          </div>
                     </Link>
-                     <Link onClick={()=>{localStorage.setItem("adminDummyToken", 0)}} style={{textDecoration:'none', color:"black", fontSize:"18px"}} to = "/admin">
+                     <Link onClick={()=>{
+                         localStorage.clear();
+                         sessionStorage.clear();
+                         }} style={{textDecoration:'none', color:"black", fontSize:"18px"}} to = "/admin">
                          <div className="flex-container">
                              <img src={Logout} height="34" width="34"/>
                             <p>LOGOUT</p>
