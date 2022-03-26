@@ -250,6 +250,8 @@ function SignIn(){
                             SIGN IN
                         </button>
                     </div>
+                    <div className={styles.imgSignInContainer}>
+                    <img className={styles.imgSignIn} src={require('../../assets/images/bag.png')}/>
                     {/* CONDITIONAL RENDERING */}
                     {
                         data.active1 === true?
@@ -318,6 +320,7 @@ function SignIn(){
                             </div>
                         )
                     }
+                    </div>
                 </div>
             </div>
         </div>
