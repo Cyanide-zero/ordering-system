@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import CategoryCSS from '../css/Category.module.css';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
@@ -13,7 +13,6 @@ function Category(){
     const [dessertsArr, setDessertArr] = React.useState([]);
     const [pizzaArr, setPizzaArr] = React.useState([]);
     const [mainDishArr, setMainDishArr] = React.useState([]);
-    const [tryArr, setTryArr] = React.useState([]);
 
     const getMenu = () =>{
         axios.get("https://ordering-system-database.herokuapp.com/api/drinks/get")

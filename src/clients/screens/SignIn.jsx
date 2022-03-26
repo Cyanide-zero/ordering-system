@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styles from '../css/SignIn.module.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
@@ -29,12 +29,12 @@ export default function SignIn(){
         navigate("/admin");
     }
     useKey("Escape", handleEscape);
-    const [addEmail, setAddEmail] = useState("");
-    const [addPass, setAddPass] = useState("");
-    const [addCPass, setAddCPass] = useState("");
+    const [addEmail, setAddEmail] = React.useState("");
+    const [addPass, setAddPass] =  React.useState("");
+    const [addCPass, setAddCPass] =  React.useState("");
     const [terms,setTerms] = React.useState(false);
-    const [addCaptcha, setAddCaptcha] = useState("");
-    const [datas, setDatas] = useState({ image: null });
+    const [addCaptcha, setAddCaptcha] =  React.useState("");
+    const [datas, setDatas] =  React.useState({ image: null });
     const { image } = datas;
     var captchaImageValue;
     

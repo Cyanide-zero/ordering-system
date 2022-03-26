@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import HomeCSS from '../css/Home.module.css';
 import Scard from '../components/SmallCard';

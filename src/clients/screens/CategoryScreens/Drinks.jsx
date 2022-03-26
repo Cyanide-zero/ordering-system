@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React from 'react';
 import Header from '../../components/Header';
 import CategoryCSS from '../../css/Category.module.css'
 import Bcard from '../../components/BigCard';
