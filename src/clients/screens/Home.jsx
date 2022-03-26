@@ -10,16 +10,16 @@ import axios from "axios";
 
 function Home(){
 
-    const [arr,setArr] = useState([])
+    const [arr,setArr] = React.useState([])
 
     const getDrinks = () =>{
-        axios.get("http://localhost:5000/api/drinks/get")
+        axios.get("https://ordering-system-database.herokuapp.com/api/drinks/get")
             .then((response) => {
                setArr(response.data)
         });
     }
     
-    useEffect(() => {
+    React.useEffect(() => {
         getDrinks();
     }, []);
 

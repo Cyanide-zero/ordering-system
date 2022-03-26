@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/Order.css';
 
@@ -10,11 +10,20 @@ import OrdersCard from '../components/OrdersCard';
 import PaymentCard from '../components/PaymentCard';
 
 function Order(){
-    const [data,setData] = useState({
+    const [data,setData] = React.useState({
         deliverTo:true,
         orders:false,
         payment:false,
     })
+
+    // const confirm = () => {
+    //     setData({
+    //         ...data,
+    //         deliverTo:false,
+    //         orders:false,
+    //         payment:true
+    //     })
+    // }
     
     return(
         <div className="order">
@@ -51,7 +60,14 @@ function Order(){
                     </div>
                     <div className='contentContainer'>
                         {data.deliverTo && <DeliverTo/>}
-                        {data.orders && <OrdersCard/>}
+                        {data.orders && <OrdersCard confirmHandler={()=>{
+                            setData({
+                                ...data,
+                                deliverTo:false,
+                                orders:false,
+                                payment:true
+                            })
+                        }}/>}
                         {data.payment && <PaymentCard/>}
                     </div>
                 </div>

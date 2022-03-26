@@ -16,6 +16,7 @@ a, img, p{
 }
 
 .signinContainer{
+    display: flex;
     background-color: white;
     height: 70vh;
     width: 60vw;
@@ -24,12 +25,16 @@ a, img, p{
 }
 
 .signinContent{
-    padding: 80px;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:100%;
+    height:100%;
 }
 
 .signinButtons{
-    margin-left: 40%;
+    align-self: center;
+    margin-left:20%;
 }
 
 .selector{
@@ -52,9 +57,22 @@ a, img, p{
     font-weight: 600;
 }
 
+.imgSignIn{
+    width:40vh;
+    height:40vh;
+}
+
+.imgSignInContainer{
+    margin:0;
+    padding:0;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
 .signinFormsContainer{
-    margin-top: 10%;
-    margin-left: 40%;
+    margin-top: 4%;
 }
 
 .signinForms{
@@ -66,10 +84,38 @@ a, img, p{
     border-radius: 5px;
     border:solid #fdd000;
     height: auto;
-    width: auto;
+    width: 25vw;
     padding: 10px;
     margin-bottom: 15px;
 }
+
+.checkBoxDiv{
+    display:flex;
+}
+
+.checkBoxDiv input[type=checkbox]{
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+}
+
+.checkBoxDiv p {
+    font-size: 14px;   
+    margin-left: 1vw;
+    cursor: pointer;
+}
+
+.checkBoxDiv p:hover {
+    font-size: 14px;   
+    margin-left: 1vw;
+    cursor: pointer;
+    color:#fdd000;
+}
+
+.termDial{
+    color:red
+}
+
 
 .signinBtn{
     display: block;
@@ -90,7 +136,19 @@ a, img, p{
     font-size: 12px;
 }
 
+/* Sweet Alerts */
+
 .swalertIcon{
     overflow:hidden ;
 }
+
+.swalertLoader{
+    overflow-y:hidden ;
+    background-color: #fdd000;
+}
+
+.swalertHTMLContainer p{
+    text-align: justify;
+}
+
 

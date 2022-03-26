@@ -6,9 +6,9 @@ import axios from "axios";
 import Swal from 'sweetalert2'
 
 function Accounts(){
-    const [addUser, setaddUser] = useState("");
-    const [addEmail, setaddEmail] = useState("");
-    const [addPassword, setaddPassword] = useState("");
+    const [addUser, setaddUser] = React.useState("");
+    const [addEmail, setaddEmail] = React.useState("");
+    const [addPassword, setaddPassword] = React.useState("");
 
     const adminRegister = (e) =>{
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -26,7 +26,7 @@ function Accounts(){
             })
         }
         else{
-            axios.post("http://localhost:5000/api/admin/accounts", {
+            axios.post("https://ordering-system-database.herokuapp.com/api/admin/accounts", {
                 email: addEmail,
                 password: addPassword,
                 username: addUser,

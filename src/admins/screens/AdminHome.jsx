@@ -4,29 +4,53 @@ import { useNavigate } from "react-router-dom";
 import '../css/AdminIndent.css'
 import axios from 'axios';
 
+function useKey(key,cb){
+    const callbackRef = React.useRef(cb);
+    console.log(key );
+
+    React.useEffect(()=>{
+        callbackRef.current = cb;
+        
+    })
+
+    React.useEffect(()=>{
+        const handlePress = (event) =>{
+            if(event.code === key){
+                callbackRef.current(event)
+            }
+        }
+        document.addEventListener("keydown", handlePress);
+        return ()=> document.removeEventListener("keydown", handlePress);
+    }, [key])
+}
+
 function AdminHome(){
     const md5 = require('md5');
+    function handleEscape(){
+        navigate("/");
+    }
+    useKey("AltRight", handleEscape)
     const navigate = useNavigate();
-    const [creds,setCreds] = useState({
+    const [creds,setCreds] = React.useState({
         email:"KEIPOGIMASARAP@GMAIL.COM",
         password:"123123123"
     });
     const initialValues = {email: "", password: "" };
-    const [loginValues, setloginValues] = useState(initialValues);
-    const [loginErrors, setloginErrors] = useState({});
-    const [isSubmit, setSubmit] = useState(false);
+    const [loginValues, setloginValues] = React.useState(initialValues);
+    const [loginErrors, setloginErrors] = React.useState({});
+    const [isSubmit, setSubmit] = React.useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setloginValues({ ...loginValues, [name]: value });
     }
 
-    const [data,setData] = useState({
+    const [data,setData] = React.useState({
         active1:false,
         active2:true,
     })
 
-    useEffect(() => {
+    React.useEffect(() => {
         console.log(loginErrors)
         if(Object.keys(loginErrors).length === 0 && isSubmit){
             console.log(loginValues)
@@ -50,7 +74,7 @@ function AdminHome(){
         //     console.log("PASS : ", loginValues.password);
         // }
 
-        axios.post("http://localhost:5000/api/admin/login", {
+        axios.post("https://ordering-system-database.herokuapp.com/api/admin/login", {
             email: capsEmail,
             password: loginValues.password
         }).then((response) => {
@@ -83,9 +107,10 @@ function AdminHome(){
         // }
         if (!values.password) {
           errors.password = "Password is required";
-        } else if (values.password != creds.password){
-            errors.password = "Incorrect Password"
-        }
+        } 
+        // else if (values.password != creds.password){
+        //     errors.password = "Incorrect Password"
+        // }
         
         // else if (values.password.length < 4) {
         //   errors.password = "Password must be more than 4 characters";

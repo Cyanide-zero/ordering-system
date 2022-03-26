@@ -2,24 +2,27 @@ import { useTable } from 'react-table';
 import React from 'react';
 import axios from 'axios';
 
-
-
 function ProductTable() {
   const [arr,setArr] = React.useState([]);
   const [id, setId] = React.useState("");
   const [name, setName] = React.useState("");
   const [price, setPrice] = React.useState("");
 
+  React.useEffect(() => {
+    getDrinks();
+    arr.map(item =>{
+      setId(item.id);
+    })
+}, []);
+
   const getDrinks = () =>{
-      axios.get("localhost:5000/api/admin/getproduct")
+      axios.get("https://ordering-system-database.herokuapp.com/api/admin/getproduct")
           .then((response) => {
              setArr(response.data);
+             console.log(id)
       });
   }
-
-  React.useEffect(() => {
-      getDrinks();
-  }, []);
+  
 
    const data = React.useMemo(
      () => arr.map(item =>{

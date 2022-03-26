@@ -39,21 +39,19 @@ import Pizza from './clients/screens/CategoryScreens/Pizza';
 import Desserts from './clients/screens/CategoryScreens/Desserts';
 import Drinks from './clients/screens/CategoryScreens/Drinks';
 import MainDishes from './clients/screens/CategoryScreens/MainDishes';
-import { useEffect, useState } from 'react/cjs/react.development';
 
 function App() {
-  const [token,setToken] = useState(0);
-  const [admin,setAdmin] = useState(0);
+  const [token,setToken] = React.useState(0);
+  const [admin,setAdmin] = React.useState(0);
   const refreshPage = () => {
     window.location.reload();
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     let getToken = localStorage.getItem("dummyToken");
     setToken(parseInt(getToken));
     let getAdminToken = localStorage.getItem("adminDummyToken");
     setAdmin(parseInt(getAdminToken));
-    console.log(admin, typeof(admin))
   });
   return (
     <Router>
@@ -70,7 +68,6 @@ function App() {
                 <Route path="/contactus" exact element={<ContactUs/>}/>
                 <Route path="/editprofile" exact element={<EditProfile/>}/>
                 <Route path="/order" exact element={<Order/>}/>
-                <Route path="/orderstatus" exact element={<OrderStatus/>}/>
                 <Route path="/home" exact element={<Home/>}/>
                 <Route path="/profile" exact element={<UserProfile/>}/>
                 <Route path="/category/pizza" exact element={<Pizza/>}/>
@@ -79,7 +76,7 @@ function App() {
                 <Route path="/category/drinks" exact element={<Drinks/>}/>
               </>
             ):(
-              <Route path="*" exact element={<SignIn/>}/>
+              <Route path="/*" exact element={<SignIn/>}/>
             )
           }
           {/* Admin Routes */}

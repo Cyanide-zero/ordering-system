@@ -22,10 +22,10 @@ function Footer(){
                     <div className={FooterCSS.frs1}>
                         <p className={FooterCSS.emailLogo}></p>loremipsum@gmail.com
                     </div>
-                    <div className={FooterCSS.frs2}>
+                    {/* <div className={FooterCSS.frs2}>
                         <button className={FooterCSS.regibutton}>REGISTER</button>
                         <button className={FooterCSS.loginbutton}>LOG IN</button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

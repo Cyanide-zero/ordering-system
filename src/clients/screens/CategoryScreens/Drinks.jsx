@@ -1,11 +1,20 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import Header from '../../components/Header';
 import CategoryCSS from '../../css/Category.module.css'
 import Bcard from '../../components/BigCard';
-
-import DrinksData from '../../../assets/Drinks.json'
+import axios from 'axios';
 
 function Drinks(){
+
+    const [drinksArr, setDrinksArr] = React.useState([]);
+
+    React.useEffect(() => {
+        axios.get("https://ordering-system-database.herokuapp.com/api/drinks/get")
+            .then((response) => {
+            setDrinksArr(response.data);
+        });
+    }, [])
+
     return(
         <div className = {CategoryCSS.container}>
             <Header/>
@@ -16,17 +25,15 @@ function Drinks(){
             </div>
             <div className={CategoryCSS.bigcardContainer}>
                     {
-                        DrinksData.map((post,index) =>{
-                            return post.drinks.map(item => {
-                                return(
-                                    <Bcard
-                                        key={item.id}
-                                        food={item.menuName}
-                                        folder={item.folder}
-                                        // price={item.price}
-                                    />
-                                )
-                            });
+                        drinksArr.map((item) =>{
+                            return(
+                                <Bcard
+                                    key={item.id}
+                                    food={item.menuName}
+                                    price={item.price}
+                                    folder={item.folder}
+                                />
+                            )
                         })
                     }
             </div>
