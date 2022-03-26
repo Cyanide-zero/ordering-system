@@ -1,8 +1,8 @@
 import { useTable } from 'react-table';
 import React from 'react';
 import axios from 'axios';
- 
- function ProductTable() {
+
+function ProductTable() {
   const [arr,setArr] = React.useState([]);
   const [id, setId] = React.useState("");
   const [name, setName] = React.useState("");
@@ -29,11 +29,11 @@ import axios from 'axios';
       setId(item.id);
       setName(item.menuName);
       setPrice(item.price);
-     }),[
+     })[
       {
-        qty: {id},
-        product_name:{name},
-        product_price:{price},
+        qty:id,
+        product_name:name,
+        product_price:price,
         date_created:'',
         action:''
       }
