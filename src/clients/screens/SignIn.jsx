@@ -144,7 +144,6 @@ export default function SignIn(){
                 
             })
 
-            //Dito mo nalang siguro lagay si Captcha
             Swal.fire({
                 title: 'Registration Successful',
                 text: 'Account successfully created.',
@@ -226,7 +225,7 @@ export default function SignIn(){
                     password: loginValues.password
                 }).then((response) => {
                     console.log(response);
-                    // console.log(response.data.message)
+                    console.log(response.data.message)
                     if(!response.data.message){
                         localStorage.setItem("dummyToken", 1);
                         navigate("/home");
@@ -320,7 +319,7 @@ export default function SignIn(){
                                             // console.log(terms);
                                         }}
                                     />
-                                    <p onClick={showTerms}>Terms and Agreement</p>
+                                    <p className={styles.checkBoxDivP} onClick={showTerms}>Terms and Agreement</p>
                                     </div>
                                      
                                     <p className={styles.captchaGenText} onClick={() => handleClick()}>Generate Captcha</p>

@@ -1,10 +1,10 @@
 body{
     overflow: hidden;
 }
-/*  */
-a, img, p{
+
+/* a, img, p{
     padding-bottom: 10px;
-}
+} */
 
 .container{
     margin-top: 10vh;
@@ -111,7 +111,7 @@ a, img, p{
     height: 15px;
 }
 
-.checkBoxDiv p {
+.checkBoxDivP{
     font-size: 14px;   
     margin-left: 1vw;
     cursor: pointer;

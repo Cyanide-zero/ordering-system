@@ -30,9 +30,29 @@ function Settings(){
         setloginErrors(validate(loginValues));
         setSubmit(true);
 
-        if(addCPass !== addPassword){
+        if(loginValues.password === "" || (addCPass === "" && addPassword === "")){
             Swal.fire({
-                title: 'Registration Failed',
+                title: 'Password Change Failed',
+                text: 'Please Complete the Form',
+                icon: 'warning',
+                confirmButtonText: 'Edi Sorry',
+                customClass:{
+                    icon: styles.swalertIcon
+                }
+            })
+        }else if(md5(loginValues.password) !== sessionStorage.getItem("currPass")){
+            Swal.fire({
+                title: 'Password Change Failed',
+                text: 'Wrong Password',
+                icon: 'error',
+                confirmButtonText: 'Edi Sorry',
+                customClass:{
+                    icon: styles.swalertIcon
+                }
+            })
+        }else if(addCPass !== addPassword){
+            Swal.fire({
+                title: 'Password Change Failed',
                 text: 'Passwords did not match.',
                 icon: 'error',
                 confirmButtonText: 'Edi Sorry',
@@ -40,26 +60,41 @@ function Settings(){
                     icon: styles.swalertIcon
                 }
             })
-        }
-
-        axios.post("https://ordering-system-database.herokuapp.com/api/user/login", {
+        }else{
+            axios.post("https://ordering-system-database.herokuapp.com/api/user/login", {
             password: loginValues.password
-        }).then((response) => {
-            console.log(response);
-            // console.log(response.data.message)
-            if(!response.data.message){
-                localStorage.setItem("dummyToken", 1);
-                // navigate("/home");
-                window.location.reload();
-            }
-        })
+            }).then((response) => {
+                console.log(response);
+                // console.log(response.data.message)
+                if(!response.data.message){
+                    localStorage.setItem("dummyToken", 1);
+                    // navigate("/home");
+                    window.location.reload();
+                }
+            })
 
-        axios.post("https://ordering-system-database.herokuapp.com/api/admin/settings", {
+            axios.post("https://ordering-system-database.herokuapp.com/api/admin/settings", {
                 password: addPassword,
                 id: localStorage.getItem("adminID"),
             }).then((response) => {
                 console.log(response)
             })
+            sessionStorage.setItem("currPass", md5(addPassword));
+            Swal.fire({
+                title: 'Success',
+                text: 'Password has been changed.',
+                icon: 'success',
+                timer:2000,
+                showConfirmButton: false,
+                customClass:{
+                    icon: styles.swalertIcon
+                }
+            })
+        }
+
+        
+
+        
     }
     
 
@@ -67,13 +102,14 @@ function Settings(){
         const errors = {};
         if (!values.password) {
           errors.password = "Password is required";
-        } else if (md5(values.password) != sessionStorage.getItem("currPass")){
+        } else if (md5(values.password) !== sessionStorage.getItem("currPass")){
             errors.password = "Incorrect Password"
         }
         
         // else if (values.password.length < 4) {
         //   errors.password = "Password must be more than 4 characters";
-        // } else if (values.password.length > 10) {
+        // } 
+        // else if (values.password.length > 10) {
         //   errors.password = "Password cannot exceed more than 10 characters";
         // }
         return errors;
@@ -104,9 +140,8 @@ function Settings(){
                             name="newpassword" 
                             placeholder="New Password"
                             onChange={(e) => {
-                                setaddPassword(e.target.value())
+                                setaddPassword(e.target.value)
                             }}
-                            required
                         />
 
                     <label>CONFIRM PASSWORD</label>
@@ -115,9 +150,8 @@ function Settings(){
                             name="confirmpassword" 
                             placeholder="Confirm Password"
                             onChange={(e) => {
-                                setAddCPass(e.target.value())
+                                setAddCPass(e.target.value)
                             }}
-                            required
                         />
                         
                     <div className="form-buttons">
