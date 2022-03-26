@@ -9,7 +9,7 @@ function ContactUs(){
             <Header/>
                 <div className={ContactUsCSS.contactTop}>
                     <h1 className={ContactUsCSS.contactTopHeading}>GET IN TOUCH WITH US</h1>
-                    <p className={ContactUsCSS.contactTopText}>You can also email us at keicristobalpogimasarap@gmail.com</p>
+                    <p className={ContactUsCSS.contactTopText}>You can also email us at email@gmail.com</p>
                 </div>
                 <form className={ContactUsCSS.formGroup}>
                     <div className={ContactUsCSS.formGroup1}>

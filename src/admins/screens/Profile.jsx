@@ -10,7 +10,7 @@ function Profile(){
     const [date, setDate] = React.useState("")
 
     // const getContent = () =>{
-    //     axios.get("http://localhost:5000/api/admin/profile")
+    //     axios.get("https://ordering-system-database.herokuapp.com/api/admin/profile")
     //         .then((response) => {
     //             setEmail(response.data[0].email);
     //             setName(response.data[0].username);

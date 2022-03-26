@@ -42,7 +42,7 @@ function Settings(){
             })
         }
 
-        axios.post("http://localhost:5000/api/user/login", {
+        axios.post("https://ordering-system-database.herokuapp.com/api/user/login", {
             password: loginValues.password
         }).then((response) => {
             console.log(response);
@@ -54,7 +54,7 @@ function Settings(){
             }
         })
 
-        axios.post("http://localhost:5000/api/admin/settings", {
+        axios.post("https://ordering-system-database.herokuapp.com/api/admin/settings", {
                 password: addPassword,
                 id: localStorage.getItem("adminID"),
             }).then((response) => {
@@ -104,7 +104,7 @@ function Settings(){
                             name="newpassword" 
                             placeholder="New Password"
                             onChange={(e) => {
-                                setaddPassword(e.target.value.toUpperCase())
+                                setaddPassword(e.target.value())
                             }}
                             required
                         />
@@ -115,7 +115,7 @@ function Settings(){
                             name="confirmpassword" 
                             placeholder="Confirm Password"
                             onChange={(e) => {
-                                setAddCPass(e.target.value.toUpperCase())
+                                setAddCPass(e.target.value())
                             }}
                             required
                         />

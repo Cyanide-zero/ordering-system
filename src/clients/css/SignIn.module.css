@@ -93,6 +93,14 @@ a, img, p{
     margin-bottom: 15px;
 }
 
+.captchaGenText{
+    cursor: pointer;
+}
+
+.captchaGenText:hover{
+   color:#fdd000;
+}
+
 .checkBoxDiv{
     display:flex;
 }
