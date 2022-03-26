@@ -84,6 +84,7 @@ function AdminHome(){
                             ADMIN</button>
                     </div>
                     <div className='imgSignInContainer'>
+                    <img alt="bag" className="imgSignIn" src={require('../../assets/images/bag.png')}/>
                     <div className="signin-forms-container">
                         <form className="signin-forms" onSubmit={login}>
                             <input

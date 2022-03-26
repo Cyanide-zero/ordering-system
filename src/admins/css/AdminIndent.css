@@ -59,7 +59,7 @@ label{
 .signin-content{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     width: 100%;
     height:100%;
 }
@@ -75,7 +75,7 @@ label{
 }
 
 .selector-active{
-    justify-self: center;
+    margin-top:5vh;
     background-color: #fdd000;
     /* border-radius: 0px 5px 5px 0px; */
     border: solid #fdd000;
@@ -90,18 +90,23 @@ label{
     flex-direction: column;
 }
 
+.imgSignIn{
+    width:15vh;
+    height:15vh;
+}
+
 .imgSignInContainer{
-    margin:0;
     padding:0;
     width:100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
     padding-bottom: 5%;
-    /* padding-top: 2%; */
 }
 
 .signin-forms input{
+    margin-top:2vh;
     border-radius: 5px;
     border:solid #fdd000;
     height: auto;
