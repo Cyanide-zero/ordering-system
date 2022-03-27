@@ -3,6 +3,8 @@ import BigCardCss from '../css/BigCard.module.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import imageExists from 'image-exists';
+
 
 
 const Card = (props) =>{
@@ -11,6 +13,9 @@ const Card = (props) =>{
     const [total, setTotal] = React.useState(0);
     const [added, setAdded] = React.useState(false);
     const setter = parseInt(localStorage.getItem("Total"));
+    const src = `../../assets/images/${props.folder}/${props.food}.jpg`;
+    const fallBackSrc = require('../../assets/images/bag.png');
+    const [error, setError] = React.useState(false);
     const notify = () => toast.success(`${props.food} has been added to your cart.`, {
         position: "bottom-left",
         autoClose: 3000,
@@ -19,7 +24,15 @@ const Card = (props) =>{
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        });
+    });
+
+    const tryRequire = (path) => {
+        try{
+            return require(`../../assets/images/${props.folder}/${props.food}.jpg`)
+        }catch(err){
+            console.log(err)
+        }
+    }
 
     React.useEffect(()=>{
         console.log(total);
@@ -61,7 +74,12 @@ const Card = (props) =>{
 
     return(
         <div className={BigCardCss.bigCard} style={props.styles}>
-            <img src={require(`../../assets/images/${props.folder}/${props.food}.jpg`)}/>
+            {
+                tryRequire(`../../assets/images/${props.folder}/${props.food}.jpg`) ? 
+                <img className={BigCardCss.loadedImage} src={require(`../../assets/images/${props.folder}/${props.food}.jpg`)} alt={props.food}/>
+                :
+                <img className={BigCardCss.errorImage} src={fallBackSrc}/>
+            }
             <div className={BigCardCss.bottom}>
                 <div className={BigCardCss.textContainer}>
                     <p className={BigCardCss.foodText}>{props.food}</p>
