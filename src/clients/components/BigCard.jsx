@@ -13,7 +13,6 @@ const Card = (props) =>{
     const [total, setTotal] = React.useState(0);
     const [added, setAdded] = React.useState(false);
     const setter = parseInt(localStorage.getItem("Total"));
-    const src = `../../assets/images/${props.folder}/${props.food}.jpg`;
     const fallBackSrc = require('../../assets/images/bag.png');
     const [error, setError] = React.useState(false);
     const notify = () => toast.success(`${props.food} has been added to your cart.`, {

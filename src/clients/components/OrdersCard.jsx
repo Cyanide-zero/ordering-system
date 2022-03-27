@@ -6,8 +6,19 @@ import Swal from 'sweetalert2';
 
 function OrdersCard (props){
     let localArr = Object.keys(localStorage);
+    const [menuArr, setMenuArr] = React.useState([])
     let result = [];
-    let [resArr, setResArr] = React.useState([]);
+    const [resArr, setResArr] = React.useState([]);
+    const fallBackSrc = require('../../assets/images/bag.png');
+    const [error, setError] = React.useState(false);
+
+    const tryRequire = (path) => {
+        try{
+            return require(path)
+        }catch(err){
+            console.log(err)
+        }
+    }
 
     const getResult = () => {
         menu.forEach((item, index) =>{
@@ -104,14 +115,26 @@ function OrdersCard (props){
                                                    display:'flex',
                                                    alignItems:'center',
                                                }}>
-                                               <img 
-                                                style={{
-                                                    height:'7vw',
-                                                    width:'7vw',
-                                                    marginRight:'1vw',
-                                                    border:'1px solid black'
-                                                }}
-                                                src={require(`../../assets/images/${item.folder}/${item.name}.jpg`)}/>
+                                                {
+                                                    tryRequire(`../../assets/images/${item.folder}/${item.name}.jpg`)?
+                                                    <img 
+                                                        style={{
+                                                            height:'7vw',
+                                                            width:'7vw',
+                                                            marginRight:'1vw',
+                                                            border:'1px solid black'
+                                                        }}
+                                                        src={require(`../../assets/images/${item.folder}/${item.name}.jpg`)}
+                                                    />
+                                                    :
+                                                    <img style={{
+                                                        height:'7vw',
+                                                        width:'7vw',
+                                                        marginRight:'1vw',
+                                                        border:'1px solid black'
+                                                    }}
+                                                    src={fallBackSrc}/>
+                                                }
                                                 <p style={{
                                                     color:'black'
                                                 }} key={index}>{item.name} <br/> x{item.qty} {item.price * item.qty}</p>
