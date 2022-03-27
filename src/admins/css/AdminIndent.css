@@ -126,6 +126,7 @@ label{
     width: 8vw;
     height: auto;
     padding: 8px;
+    cursor: pointer;
 }
 
 /* sales report page */
