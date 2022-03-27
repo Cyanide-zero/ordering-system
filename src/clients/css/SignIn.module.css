@@ -47,6 +47,7 @@ body{
     font-weight: 600;
     margin-top:3vh;
     margin-bottom: 1vh;
+    cursor: pointer;
 }
 
 .selectorActive{
@@ -57,6 +58,7 @@ body{
     height: auto;
     padding:8px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .imgSignIn{
@@ -140,6 +142,7 @@ body{
     width: 8vw;
     height: auto;
     padding: 8px;
+    cursor: pointer;
 }
 
 .errorTxt{

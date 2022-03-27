@@ -1,8 +1,81 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
-import '../css/AdminIndent.css'
+import '../css/AdminIndent.css';
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 function AddProduct(){
+    const [select, setSelect] = React.useState("pizza");
+    const [productName, setProductName] = React.useState("");
+    const [price, setPrice] = React.useState("");
+
+    const productAddHandler = (e) => {
+        console.log(select);
+        e.preventDefault();
+        Swal.fire({
+            title: 'Verifying...',
+            text: 'Please wait.',
+            timer: 2000,
+            didOpen: () => {
+              Swal.showLoading();
+              if(productName === ""){
+                Swal.fire({
+                    title: 'Process Failed',
+                    text: 'Product name cannot be empty',
+                    icon: 'error',
+                    confirmButtonText: 'Edi Sorry',
+                    customClass:{
+                        icon: 'swalertIcon'
+                    }
+                })
+            }else if(price === ""){
+                Swal.fire({
+                    title: 'Process Failed',
+                    text: 'Price cannot be empty',
+                    icon: 'error',
+                    confirmButtonText: 'Edi Sorry',
+                    customClass:{
+                        icon: 'swalertIcon'
+                    }
+                })
+            }
+            else{
+                axios.post(`https://ordering-system-database.herokuapp.com/api/admin/${select}add`, {
+                    menuName: productName,
+                    price: price
+                }).then((response) => {
+                    console.log(response)
+                    if(!response.data.message){
+                        Swal.fire({
+                            title: 'Process Successful',
+                            text: `${productName} has been successfully added.`,
+                            icon: 'success',
+                            customClass:{
+                                icon: 'swalertIcon'
+                            }
+                        })
+                    }
+                    if(response.data.message){
+                        Swal.fire({
+                            title: 'Process Failed',
+                            text: response.data.message,
+                            icon: 'warning',
+                            customClass:{
+                                icon: 'swalertIcon'
+                            }
+                        })
+                    }
+                })
+                
+                console.log(productName);
+                
+                console.log(price);
+            }
+            }
+        })
+        
+    }
+
     return(
         <div className="addproduct">
             <Sidebar></Sidebar>
@@ -17,17 +90,17 @@ function AddProduct(){
                         <input 
                             type="text"
                             name="product-name"
-                            required
+                            onChange={(e) => setProductName(e.target.value)}
                         />
 
                         <div className="flex-container-form">
                             <div className="inside-flex">
                                 <label>CATEGORY</label>
-                                <select className="category-form">
+                                <select value={select} onChange={(e) => setSelect(e.target.value)} className="category-form">
                                     <option value="pizza">Pizza</option>
                                     <option value="drinks">Drinks</option>
                                     <option value="desserts">Desserts</option>
-                                    <option value="maindishes">Main Dishes</option>
+                                    <option value="maindish">Main Dishes</option>
                                 </select>
                             </div>
 
@@ -37,27 +110,27 @@ function AddProduct(){
                                     type="number"
                                     className="price-form"
                                     name="price"
-                                    required 
+                                    onChange={(e) => setPrice(e.target.value)}
                                 />
                             </div>
 
-                            <div className="inside-flex">
+                            {/* <div className="inside-flex">
                                 <label>QUANTITY</label>
                                 <input
                                     type="number"
                                     className="quantity-form"
                                     name="quantity"
                                 />
-                            </div>
+                            </div> */}
                         </div>
                         
 
-                        <label>PRODUCT IMAGE</label>
+                        {/* <label>PRODUCT IMAGE</label>
                             <input 
                                 type="file"
                                 className="image-form"
                                 required 
-                        />
+                        /> */}
 
                         
                         <label>PRODUCT DESCRIPTION</label>
@@ -65,7 +138,7 @@ function AddProduct(){
 
                         <div className="form-buttons">
                             <button className="cancel-btn">CANCEL</button>
-                            <button className="save-btn">SAVE</button>
+                            <button onClick={productAddHandler} className="save-btn">SAVE</button>
                         </div>
                     </form>
                 </div>
