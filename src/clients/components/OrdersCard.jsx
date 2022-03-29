@@ -2,15 +2,17 @@ import React from 'react';
 import '../css/Order.css';
 import menu from '../../assets/Data.json';
 import Swal from 'sweetalert2';
-
+import axios from 'axios';
 
 function OrdersCard (props){
     let localArr = Object.keys(localStorage);
     const [menuArr, setMenuArr] = React.useState([])
-    let result = [];
+    let result = menuArr;
     const [resArr, setResArr] = React.useState([]);
     const fallBackSrc = require('../../assets/images/bag.png');
-    const [error, setError] = React.useState(false);
+    const [pageLoad, setPageLoad] = React.useState(false);
+    var total = 0;
+    var parr = [];
 
     const tryRequire = (path) => {
         try{
@@ -20,23 +22,70 @@ function OrdersCard (props){
         }
     }
 
-    const getResult = () => {
-        menu.forEach((item, index) =>{
+    
+
+    const getMenu = () =>{
+        console.log(total)
+        axios.get("https://ordering-system-database.herokuapp.com/api/drinks/get")
+            .then((response) => {
+               setMenuArr(menuArr=>[
+                   ...menuArr,
+                   ...response.data
+               ]);
+        });
+        axios.get("https://ordering-system-database.herokuapp.com/api/maindishes/get")
+            .then((response) => {
+              setMenuArr(menuArr=>[
+                  ...menuArr,
+                  ...response.data
+              ]);
+        });
+        axios.get("https://ordering-system-database.herokuapp.com/api/desserts/get")
+            .then((response) => {
+                setMenuArr(menuArr=>[
+                    ...menuArr,
+                    ...response.data
+                ]);
+        });
+        axios.get("https://ordering-system-database.herokuapp.com/api/pizza/get")
+            .then((response) => {
+                setMenuArr(menuArr=>[
+                    ...menuArr,
+                    ...response.data
+                ]);
+        });
+        menuArr.map((item, index) =>{
             localArr.filter(menu => menu === item.menuName).forEach((filtered) => {
                 console.log(filtered);
-                if(parseInt(localStorage.getItem(filtered)) !== 0){
+                if(parseInt(localStorage.getItem(`${filtered}`) !== 0 && localStorage.getItem(`${filtered}`))){
                     result = result.concat({name:filtered,
                         folder:item.folder, 
                         qty: parseInt(localStorage.getItem(`${filtered}`)),
                         price: item.price
                     });
-                    console.log(resArr)
                 }else{
                     return
                 }
             })
         })
     }
+
+    const loadHandler = () => {
+        if(pageLoad === false){
+            setPageLoad(true)
+        }else{
+            return null;
+        }
+    };
+
+    React.useEffect(()=>{
+        console.log(pageLoad);
+        getMenu();
+        setResArr(resArr=>[
+            ...resArr,
+            ...result
+        ])
+    }, [pageLoad])
 
     const onConfirm = () => {
         props.confirmHandler();
@@ -72,16 +121,13 @@ function OrdersCard (props){
     }
     
 
-    React.useEffect(()=>{
-        getResult();
-        setResArr(resArr=>[
-            ...resArr,
-            ...result
-        ])
-    }, [])
+    
 
     return(
         <div className = "ordersCard">
+            <button 
+            className='reStateButton'
+            onClick={loadHandler}>🔄</button>
             <div className= "pagecontainer">
                 <div className="orderData">
                     <div className="productInfo">
@@ -95,10 +141,20 @@ function OrdersCard (props){
                             paddingRight:'2vh',
                             borderRadius:'1vw'
                         }}>
-                            {resArr.length === 0 && <p style={{color:'black'}}> Your Cart is Empty</p>}
+                            {resArr.length === 0 && <p style={{color:'black'}}> Your Cart is Empty. If you don't see your items, please click the 🔄 button.</p>}
                         {
                             
                             resArr.map((item, index) => {
+                                    {
+                                        if(item.name!==undefined){
+                                            parr = parr.concat({
+                                                name:item.name,
+                                                quant:item.qty,
+                                            })
+                                        }else{
+                                            return
+                                        }localStorage.setItem("Order", JSON.stringify(parr))
+                                    }
                                     return(
                                         
                                         item.qty > 0?
@@ -128,16 +184,20 @@ function OrdersCard (props){
                                                     />
                                                     :
                                                     <img style={{
-                                                        height:'7vw',
-                                                        width:'7vw',
+                                                        padding:'1vw',
+                                                        height:'6vw',
+                                                        width:'6vw',
                                                         marginRight:'1vw',
-                                                        border:'1px solid black'
+                                                        border:'1px solid black',
                                                     }}
                                                     src={fallBackSrc}/>
                                                 }
                                                 <p style={{
                                                     color:'black'
-                                                }} key={index}>{item.name} <br/> x{item.qty} {item.price * item.qty}</p>
+                                                }} key={index}>{item.name} <br/> x{item.qty} {item.price * item.qty}
+                                                {localStorage.setItem("Total", total = total + item.price * item.qty)}
+
+                                                </p>
                                                </div>
                                                <div style={{
                                                    display:'flex',
@@ -156,6 +216,7 @@ function OrdersCard (props){
                                                        cursor:'pointer'
                                                    }}
                                                    onClick={()=>{
+                                                            localStorage.setItem(`${item.name}`, item.qty+1)
                                                             setResArr(oldArr => {
                                                             const newArr = [...oldArr];
                                                             newArr[index].qty = resArr[index].qty + 1;
@@ -205,12 +266,12 @@ function OrdersCard (props){
                                                                 }
                                                               })
                                                         }else{
+                                                            localStorage.setItem(`${item.name}`, parseInt(item.qty-1))
                                                             setResArr(oldArr => {
                                                                 const newArr = [...oldArr];
                                                                 newArr[index].qty = resArr[index].qty - 1;
                                                                 return newArr;
                                                                 })
-                                                            localStorage.removeItem(`${item.name}`)
                                                         }
                                                 }}
                                                    >-</button>
@@ -231,7 +292,6 @@ function OrdersCard (props){
                                             </div>
                                         ):localStorage.removeItem(`${item.name}`)
                                     )
-                                    
                             })
                         }
                         </div>

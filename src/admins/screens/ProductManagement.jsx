@@ -10,7 +10,7 @@ function ProductManagement(){
 
   React.useEffect(() => {
     getDrinks();
-}, []);
+  }, []);
 
   const getDrinks = () =>{
       axios.get("https://ordering-system-database.herokuapp.com/api/admin/getproduct")
@@ -32,47 +32,14 @@ function ProductManagement(){
             
             <div className="product-table">
                 {/* <ProductTable></ProductTable> */}
-                <table style={{ marginLeft:'3vw',borderCollapse: 'collapse', width: '65vw', marginTop: '25px' }}>
+                <table className='admintables'>
                     <thead>
                         <tr>
-                            <th style={{
-                                border: 'solid 1px black',
-                                color: 'black',
-                                fontWeight: 'bold',
-                                padding: '10px 15px',
-                                }}>ID</th>
-                            <th
-                            style={{
-                                border: 'solid 1px black',
-                                color: 'black',
-                                fontWeight: 'bold',
-                                padding: '10px 15px',
-                              }}
-                            >Product Name</th>
-                            <th
-                            style={{
-                                border: 'solid 1px black',
-                                color: 'black',
-                                fontWeight: 'bold',
-                                padding: '10px 15px',
-                              }}
-                            >Product Price</th>
-                            <th
-                            style={{
-                                border: 'solid 1px black',
-                                color: 'black',
-                                fontWeight: 'bold',
-                                padding: '10px 15px',
-                              }}
-                            >Date Created</th>
-                            <th
-                            style={{
-                                border: 'solid 1px black',
-                                color: 'black',
-                                fontWeight: 'bold',
-                                padding: '10px 15px',
-                              }}
-                            >Action</th>
+                            <th className='adminth'>ID</th>
+                            <th className='adminth'>Product Name</th>
+                            <th className='adminth'>Product Price</th>
+                            <th className='adminth'>Date Created</th>
+                            <th className='adminth'>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,42 +47,11 @@ function ProductManagement(){
                             arr.map((item,index) =>{
                                 return(
                                     <tr>
-                                        <td
-                                        style={{
-                                            padding: '8px 25px',
-                                            border: 'solid 1px gray',
-                                            textAlign: 'center',
-                                          }}
-                                        >{index+1}
-                                        </td>
-                                        <td
-                                        style={{
-                                            padding: '8px 25px',
-                                            border: 'solid 1px gray',
-                                            textAlign: 'center',
-                                          }}
-                                        >{item.menuName}</td>
-                                        <td
-                                        style={{
-                                            padding: '8px 25px',
-                                            border: 'solid 1px gray',
-                                            textAlign: 'center',
-                                          }}
-                                        >{item.price}</td>
-                                        <td
-                                        style={{
-                                            padding: '8px 25px',
-                                            border: 'solid 1px gray',
-                                            textAlign: 'center',
-                                          }}
-                                        ></td>
-                                        <td
-                                        style={{
-                                            padding: '8px 25px',
-                                            border: 'solid 1px gray',
-                                            textAlign: 'center',
-                                          }}
-                                        ></td>
+                                        <td className='admintd'>{index+1}</td>
+                                        <td className='admintd'>{item.menuName}</td>
+                                        <td className='admintd'>{item.price}</td>
+                                        <td className='admintd'></td>
+                                        <td className='admintd'></td>
                                     </tr>
                                 )
                                })
