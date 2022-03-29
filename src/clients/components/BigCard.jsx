@@ -12,7 +12,6 @@ const Card = (props) =>{
     const [cart,setCart] = React.useState([]);
     const [total, setTotal] = React.useState(0);
     const [added, setAdded] = React.useState(false);
-    const setter = parseInt(localStorage.getItem("Total"));
     const fallBackSrc = require('../../assets/images/bag.png');
     const [error, setError] = React.useState(false);
     const notify = () => toast.success(`${props.food} has been added to your cart.`, {
@@ -35,12 +34,6 @@ const Card = (props) =>{
 
     React.useEffect(()=>{
         console.log(total);
-        if(!setter){
-            localStorage.setItem("Total", total);
-            setTotal(parseInt(localStorage.getItem("Total")));
-        }else{
-            setTotal(parseInt(localStorage.getItem("Total")));
-        }
     })
     // galing local storage, pass to post, generate nalang galing db
     const handleClick = () =>{
@@ -51,14 +44,14 @@ const Card = (props) =>{
         console.log(props.food, count+1);
         setAdded(true);
         localStorage.setItem(`${props.food}`, count)
-            cart.map(items=>{
-                if(total===0){
-                    localStorage.setItem("Total", items.price)
-                }
-                else{
-                    localStorage.setItem("Total", total+items.price)
-                }              
-            })
+            // cart.map(items=>{
+            //     if(total===0){
+            //         localStorage.setItem("Total", items.price)
+            //     }
+            //     else{
+            //         localStorage.setItem("Total", total+items.price)
+            //     }              
+            // })
             setCart([
                 ...cart,
                 {

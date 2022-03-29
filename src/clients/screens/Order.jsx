@@ -58,7 +58,14 @@ function Order(){
                         </div>
                     </div>
                     <div className='contentContainer'>
-                        {data.deliverTo && <DeliverTo/>}
+                        {data.deliverTo && <DeliverTo confirmHandler={()=>{
+                            setData({
+                                ...data,
+                                deliverTo:false,
+                                orders:true,
+                                payment:false
+                            })
+                        }}/>}
                         {data.orders && <OrdersCard confirmHandler={()=>{
                             setData({
                                 ...data,

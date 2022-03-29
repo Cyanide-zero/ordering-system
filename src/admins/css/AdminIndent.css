@@ -270,6 +270,26 @@ textarea{
     padding: 7px;
 }
 
+.admintables{ 
+    margin-left:3vw;
+    border-collapse: collapse; 
+    width: 65vw;
+    margin-top: 25px; 
+}
+
+.adminth{
+    border: 1px solid black;
+    color: black;
+    font-weight: bold;
+    padding: 10px 15px;
+}
+
+.admintd{
+    padding: 8px 25px;
+    border: solid 1px gray;
+    text-align: center;
+}
+
 /* table reservation page */
 
 /* table reservation details page */
