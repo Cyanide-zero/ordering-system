@@ -59,7 +59,7 @@ function OrderPage(){
                                         <td className='admintd'>{item.invoice_id}</td>
                                         <td className='admintd'>{item.customername}</td>
                                         <td className='admintd'>{item.orderdate}</td>
-                                        <td className='admintd'></td>
+                                        <td className='admintd'> <button> View </button>  &nbsp;|&nbsp;   <button> Delete </button></td>
                                     </tr>
                                 )
                             })
