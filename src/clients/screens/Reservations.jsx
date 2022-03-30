@@ -52,8 +52,9 @@ function Reservations(){
                 customClass:{
                     icon: 'swalertIcon'
                 }
-            })
+            }).then((response) => {
             window.location.reload();
+            })
         }
     }
     

@@ -67,6 +67,7 @@ function AdminReservations(){
             })
             .then((response)=>{
                 console.log(response)
+               
                 
             }).catch((err)=>{
                 console.log(err)
@@ -85,9 +86,19 @@ function AdminReservations(){
             .then((response)=>{
                 console.log(response)
                 
+                
             }).catch((err)=>{
                 console.log(err)
             })     
+    }
+
+    const deleteReservation = (id) => {
+        axios.delete(`http://localhost:5000/api/reservations/delete/${id}`).then((response)=> {
+            getReservations(arr.filter((item)=> {
+                return item.idreservations == id
+            }))
+        })
+        
     }
 
     React.useEffect(() => {
@@ -141,7 +152,7 @@ function AdminReservations(){
                                             item.is_reserved===1?
                                             <button onClick={(e)=>postFalse(item.idreservations)}>❌</button> :
                                             null
-                                        } &nbsp;|&nbsp;   <button> Delete </button></td>
+                                        } &nbsp;|&nbsp;   <button onClick={()=> deleteReservation(item.idreservations)}> Delete </button></td>
                                     </tr>)
                                 }
                                 else if (item.is_reserved===1) 
