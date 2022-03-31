@@ -51,7 +51,7 @@ function ProductManagement(){
                                         <td className='admintd'>{item.menuName}</td>
                                         <td className='admintd'>{item.price}</td>
                                         <td className='admintd'></td>
-                                        <td className='admintd'></td>
+                                        <td className='admintd'><button> Edit </button>  &nbsp;|&nbsp;   <button> Delete </button></td>
                                     </tr>
                                 )
                                })
