@@ -6,6 +6,7 @@ import axios from 'axios';
 function PaymentCard (){
     const [select, setSelect] = React.useState("gcash");
     var token = localStorage.getItem("dummyToken");
+    let local = JSON.parse(localStorage.getItem("Order"));
     const [receiver, setReceiver] = React.useState({
         recName:"",
         recNum:""
@@ -20,6 +21,7 @@ function PaymentCard (){
     const [arr,setArr] = React.useState([]);
 
     const getOrders = () =>{
+        console.log(local)
         axios.get("https://ordering-system-database.herokuapp.com/api/admin/orders")
             .then((response) => {
                   setArr(response.data);
@@ -27,6 +29,7 @@ function PaymentCard (){
     }
 
     React.useEffect(()=>{
+        console.log(JSON.parse(localStorage.getItem("Order")))
         getOrders();
         setPerson({
             ...person,
@@ -69,7 +72,8 @@ function PaymentCard (){
                     invoice: `MGR0000${arr.length+1}`,
                     cusname: person.name,
                     cusaddress: person.address,
-                    price: parseInt(localStorage.getItem("Total"))
+                    price: JSON.parse(localStorage.getItem("Total")),
+                    local: local
                 }).then((response) => {
                     console.log(response)
                 })

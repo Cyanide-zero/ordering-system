@@ -4,9 +4,13 @@ import OrderPageTable from '../components/orderpage-table';
 import Sidebar from '../components/Sidebar';
 import '../css/AdminIndent.css';
 import axios from 'axios'
+import Swal from 'sweetalert2'
+import Modal from 'react-modal'
+
 function OrderPage(){
 
     const [arr,setArr] = React.useState([]);
+    const [openModal, setOpenModal] = React.useState(false)
 
     const getOrders = () =>{
         axios.get("https://ordering-system-database.herokuapp.com/api/admin/orders")
@@ -15,10 +19,19 @@ function OrderPage(){
         });
     }
 
+    const deleteOrder = (id) => {
+        axios.delete(`https://ordering-system-database.herokuapp.com/api/admin/orderdelete/${id}`)
+        .then((response)=>{
+            setArr(arr.filter((val)=>{
+                return val.id != id
+            }))
+        })
+    }
+
     React.useEffect(() => {
         getOrders();
-        console.log(arr)
-    }, []);
+        console.log("Array: ", arr)
+    }, [openModal]);
 
     return(
         <div className="orderpage">
@@ -53,13 +66,55 @@ function OrderPage(){
                     <tbody>
                         {
                             arr.map((item, index)=> {
+                                let dataj = JSON.parse(item.orderdetails)
+                                let datad = JSON.parse(localStorage.getItem("Order"))
+                                let total = 0;
                                 return(
-                                    <tr>
+                                    <tr key={item.id}>
+                                        <Modal style={{
+                                            overlay:{
+                                                backgroundColor:'rgba(0, 0, 0, 0.1)'
+                                            },
+                                            content:{
+                                                height:'50vh',
+                                                width:'50vw',
+                                                position:'absolute',
+                                                top:'20vh',
+                                                left:'25vw',
+                                            }
+                                        }} isOpen={openModal} onRequestClose={()=>setOpenModal(false)}>
+                                            <h1 className='modalTitle'>ORDER {localStorage.getItem("ID")}</h1>
+                                            <p>Ordered by: {localStorage.getItem("Name")}</p>
+                                            <p>Deliver to: {localStorage.getItem("Address")}</p>
+                                            <br></br><p>Orders:</p>
+                                                {
+                                                    datad.map((order, index)=>{
+                                                        {total=total+order.price}
+                                                        return (
+                                                            <div>
+                                                                <p>{index+ 1} {order.name} x{order.quant}</p>
+                                                                <p>₱{order.price}.00</p>
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
+                                            <br/><p>Total: ₱{total}</p>
+                                            {/* <button onClick={()=>setOpenModal(false)}>Close</button> */}
+                                        </Modal>
                                         <td className='admintd'>{item.id}</td>
                                         <td className='admintd'>{item.invoice_id}</td>
                                         <td className='admintd'>{item.customername}</td>
                                         <td className='admintd'>{item.orderdate}</td>
-                                        <td className='admintd'> <button> View </button>  &nbsp;|&nbsp;   <button> Delete </button></td>
+                                        <td className='admintd'> <button
+                                        className='orderViewButton'
+                                        onClick={()=>{
+                                            setOpenModal(true);
+                                            localStorage.setItem("Order", JSON.stringify(dataj))
+                                            localStorage.setItem("ID", item.invoice_id)
+                                            localStorage.setItem("Name", item.customername);
+                                            localStorage.setItem("Address", item.customeraddress)
+                                        }}
+                                        > 👁 </button>  &nbsp;|&nbsp;   <button onClick={()=>{deleteOrder(item.id)}} className='orderDeleteButton'> ✖ </button></td>
                                     </tr>
                                 )
                             })

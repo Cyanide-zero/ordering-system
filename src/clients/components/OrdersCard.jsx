@@ -150,6 +150,7 @@ function OrdersCard (props){
                                             parr = parr.concat({
                                                 name:item.name,
                                                 quant:item.qty,
+                                                price: item.price * item.qty
                                             })
                                         }else{
                                             return
@@ -271,7 +272,7 @@ function OrdersCard (props){
                                                                 const newArr = [...oldArr];
                                                                 newArr[index].qty = resArr[index].qty - 1;
                                                                 return newArr;
-                                                                })
+                                                            })
                                                         }
                                                 }}
                                                    >-</button>
