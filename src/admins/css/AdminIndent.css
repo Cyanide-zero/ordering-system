@@ -145,6 +145,11 @@ label{
     padding: 5px;
     margin-bottom: 15px;
     border-radius: 5px;
+    cursor:text;
+}
+
+.sales-form input::-webkit-calendar-picker-indicator{
+    cursor: pointer;
 }
 
 .sales-form > .submit-btn{
@@ -360,6 +365,14 @@ textarea{
     padding-bottom:10px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.modalSalesContainer{
+    display: flex;
+    flex-direction: column;
+    height:50%;
+    width:95%;
+    justify-content: space-around;
 }
 
 .orderViewButton,

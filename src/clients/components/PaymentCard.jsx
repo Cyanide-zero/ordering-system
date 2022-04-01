@@ -73,6 +73,8 @@ function PaymentCard (){
                     cusname: person.name,
                     cusaddress: person.address,
                     price: JSON.parse(localStorage.getItem("Total")),
+                    cuspaid: select,
+                    notes: person.info,
                     local: local
                 }).then((response) => {
                     console.log(response)
