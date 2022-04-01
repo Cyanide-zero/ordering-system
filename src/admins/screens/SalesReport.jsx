@@ -2,14 +2,47 @@ import React from 'react';
 import Sidebar from '../components/Sidebar';
 import '../css/AdminIndent.css'
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
+import Modal from 'react-modal'
 
 function SalesReport(){
     let history = useNavigate();
+    const [fromDate, setFromDate] = React.useState("");
+    const [toDate, setToDate] = React.useState("");
+    const [arr, setArr] = React.useState([]);
+    const [filteredArr, setFilteredArr] = React.useState([]);
+    const [openModal, setOpenModal] = React.useState(false)
+
+    const getOrders = () =>{
+        axios.get("https://ordering-system-database.herokuapp.com/api/admin/orders")
+            .then((response) => {
+                  setArr(response.data);
+        });
+    }
 
     const redirect = () => {
         history.push("/DetailedSalesReport")
     }
+
+    const filterDates = (e) =>{
+        e.preventDefault();
+        arr.map((data, index)=>{
+            let date = new Date(data.orderdate.slice(0,10));
+            let from = new Date(fromDate)
+            let to = new Date(toDate)
+            console.log(date.getTime(), from.getTime());    
+            setFilteredArr(arr.filter((val)=>{
+                return date.getTime() >= from.getTime() && date.getTime() <= to.getTime()
+            }))
+        })
+        setOpenModal(true)
+    }
+
+    React.useEffect(() => {
+        getOrders();
+    },[]);
+
+    console.log(filteredArr)
 
     return(
         <div className="salesreport">
@@ -27,17 +60,48 @@ function SalesReport(){
                             <input 
                                 type="date" 
                                 name="fromdate"
-                                required
+                                onChange={(e)=>{setFromDate(e.target.value)}}
                             />
                         
                         <label>TO DATE</label>
                             <input 
                                 type="date" 
                                 name="todate" 
-                                required
+                                onChange={(e)=>{setToDate(e.target.value)}}
                             />
-                            <button className="submit-btn" onSubmit={redirect}>CONFIRM</button>
+                            <button className="submit-btn" onClick={filterDates}>CONFIRM</button>
                     </form>
+                    <Modal style={{
+                        overlay:{
+                            backgroundColor:'rgba(0, 0, 0, 0.1)'
+                        },
+                        content:{
+                            height:'50vh',
+                            width:'50vw',
+                            position:'absolute',
+                            top:'20vh',
+                            left:'25vw',
+                        }
+                        }} isOpen={openModal} onRequestClose={()=>setOpenModal(false)}>
+                        <h2 className='modalTitle'>Orders made from {fromDate} to {toDate}</h2><br></br>
+                        {
+                            filteredArr.map((item, index)=>{
+                                return(
+                                    <div className='modalSalesContainer'>
+                                        <p><b>{index+1}. id</b>:{item.id} &nbsp; <b>Invoice</b> {item.invoice_id}</p>
+                                        <p><b>Ordered by</b>: {item.customername}</p>
+                                        <p><b>Ordered with Address</b>: {item.customeraddress}</p>
+                                        <p><b>Date Ordered</b>: {item.orderdate.slice(0,10)}</p>
+                                        <p><b>Notes</b>: {item.notes}</p>
+                                        <p><b>Payment</b>: ₱{item.payment}.00</p>
+                                        <p><b>Payment Method</b>: {item.customerpaid.toUpperCase()}</p>
+                                        <br></br>
+                                    </div>
+                                )
+                            })
+                        }
+                        {/* <button onClick={()=>setOpenModal(false)}>Close</button> */}
+                        </Modal>
                 </div>
             </div>
         </div>

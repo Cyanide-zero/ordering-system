@@ -30,7 +30,7 @@ function Home(){
                 <div className={HomeCSS.homeTitle}>
                     MG UNLIWINGS &amp;<br/>
                     RAMSHAN'S CAFE
-                    <p className={HomeCSS.italic}>lorem ipsum</p>
+                    <p className={HomeCSS.italic}>INSERT DESCRIPTION HERE</p>
                     <button className={HomeCSS.titleButton}>ORDER NOW</button>
                 </div>
                 <img className={HomeCSS.pizzaBG} src={require('../../assets/images/pizza-no-bg.png')}/>
@@ -56,8 +56,6 @@ function Home(){
                         <p className={HomeCSS.viewAllButton}>VIEW ALL</p>
                     </div>
                     <div className={HomeCSS.featuredButtonsContainer}>
-                        <a className={HomeCSS.featuredButton}>NEW PRODUCTS</a>
-                        <a className={HomeCSS.featuredButton}>BEST SELLERS</a>
                         <a className={HomeCSS.featuredButton}>ALL-TIME FAVORITES</a>
                     </div>
                 </div>
@@ -78,10 +76,10 @@ function Home(){
                         })
                     }
                 </div>
-                <div className = {HomeCSS.dots1}>
+                {/* <div className = {HomeCSS.dots1}>
                     <p></p>
                     <p></p>
-                </div>
+                </div> */}
             </div>
 
             <div className={HomeCSS.reservation}>

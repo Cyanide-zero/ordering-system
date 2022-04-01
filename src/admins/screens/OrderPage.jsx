@@ -99,15 +99,17 @@ function OrderPage(){
                                                             </div>
                                                         )
                                                     })
-                                                }
-                                            <br/><p>Total: ₱{total}</p>
+                                                }<br/>
+                                            <p>Notes: {item.notes}</p><br/>
+                                            <p>Total: ₱{total}</p><br/>
+                                            <p>Payment Method: {item.customerpaid.toUpperCase()}</p>
                                             {/* <button onClick={()=>setOpenModal(false)}>Close</button> */}
                                         </Modal>
                                         <td className='admintd'>{index+1}</td>
                                         <td className='admintd'>{item.invoice_id}</td>
                                         <td className='admintd'>{item.customername}</td>
-                                        <td className='admintd'>{item.orderdate}</td>
-                                        <td className='admintd'> <button
+                                        <td className='admintd'>{item.orderdate.slice(0,10)}</td>
+                                        <td className='admintd'><button
                                         className='orderViewButton'
                                         onClick={()=>{
                                             setOpenModal(true);

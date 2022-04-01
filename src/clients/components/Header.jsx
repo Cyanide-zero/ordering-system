@@ -39,7 +39,7 @@ function Header(){
             </div>
 
             <div className={HeaderCSS.headerTitle}>
-                WEBSITE TITLE
+                MG and Ramshan's
             </div>
 
             <div className = {HeaderCSS.logoContainer}>
