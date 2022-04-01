@@ -158,6 +158,7 @@ label{
     border-radius: 5px;
     padding: 8px;
     color: white;
+    cursor: pointer;
 }
 
 .selected-sales-content{
@@ -174,6 +175,7 @@ label{
     padding: 8px;
     color: white;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .confirm-order-btn{
@@ -184,6 +186,7 @@ label{
     border-radius: 5px;
     padding: 8px;
     color: white;
+    cursor: pointer;
 }
 
 .orderdetails{
@@ -202,6 +205,7 @@ label{
     border-radius: 5px;
     padding: 5px;
     color: white;
+    cursor: pointer;
 }
 
 /* add product and edit product page */
@@ -258,6 +262,7 @@ textarea{
     width: 7vw;
     padding: 7px;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .form-buttons > .save-btn, 
@@ -268,6 +273,7 @@ textarea{
     height: auto;
     width: 7vw;
     padding: 7px;
+    cursor: pointer;
 }
 
 .admintables{ 
@@ -333,7 +339,31 @@ textarea{
     font-family:'montserrat';
 }
 
-.orderViewButton{
+.modalP{
+    align-self: flex-start;
+    margin-left:10%;
+}
+
+.modalInput{
+    height:30px;
+    width:80%;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+.modalSubmitButton{
+    border: none;
+    background-color: #fdd000;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom:10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.orderViewButton,
+.editProductButton{
     cursor: pointer;
     border:none;
     background-color: #fdd000;
@@ -345,7 +375,8 @@ textarea{
     transition: .3s;
 }
 
-.orderViewButton:hover{
+.orderViewButton:hover,
+.editProductButton:hover{
     transition: .3s;
     background-color: black;
     color:white
@@ -368,3 +399,4 @@ textarea{
     color:white;
     transition: .3s;
 }
+
