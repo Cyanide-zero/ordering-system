@@ -11,7 +11,6 @@ function OrderPage(){
 
     const [arr,setArr] = React.useState([]);
     const [openModal, setOpenModal] = React.useState(false)
-
     const getOrders = () =>{
         axios.get("https://ordering-system-database.herokuapp.com/api/admin/orders")
             .then((response) => {
@@ -31,7 +30,7 @@ function OrderPage(){
     React.useEffect(() => {
         getOrders();
         console.log("Array: ", arr)
-    }, [openModal]);
+    }, []);
 
     return(
         <div className="orderpage">
@@ -41,13 +40,13 @@ function OrderPage(){
                 {/* Page Heading */}
                 <div className="flex-container-header">
                     <h1>ORDERS</h1>
-                    <form>
+                    {/* <form>
                         <input 
                             type="text"
                             name="search"
                             placeholder='Search'
                         />
-                    </form>
+                    </form> */}
                 </div>
                 <hr style={{height: 1, color:'black', backgroundColor:'black'}}></hr>
             
@@ -66,11 +65,14 @@ function OrderPage(){
                     <tbody>
                         {
                             arr.map((item, index)=> {
+                                if(!openModal){
+                                    localStorage.setItem("Order", JSON.stringify([]))
+                                }
                                 let dataj = JSON.parse(item.orderdetails)
                                 let datad = JSON.parse(localStorage.getItem("Order"))
                                 let total = 0;
                                 return(
-                                    <tr key={item.id}>
+                                    <tr key={index}>
                                         <Modal style={{
                                             overlay:{
                                                 backgroundColor:'rgba(0, 0, 0, 0.1)'
@@ -101,7 +103,7 @@ function OrderPage(){
                                             <br/><p>Total: ₱{total}</p>
                                             {/* <button onClick={()=>setOpenModal(false)}>Close</button> */}
                                         </Modal>
-                                        <td className='admintd'>{item.id}</td>
+                                        <td className='admintd'>{index+1}</td>
                                         <td className='admintd'>{item.invoice_id}</td>
                                         <td className='admintd'>{item.customername}</td>
                                         <td className='admintd'>{item.orderdate}</td>
