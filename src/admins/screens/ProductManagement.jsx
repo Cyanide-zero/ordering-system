@@ -86,7 +86,7 @@ function ProductManagement(){
                 <table className='admintables'>
                     <thead>
                         <tr>
-                            <th className='adminth'>ID</th>
+                            <th className='adminth'>#</th>
                             <th className='adminth'>Product Name</th>
                             <th className='adminth'>Product Price</th>
                             <th className='adminth'>Date Created</th>

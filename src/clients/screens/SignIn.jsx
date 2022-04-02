@@ -25,6 +25,7 @@ function useKey(key,cb){
 }
 
 export default function SignIn(){
+    const md5 = require('md5');
     function handleEscape(){
         navigate("/admin");
     }
@@ -127,7 +128,7 @@ export default function SignIn(){
         else{
             axios.post("https://ordering-system-database.herokuapp.com/api/user/register", {
                 email: addEmail,
-                password: addPass,
+                password: md5(addPass),
             }).then((response) => {
                 console.log(response)
                 if(response.data.message){
@@ -222,7 +223,7 @@ export default function SignIn(){
         let capsEmail = loginValues.email.toUpperCase();
         axios.post("https://ordering-system-database.herokuapp.com/api/user/login", {
                     email: capsEmail,
-                    password: loginValues.password
+                    password: md5(loginValues.password)
                 }).then((response) => {
                     console.log(response);
                     console.log(response.data.message)

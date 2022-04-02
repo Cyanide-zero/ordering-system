@@ -5,6 +5,18 @@
     align-items: center;
 }
 
+.contactInfo{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 27vh;
+    margin-bottom: 27vh;
+}
+
+.contactInfo b{
+    font-size: 24pt;
+}
+
 .contactTop{
     width:70%;
     display: flex;

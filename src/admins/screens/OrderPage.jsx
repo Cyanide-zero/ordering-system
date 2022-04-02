@@ -55,7 +55,7 @@ function OrderPage(){
                 <table className='admintables'>
                     <thead>
                         <tr>
-                            <th className='adminth'>ID</th>
+                            <th className='adminth'>#</th>
                             <th className='adminth'>Invoice ID</th>
                             <th className='adminth'>Customer Name</th>
                             <th className='adminth'>Date Ordered</th>

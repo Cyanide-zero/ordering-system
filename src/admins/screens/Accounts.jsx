@@ -6,6 +6,7 @@ import axios from "axios";
 import Swal from 'sweetalert2'
 
 function Accounts(){
+    const md5 = require('md5')
     const [addUser, setaddUser] = React.useState("");
     const [addEmail, setaddEmail] = React.useState("");
     const [addPassword, setaddPassword] = React.useState("");
@@ -28,7 +29,7 @@ function Accounts(){
         else{
             axios.post("https://ordering-system-database.herokuapp.com/api/admin/accounts", {
                 email: addEmail,
-                password: addPassword,
+                password: md5(addPassword),
                 username: addUser,
             }).then((response) => {
                 console.log(response)

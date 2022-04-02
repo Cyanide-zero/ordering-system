@@ -62,7 +62,7 @@ function Settings(){
             })
         }else{
             axios.post("https://ordering-system-database.herokuapp.com/api/user/login", {
-            password: loginValues.password
+            password: md5(loginValues.password)
             }).then((response) => {
                 console.log(response);
                 // console.log(response.data.message)
@@ -74,7 +74,7 @@ function Settings(){
             })
 
             axios.post("https://ordering-system-database.herokuapp.com/api/admin/settings", {
-                password: addPassword,
+                password: md5(addPassword),
                 id: localStorage.getItem("adminID"),
             }).then((response) => {
                 console.log(response)

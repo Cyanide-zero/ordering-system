@@ -44,7 +44,7 @@ function AdminHome(){
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
         axios.post("https://ordering-system-database.herokuapp.com/api/admin/login", {
             email: capsEmail,
-            password: loginValues.password
+            password: md5(loginValues.password)
         }).then((response) => {
             console.log(response);
             // console.log(response.data.message)
@@ -73,7 +73,7 @@ function AdminHome(){
                     title: 'Login Failed',
                     text: response.data.message,
                     icon: 'warning',
-                    button:"OK",
+                    // button:"OK",
                     customClass:{
                         icon: 'swalertIcon'
                     }
