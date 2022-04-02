@@ -339,6 +339,7 @@ textarea{
     overflow:hidden ;
 }
 
+
 .modalTitle{
     color: black;
     font-family:'montserrat';
@@ -409,6 +410,25 @@ textarea{
 
 .orderDeleteButton:hover{
     background-color: red;
+    color:white;
+    transition: .3s;
+}
+
+
+.reserveButton{
+    cursor: pointer;
+    border:none;
+    background-color: white;
+    color: green;
+    font-size: 20pt;
+    padding-left:.5vw;
+    padding-right:.5vw;
+    border-radius: 12px;
+    transition: .3s;
+}
+
+.reserveButton:hover{
+    background-color: green;
     color:white;
     transition: .3s;
 }

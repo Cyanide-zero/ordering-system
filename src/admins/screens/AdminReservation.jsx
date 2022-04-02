@@ -3,6 +3,8 @@ import Sidebar from '../components/Sidebar';
 import '../css/AdminIndent.css';
 import ReservationCard from '../components/reservationcard';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function AdminReservations(){
 
@@ -10,102 +12,93 @@ function AdminReservations(){
     const [isReserved,setIsReserved] = React.useState(false);
     const [idReser,setidReser] = React.useState(0);
     const [change,setChange] = React.useState(0);
+    const [date, setDate] = React.useState("");
+    const [time, setTime] = React.useState("");
+    const [size, setSize] = React.useState(0);
+    const [name, setName] = React.useState("");
+    const [email,setEmail] = React.useState("");
 
-    // const handleReservation = (e) => {
-    //     setIsReserved(!isReserved);
-    //     setidReser(e);
-    //     let is_checked;
-    //     if (isReserved===true)
-    //     {
-    //         is_checked = 1; 
-            
-    //         axios.post("http://localhost:5000/api/reservations/update",{
-    //         id: idReser,
-    //         is_reserved: isReserved
-    //         })
-    //         .then((response)=>{
-    //             console.log(response)
-                
-    //         }).catch((err)=>{
-    //             console.log(err)
-    //         })
-    //         setIsReserved(!isReserved)
-    //     }
-    //     else if (isReserved===false)
-    //     {
-    //         is_checked = 0; 
-
-    //         axios.post("http://localhost:5000/api/reservations/update",{
-    //         id: idReser,
-    //         is_reserved: isReserved
-    //         })
-    //         .then((response)=>{
-    //             console.log(response)
-                
-    //         }).catch((err)=>{
-    //             console.log(err)
-    //         })
-    //         setIsReserved(!isReserved)
-    //     }
-    //     console.log(isReserved)
-    // }
+    React.useEffect(() => {
+        setDate(localStorage.getItem("date"));
+        setSize(localStorage.getItem("size"));
+        setTime(localStorage.getItem("time"));
+        setName(localStorage.getItem("name"));
+        setEmail(localStorage.getItem("email"))
+        getReservations();
+        console.log(arr)
+        console.log(change)
+    }, []);
 
     const getReservations = () =>{
-        axios.get("http://localhost:5000/api/reservations/get")
+        axios.get("https://ordering-system-database.herokuapp.com/api/reservations/get")
             .then((response) => {
-                  setArr(response.data);
+                setArr(response.data);
         });
     }
 
     const postTrue = (e) => {
+        setIsReserved(!isReserved);
         setidReser(e)
-        //setIsReserved(0)
         console.log("id:"+e)
-            axios.post("http://localhost:5000/api/reservations/update",{
-            id: idReser,
-            is_reserved: 1
+            axios.put("https://ordering-system-database.herokuapp.com/api/reservations/update",{
+                id: e,
+                is_reserved: 1
             })
             .then((response)=>{
-                console.log(response)
-               
+                window.location.reload()
+                setArr(arr.map((val)=>{
+                    return val.id == e? {
+                        idreservations: e, 
+                        date:date, time:time, 
+                        partysize:size, 
+                        name:name,
+                        emailaddress:email,
+                        is_reserved:1
+                    } :val
+                }))
+                // console.log(responsee)
                 
             }).catch((err)=>{
                 console.log(err)
-            })   
-        }
+        }) 
+    }
     
 
     const postFalse = (e) => {
+        setIsReserved(!isReserved);
         setidReser(e)
-        //setIsReserved(1)
         console.log("id:"+ e)
-        axios.post("http://localhost:5000/api/reservations/update",{
-            id: idReser,
-            is_reserved: 0
+        axios.put("https://ordering-system-database.herokuapp.com/api/reservations/update",{
+                id: e,
+                is_reserved: 0
             })
             .then((response)=>{
-                console.log(response)
-                
+                window.location.reload()
+                setArr(arr.map((val)=>{
+                    return val.id == e? {
+                        idreservations: e, 
+                        date:date, time:time, 
+                        partysize:size, 
+                        name:name,
+                        emailaddress:email,
+                        is_reserved:0
+                    } :val
+                }))
+                // console.log(responsee)
                 
             }).catch((err)=>{
                 console.log(err)
-            })     
+        })     
     }
 
     const deleteReservation = (id) => {
-        axios.delete(`http://localhost:5000/api/reservations/delete/${id}`).then((response)=> {
+        axios.delete(`https://ordering-system-database.herokuapp.com/api/reservations/delete/${id}`).then((response)=> {
             getReservations(arr.filter((item)=> {
                 return item.idreservations == id
             }))
         })
         
     }
-
-    React.useEffect(() => {
-        getReservations();
-        setChange(change+1);
-        console.log(change)
-    }, [isReserved]);
 
     return(
         <div className="reservationdetails">
@@ -137,7 +130,7 @@ function AdminReservations(){
                     {/* <ReservationCard></ReservationCard> */}
                     {
                             arr.map((item, index)=> {
-                               if (item.is_reserved===0)
+                               if (item.is_reserved==0)
                                 {
                                     return(<tr>
                                         <td className='admintd'>{item.idreservations}</td>
@@ -147,19 +140,32 @@ function AdminReservations(){
                                         <td className='admintd'>{item.name}</td>
                                         <td className='admintd'>{item.emailaddress}</td>
                                         <td className='admintd'>{
-                                            item.is_reserved===0?
-                                            <button onClick={(e)=>postTrue(item.idreservations)}>✔</button> :
-                                            item.is_reserved===1?
-                                            <button onClick={(e)=>postFalse(item.idreservations)}>❌</button> :
+                                            item.is_reserved==0?
+                                            <button className='reserveButton' onClick={(e)=>{
+                                                postTrue(item.idreservations);
+                                                localStorage.setItem("date", item.date);
+                                                localStorage.setItem("time", item.time);
+                                                localStorage.setItem("size", item.partysize);
+                                                localStorage.setItem("name", item.name);
+                                                localStorage.setItem("email", item.emailaddress);
+                                             }}>✔</button>  :
+                                            item.is_reserved==1?
+                                            <button  className='orderDeleteButton' onClick={(e)=>{
+                                                postFalse(item.idreservations);
+                                                localStorage.setItem("date", item.date);
+                                                localStorage.setItem("time", item.time);
+                                                localStorage.setItem("size", item.partysize);
+                                                localStorage.setItem("name", item.name);
+                                                localStorage.setItem("email", item.emailaddress);
+                                            }}>✖</button> :
                                             null
-                                        } &nbsp;|&nbsp;   <button onClick={()=> deleteReservation(item.idreservations)}> Delete </button></td>
+                                        }<button className='orderDeleteButton' onClick={()=> deleteReservation(item.idreservations)} > 🗑 </button></td>
                                     </tr>)
                                 }
-                                else if (item.is_reserved===1) 
+                                else if (item.is_reserved==1) 
                                 {
                                     return(<tr style={{
                                         backgroundColor:'green'
-
                                     }}>
                                         <td className='admintd'>{item.idreservations}</td>
                                         <td className='admintd'>{item.date}</td>
@@ -168,12 +174,26 @@ function AdminReservations(){
                                         <td className='admintd'>{item.name}</td>
                                         <td className='admintd'>{item.emailaddress}</td>
                                         <td className='admintd'> {
-                                            item.is_reserved===0?
-                                             <button onClick={(e)=>postTrue(item.idreservations)}>✔</button> :
-                                             item.is_reserved===1?
-                                             <button onClick={(e)=>postFalse(item.idreservations)}>❌</button> :
+                                            item.is_reserved==0?
+                                             <button className='reserveButton' onClick={(e)=>{
+                                                postTrue(item.idreservations);
+                                                localStorage.setItem("date", item.date);
+                                                localStorage.setItem("time", item.time);
+                                                localStorage.setItem("size", item.partysize);
+                                                localStorage.setItem("name", item.name);
+                                                localStorage.setItem("email", item.emailaddress);
+                                             }}>✔</button> :
+                                             item.is_reserved==1?
+                                             <button  className='orderDeleteButton' onClick={(e)=>{
+                                                postFalse(item.idreservations);
+                                                localStorage.setItem("date", item.date);
+                                                localStorage.setItem("time", item.time);
+                                                localStorage.setItem("size", item.partysize);
+                                                localStorage.setItem("name", item.name);
+                                                localStorage.setItem("email", item.emailaddress);
+                                            }}>✖</button> :
                                              null
-                                        }  &nbsp;|&nbsp;   <button> Delete </button></td>
+                                        }<button className='orderDeleteButton' onClick={()=> deleteReservation(item.idreservations)} > 🗑 </button></td>
                                     </tr>)
                                 }
 
@@ -184,6 +204,21 @@ function AdminReservations(){
                     </table>
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+                progressStyle={{
+                backgroundColor:'#FDD000'
+            }}
+            />
         </div>
     );
 }

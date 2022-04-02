@@ -3,7 +3,8 @@ import Sidebar from '../components/Sidebar';
 import '../css/AdminIndent.css'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Modal from 'react-modal'
+import Modal from 'react-modal';
+import Swal from 'sweetalert2';
 
 function SalesReport(){
     let history = useNavigate();
@@ -26,16 +27,27 @@ function SalesReport(){
 
     const filterDates = (e) =>{
         e.preventDefault();
-        arr.map((data, index)=>{
-            let date = new Date(data.orderdate.slice(0,10));
-            let from = new Date(fromDate)
-            let to = new Date(toDate)
-            console.log(date.getTime(), from.getTime());    
-            setFilteredArr(arr.filter((val)=>{
-                return date.getTime() >= from.getTime() && date.getTime() <= to.getTime()
+        if(filteredArr){
+            arr.map((data, index)=>{
+                let date = new Date(data.orderdate.slice(0,10));
+                let from = new Date(fromDate)
+                let to = new Date(toDate)
+                console.log(date.getTime(), from.getTime());    
+                setFilteredArr(arr.filter((val)=>{
+                    return date.getTime() >= from.getTime() && date.getTime() <= to.getTime()
+                }))
+            })
+        }
+        else{
+            return (
+            Swal.fire({
+                title:'Filter Failed',
+                text:'Invalid Date Range'
             }))
-        })
-        setOpenModal(true)
+        }
+        
+        
+            setOpenModal(true)
     }
 
     React.useEffect(() => {

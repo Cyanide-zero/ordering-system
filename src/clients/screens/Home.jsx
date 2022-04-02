@@ -40,7 +40,7 @@ function Home(){
             })
         }
         else {
-            axios.post("http://localhost:5000/api/reservations/get", {
+            axios.post("https://ordering-system-database.herokuapp.com/api/reservations/get", {
                 date: addDate,
                 time: addTime,
                 partysize: addPartySize,

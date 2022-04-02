@@ -19,7 +19,7 @@ const handleSubmit = async (e) => {
       email: email.value,
       msg: msg.value,
     };
-    let response = await fetch("http://localhost:5000/contact", {
+    let response = await fetch("https://ordering-system-database.herokuapp.com/contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
@@ -28,7 +28,7 @@ const handleSubmit = async (e) => {
     });
     setStatus("Submit");
     let result = await response.json();
-    //alert(result.status);
+    alert(result.status);
     Swal.fire({
         title: 'Message sent!',
         text: 'Thank you for getting in touch with us.',
@@ -39,7 +39,8 @@ const handleSubmit = async (e) => {
             icon: 'swalertIcon'
         }
     }).then((response) => {
-    window.location.reload();
+    // window.location.reload();
+    console.log(response)
     })
   };
     
