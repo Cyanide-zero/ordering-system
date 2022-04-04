@@ -46,6 +46,8 @@ body{
 }
 
 .titleButton{
+  text-decoration: none;
+  cursor: pointer;
   width:25%;
   height:20px;
   background-color: #FDD000;

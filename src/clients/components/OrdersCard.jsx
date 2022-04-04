@@ -33,7 +33,7 @@ function OrdersCard (props){
                    ...response.data
                ]);
         });
-        axios.get("https://ordering-system-database.herokuapp.com/api/maindishes/get")
+        axios.get("https://ordering-system-database.herokuapp.com/api/appetizers/get")
             .then((response) => {
               setMenuArr(menuArr=>[
                   ...menuArr,
@@ -320,7 +320,7 @@ export default OrdersCard;
 //                    ...response.data
 //                ])
 //         });
-//         axios.get("https://ordering-system-database.herokuapp.com/api/maindishes/get")
+//         axios.get("https://ordering-system-database.herokuapp.com/api/appetizers/get")
 //             .then((response) => {
 //                 setTryArr(tryArr => [
 //                     ...tryArr,

@@ -40,9 +40,11 @@ function AddProduct(){
                 })
             }
             else{
-                axios.post(`https://ordering-system-database.herokuapp.com/api/admin/${select}add`, {
+                if(select==="blendedsmoothies" || select==="handcrafted" || select==="hotbeverages"){
+                    axios.post(`https://ordering-system-database.herokuapp.com/api/admin/drinksadd`, {
                     menuName: productName,
-                    price: price
+                    price: price,
+                    folder:select
                 }).then((response) => {
                     console.log(response)
                     if(!response.data.message){
@@ -66,6 +68,34 @@ function AddProduct(){
                         })
                     }
                 })
+                }else{
+                    axios.post(`https://ordering-system-database.herokuapp.com/api/admin/${select}add`, {
+                        menuName: productName,
+                        price: price
+                    }).then((response) => {
+                        console.log(response)
+                        if(!response.data.message){
+                            Swal.fire({
+                                title: 'Process Successful',
+                                text: `${productName} has been successfully added.`,
+                                icon: 'success',
+                                customClass:{
+                                    icon: 'swalertIcon'
+                                }
+                            })
+                        }
+                        if(response.data.message){
+                            Swal.fire({
+                                title: 'Process Failed',
+                                text: response.data.message,
+                                icon: 'warning',
+                                customClass:{
+                                    icon: 'swalertIcon'
+                                }
+                            })
+                    }
+                })
+                }
                 
                 console.log(productName);
                 
@@ -98,9 +128,12 @@ function AddProduct(){
                                 <label>CATEGORY</label>
                                 <select value={select} onChange={(e) => setSelect(e.target.value)} className="category-form">
                                     <option value="pizza">Pizza</option>
-                                    <option value="drinks">Drinks</option>
                                     <option value="desserts">Desserts</option>
-                                    <option value="maindish">Main Dishes</option>
+                                    <option value="pasta">Pasta</option>
+                                    <option value="appetizer">Appetizer</option>
+                                    <option value="blendedsmoothies">Drinks - Blended Smoothies</option>
+                                    <option value="handcrafted">Drinks - Hand Crafted</option>
+                                    <option value="hotbeverages">Drinks - Hot Beverages</option>
                                 </select>
                             </div>
 
@@ -133,11 +166,11 @@ function AddProduct(){
                         /> */}
 
                         
-                        <label>PRODUCT DESCRIPTION</label>
-                        <textarea className="description"></textarea>
+                        {/* <label>PRODUCT DESCRIPTION</label>
+                        <textarea className="description"></textarea> */}
 
                         <div className="form-buttons">
-                            <button className="cancel-btn">CANCEL</button>
+                            <button className="cancel-btn">CLEAR</button>
                             <button onClick={productAddHandler} className="save-btn">SAVE</button>
                         </div>
                     </form>

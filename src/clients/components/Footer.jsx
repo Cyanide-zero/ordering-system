@@ -20,7 +20,7 @@ function Footer(){
                 </div>
                 <div className={FooterCSS.rightSecond}>
                     <div className={FooterCSS.frs1}>
-                        <p className={FooterCSS.emailLogo}></p>loremipsum@gmail.com
+                        📧 Rambullstanay@yahoo.com
                     </div>
                     {/* <div className={FooterCSS.frs2}>
                         <button className={FooterCSS.regibutton}>REGISTER</button>

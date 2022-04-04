@@ -1,6 +1,6 @@
 .container{
     height:300px;
-    width:250px;
+    width:15vw;
     background-color: black;
     border-radius:20px;
     display: flex;
@@ -18,6 +18,6 @@
 
 .container p{
     font-weight: thin;
-    font-size:32px;
+    font-size:20pt;
     color:white;
 }

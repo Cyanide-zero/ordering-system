@@ -39,12 +39,12 @@ function Header(){
             </div>
 
             <div className={HeaderCSS.headerTitle}>
-                MG and Ramshan's
+                <Link to="/contactus" style={{textDecoration:"none",color:'black'}}>MG and Ramshan's</Link>
             </div>
 
             <div className = {HeaderCSS.logoContainer}>
                 <Link to="/order"><img className={HeaderCSS.logoIcon} src={require('../../assets/icons/shopping-cart-check.png')} alt="Logo" /></Link>
-                <button onClick={()=>setToggle(!toggle)} className={HeaderCSS.menuButton}>Menu</button>
+                <button onClick={()=>setToggle(!toggle)} className={HeaderCSS.menuButton}>🔻</button>
                 {toggle && <Dropdown/>}
             </div>
         </div>

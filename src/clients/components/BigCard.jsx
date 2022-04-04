@@ -76,7 +76,7 @@ const Card = (props) =>{
                 <div className={BigCardCss.textContainer}>
                     <p className={BigCardCss.foodText}>{props.food}</p>
                     <p className={BigCardCss.priceText}>&#8369;{props.price}</p>
-                    <p className={BigCardCss.subText}>lorem ipsum</p>
+                    {/* <p className={BigCardCss.subText}>lorem ipsum</p> */}
                 </div>
                 {
                     added === true?

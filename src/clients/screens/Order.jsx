@@ -10,8 +10,8 @@ import PaymentCard from '../components/PaymentCard';
 
 function Order(){
     const [data,setData] = React.useState({
-        deliverTo:true,
-        orders:false,
+        orders:true,
+        deliverTo:false,
         payment:false,
     })
 
@@ -34,19 +34,19 @@ function Order(){
                             <button
                             onClick={() => setData({
                                 ...data,
-                                deliverTo:true,
-                                orders:false,
-                                payment:false
-                            })}
-                            className={data.deliverTo?"orderButtonActive":"orderButton"}>DELIVER TO</button>
-                            <button
-                            onClick={() => setData({
-                                ...data,
                                 deliverTo:false,
                                 orders:true,
                                 payment:false
                             })}
                             className={data.orders?"orderButtonActive":"orderButton"}>ORDERS</button>
+                            <button
+                            onClick={() => setData({
+                                ...data,
+                                deliverTo:true,
+                                orders:false,
+                                payment:false
+                            })}
+                            className={data.deliverTo?"orderButtonActive":"orderButton"}>DELIVER TO</button>
                             <button
                             onClick={() => setData({
                                 ...data,
@@ -58,15 +58,15 @@ function Order(){
                         </div>
                     </div>
                     <div className='contentContainer'>
-                        {data.deliverTo && <DeliverTo confirmHandler={()=>{
+                        {data.orders && <OrdersCard confirmHandler={()=>{
                             setData({
                                 ...data,
-                                deliverTo:false,
-                                orders:true,
+                                deliverTo:true,
+                                orders:false,
                                 payment:false
                             })
                         }}/>}
-                        {data.orders && <OrdersCard confirmHandler={()=>{
+                        {data.deliverTo && <DeliverTo confirmHandler={()=>{
                             setData({
                                 ...data,
                                 deliverTo:false,

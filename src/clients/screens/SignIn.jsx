@@ -142,7 +142,6 @@ export default function SignIn(){
                         }
                     })
                 }
-                
             })
 
             Swal.fire({
@@ -307,6 +306,7 @@ export default function SignIn(){
                                         type="password"
                                         name="cpassword"
                                         placeholder="Confirm Password"
+                                        value={addCPass}
                                         onChange={(e) => {
                                             setAddCPass(e.target.value)
                                         }}

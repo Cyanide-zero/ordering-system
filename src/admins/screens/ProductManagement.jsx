@@ -55,7 +55,19 @@ function ProductManagement(){
                 icon: 'swalertIcon'
             }
         })
-        axios.put(`https://ordering-system-database.herokuapp.com/api/admin/update${folder}`,{
+        if(folder === "blendedsmoothies" || folder === "handcrafted" || folder === "hotbeverages"){
+            axios.put(`https://ordering-system-database.herokuapp.com/api/admin/updatedrinks`,{
+            id : id,
+            price: newPrice,
+            name: newName
+            }).then((response)=>{
+                setArr(arr.map((val)=>{
+                    return val.id == id? {id: id, menuName: newName, folder: folder, price: newPrice, date: date} : val
+                }))
+                console.log(response)
+            })
+        }else{
+            axios.put(`https://ordering-system-database.herokuapp.com/api/admin/update${folder}`,{
           id : id,
           price: newPrice,
           name: newName
@@ -65,6 +77,7 @@ function ProductManagement(){
             }))
             console.log(response)
         })
+        }
         setOpenModal(false)
       }
       

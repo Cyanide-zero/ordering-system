@@ -206,11 +206,13 @@ label{
     background-color: #fdd000;
     height: auto;
     width: 9vw;
+    border:none;
     border-color: #fdd000;
     border-radius: 5px;
     padding: 5px;
     color: white;
     cursor: pointer;
+    margin-bottom: 1vh;
 }
 
 /* add product and edit product page */
@@ -261,6 +263,7 @@ textarea{
 .form-buttons > .cancel-btn{
     background-color: #fdd000;
     color: white;
+    border:none;
     border-radius: 5px;
     border-color: #fdd000;
     height: auto;
@@ -274,6 +277,7 @@ textarea{
 .submit-btn{
     background-color: black;
     color: white;
+    border:none;
     border-radius: 5px;
     height: auto;
     width: 7vw;

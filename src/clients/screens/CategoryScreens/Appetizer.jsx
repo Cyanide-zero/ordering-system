@@ -4,13 +4,13 @@ import CategoryCSS from '../../css/Category.module.css'
 import Bcard from '../../components/BigCard';
 import axios from 'axios';
 
-function MainDishes(){
-    const [mainDishArr, setMainDishArr] = React.useState([]);
+function Appetizer(){
+    const [appetizerArr, setAppetizerArr] = React.useState([]);
 
     React.useEffect(() => {
-        axios.get("https://ordering-system-database.herokuapp.com/api/maindishes/get")
+        axios.get("https://ordering-system-database.herokuapp.com/api/appetizer/get")
             .then((response) => {
-            setMainDishArr(response.data);
+            setAppetizerArr(response.data);
         });
     }, []);
 
@@ -19,12 +19,12 @@ function MainDishes(){
             <Header/>
             <div className={CategoryCSS.mainDishContainer}>
             <div className={CategoryCSS.mainDishTop}>
-                <h1>MAIN DISHES</h1>
+                <h1>APPETIZERS</h1>
                 {/* <p className={CategoryCSS.viewAllButton}>VIEW ALL</p> */}
             </div>
             <div className={CategoryCSS.bigcardContainer}>
                     {
-                        mainDishArr.map((item) =>{
+                        appetizerArr.map((item) =>{
                             return(
                                 <Bcard
                                    key={item.id}
@@ -41,4 +41,4 @@ function MainDishes(){
     );
 }
 
-export default MainDishes;
+export default Appetizer;

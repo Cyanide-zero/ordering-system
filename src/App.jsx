@@ -38,7 +38,9 @@ import UserProfile from './clients/screens/UserProfile';
 import Pizza from './clients/screens/CategoryScreens/Pizza';
 import Desserts from './clients/screens/CategoryScreens/Desserts';
 import Drinks from './clients/screens/CategoryScreens/Drinks';
-import MainDishes from './clients/screens/CategoryScreens/MainDishes';
+import Appetizer from './clients/screens/CategoryScreens/Appetizer';
+import Chicken from './clients/screens/CategoryScreens/Chicken';
+import Pasta from './clients/screens/CategoryScreens/Pasta';
 
 function App() {
   const [token,setToken] = React.useState(0);
@@ -72,8 +74,10 @@ function App() {
                 <Route path="/profile" exact element={<UserProfile/>}/>
                 <Route path="/category/pizza" exact element={<Pizza/>}/>
                 <Route path="/category/desserts" exact element={<Desserts/>}/>
-                <Route path="/category/maindishes" exact element={<MainDishes/>}/>
+                <Route path="/category/appetizers" exact element={<Appetizer/>}/>
                 <Route path="/category/drinks" exact element={<Drinks/>}/>
+                <Route path="/category/chicken" exact element={<Chicken/>}/>
+                <Route path="/category/pasta" exact element={<Pasta/>}/>
               </>
             ):(
               <Route path="/*" exact element={<SignIn/>}/>

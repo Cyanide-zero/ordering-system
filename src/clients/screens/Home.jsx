@@ -83,11 +83,11 @@ function Home(){
                     MG UNLIWINGS &amp;<br/>
                     RAMSHAN'S CAFE
                     <p className={HomeCSS.italic}>INSERT DESCRIPTION HERE</p>
-                    <button className={HomeCSS.titleButton}>ORDER NOW</button>
+                    <button className={HomeCSS.titleButton}><Link to="/category" style={{textDecoration:"none"}}>ORDER NOW</Link></button>
                 </div>
                 <img className={HomeCSS.pizzaBG} src={require('../../assets/images/pizza-no-bg.png')}/>
                 <img className={HomeCSS.upArrow} src={require('../../assets/icons/up-arrow.png')}/>
-                <p className={HomeCSS.italicAbsolute}>try it now</p>
+                <Link to="/category/pizza" style={{textDecoration:"none"}}><p className={HomeCSS.italicAbsolute}>try it now</p></Link>
                 <div className={HomeCSS.circle}></div>
             </div>
 
@@ -95,9 +95,10 @@ function Home(){
                 <h1 className={HomeCSS.topSecond}>CATEGORIES</h1>
                 <div className={HomeCSS.smallcardContainer}>
                     <Link to="/category/pizza" style={{textDecoration:"none"}}><Scard source="pizza" food = "PIZZA"/></Link>
-                    <Link to="/category/maindishes" style={{textDecoration:"none"}}><Scard source="maindish"food = "MAIN DISHES"/></Link>
-                    <Link to="/category/desserts" style={{textDecoration:"none"}}><Scard source="desserts"food = "DESSERTS"/></Link>
+                    <Link to="/category/appetizers" style={{textDecoration:"none"}}><Scard source="appetizer"food = "APPETIZER"/></Link>
+                    <Link to="/category/pasta" style={{textDecoration:"none"}}><Scard source="pasta"food = "PASTA"/></Link>
                     <Link to="/category/drinks" style={{textDecoration:"none"}}><Scard source="drinks"food = "DRINKS"/></Link>
+                    <Link to="/category/chicken" style={{textDecoration:"none"}}><Scard source="chicken"food = "CHICKEN"/></Link>
                 </div>  
             </div>
 

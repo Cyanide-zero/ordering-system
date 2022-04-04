@@ -37,8 +37,8 @@ h1{
 }
 
 .buttonIcon{
-    width:82px;
-    height:82px;
+    max-width:82px;
+    max-height:82px;
     background-color: black;
     padding:10px;
     border-radius: 50px;
@@ -85,7 +85,30 @@ h1{
     margin-right: 3vw;
     margin-bottom: 3vh;
     justify-content: center;
-  }
+}
+
+.drinksRenderContainer{
+    display: flex;
+    flex-direction: column;
+    width:85vw;
+}
+
+.drinksContainer h2{
+    margin-bottom: 3vh;
+}
+
+.folderContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.renderDrinks{
+    display: flex;
+    flex-wrap: wrap;
+    width:100%;
+    margin-bottom: 3vh;
+    justify-content: center;
+}
 
 
 

@@ -10,26 +10,31 @@ import Bcard from '../components/BigCard';
 
 function Category(){
     const [drinksArr, setDrinksArr] = React.useState([]);
-    const [dessertsArr, setDessertArr] = React.useState([]);
+    const [appetizerArr, setAppetizerArr] = React.useState([]);
     const [pizzaArr, setPizzaArr] = React.useState([]);
-    const [mainDishArr, setMainDishArr] = React.useState([]);
+    const [pastaArr, setPastaArr] = React.useState([]);
+    const [chickenArr, setChickenArr] = React.useState([]);
 
     const getMenu = () =>{
         axios.get("https://ordering-system-database.herokuapp.com/api/drinks/get")
             .then((response) => {
                setDrinksArr(response.data)
         });
-        axios.get("https://ordering-system-database.herokuapp.com/api/maindishes/get")
+        axios.get("https://ordering-system-database.herokuapp.com/api/pasta/get")
             .then((response) => {
-               setMainDishArr(response.data)
+               setPastaArr(response.data)
         });
-        axios.get("https://ordering-system-database.herokuapp.com/api/desserts/get")
+        axios.get("https://ordering-system-database.herokuapp.com/api/appetizer/get")
             .then((response) => {
-               setDessertArr(response.data)
+               setAppetizerArr(response.data)
         });
         axios.get("https://ordering-system-database.herokuapp.com/api/pizza/get")
             .then((response) => {
                setPizzaArr(response.data)
+        });
+        axios.get("https://ordering-system-database.herokuapp.com/api/chicken/get")
+            .then((response) => {
+               setChickenArr(response.data)
         });
     }
     
@@ -44,9 +49,10 @@ function Category(){
             <h1>CATEGORIES</h1>
             <div className = {CategoryCSS.buttons}>
                 <Link to='/category/pizza'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/pizza.png')}/></Link>
-                <Link to='/category/maindishes'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/maindish.png')}/></Link>
-                <Link to='/category/desserts'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/desserts.png')}/></Link>
+                <Link to='/category/appetizers'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/appetizer.png')}/></Link>
+                <Link to='/category/desserts'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/pasta.png')}/></Link>
                 <Link to='/category/drinks'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/drinks.png')}/></Link>
+                <Link to='/category/chicken'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/chicken.png')}/></Link>
             </div>
         </div>
         <div className={CategoryCSS.pizzaContainer}>
@@ -74,12 +80,12 @@ function Category(){
         </div>
         <div className={CategoryCSS.mainDishContainer}>
             <div className={CategoryCSS.mainDishTop}>
-                <h1>MAIN DISHES</h1>
+                <h1>PASTA</h1>
                 
             </div>
             <div className={CategoryCSS.bigcardContainer}>
             { 
-                        mainDishArr.map((item, index) =>{
+                        pastaArr.map((item, index) =>{
                             if(item.id <= 4){
                                 return(
                                     <Bcard
@@ -96,12 +102,34 @@ function Category(){
         </div>
         <div className={CategoryCSS.dessertsContainer}>
             <div className={CategoryCSS.dessertsTop}>
-                <h1>DESSERTS</h1>
+                <h1>APPETIZERS</h1>
                 
             </div>
             <div className={CategoryCSS.bigcardContainer}>
                     {
-                        dessertsArr.map((item, index) =>{
+                        appetizerArr.map((item, index) =>{
+                            if(item.id <= 4){
+                                return(
+                                    <Bcard
+                                        key={item.id}
+                                        food={item.menuName}
+                                        price={item.price}
+                                        folder={item.folder}
+                                    />
+                                )
+                            }
+                        })
+                    }
+            </div>
+        </div>
+        <div className={CategoryCSS.dessertsContainer}>
+            <div className={CategoryCSS.dessertsTop}>
+                <h1>CHICKEN</h1>
+                
+            </div>
+            <div className={CategoryCSS.bigcardContainer}>
+                    {
+                        chickenArr.map((item, index) =>{
                             if(item.id <= 4){
                                 return(
                                     <Bcard

@@ -78,16 +78,20 @@ const handleSubmit = async (e) => {
         // </div>
         <div className={ContactUsCSS.container}>
             <Header/>
-            <div className={ContactUsCSS.contactInfo}>
+            <div className={ContactUsCSS.imageContainer}> 
+              <div className={ContactUsCSS.overlay}></div>
+              <img className={ContactUsCSS.contactImage} src={require('../../assets/images/contactus.jpg')}/>
+              <div className={ContactUsCSS.contactInfo}>
                 <div className={ContactUsCSS.infoContainer}>
                     <p><b>GIVE US A CALL</b></p>
-                    <p>☎ (02)XXX-XX-XX</p>
-                    <p>☎ 09XXXXXXXXX</p>
+                    <p>☎ Jeff Manag</p>
+                    <p>☎ (0970) 032 7064</p>
                 </div>
                 <div className={ContactUsCSS.infoContainer}>
                     <p><b>EMAIL US</b></p>
-                    <p>✉ EMAIL@EMAIL.COM</p>
+                    <p>✉ Rambullstanay@yahoo.com</p>
                 </div>
+            </div>
             </div>
             <Footer/>
         </div>
