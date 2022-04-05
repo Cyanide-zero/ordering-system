@@ -33,7 +33,7 @@ function OrdersCard (props){
                    ...response.data
                ]);
         });
-        axios.get("https://ordering-system-database.herokuapp.com/api/appetizers/get")
+        axios.get("https://ordering-system-database.herokuapp.com/api/appetizer/get")
             .then((response) => {
               setMenuArr(menuArr=>[
                   ...menuArr,
@@ -48,6 +48,20 @@ function OrdersCard (props){
                 ]);
         });
         axios.get("https://ordering-system-database.herokuapp.com/api/pizza/get")
+            .then((response) => {
+                setMenuArr(menuArr=>[
+                    ...menuArr,
+                    ...response.data
+                ]);
+        });
+        axios.get("https://ordering-system-database.herokuapp.com/api/pasta/get")
+            .then((response) => {
+                setMenuArr(menuArr=>[
+                    ...menuArr,
+                    ...response.data
+                ]);
+        });
+        axios.get("https://ordering-system-database.herokuapp.com/api/chicken/get")
             .then((response) => {
                 setMenuArr(menuArr=>[
                     ...menuArr,

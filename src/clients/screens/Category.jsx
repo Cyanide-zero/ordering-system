@@ -50,7 +50,7 @@ function Category(){
             <div className = {CategoryCSS.buttons}>
                 <Link to='/category/pizza'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/pizza.png')}/></Link>
                 <Link to='/category/appetizers'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/appetizer.png')}/></Link>
-                <Link to='/category/desserts'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/pasta.png')}/></Link>
+                <Link to='/category/pasta'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/pasta.png')}/></Link>
                 <Link to='/category/drinks'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/drinks.png')}/></Link>
                 <Link to='/category/chicken'><img className={CategoryCSS.buttonIcon} src={require('../../assets/icons/chicken.png')}/></Link>
             </div>
