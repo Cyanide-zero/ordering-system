@@ -102,9 +102,7 @@ function PaymentCard (){
     
                     Swal.fire({
                         title: 'You\'ve reached the end of the process.',
-                        html: `<p>Please send your payment to:</p><br>`+
-                            `<p>Name : ${receiver.recName}</p>`+
-                            `<p>Contact Number : ${receiver.recNum}</p>`,
+                        text:'Please wait as we verify your payment.',
                         confirmButtonText: 'Ok',
                         customClass:{
                             icon: 'swalertIcon',
