@@ -39,6 +39,28 @@
     margin:0;
 }
 
+.aboutUsText{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    padding-bottom: 5vh;
+}
+
+.aboutUsText h2{
+    align-self: center;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.aboutUsText p{
+    margin-bottom: 2vh;
+    padding-left: 7.5vw;
+    padding-right: 7.5vw;
+}
+
 .contactTop{
     width:70%;
     display: flex;

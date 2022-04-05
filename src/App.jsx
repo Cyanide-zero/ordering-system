@@ -28,6 +28,7 @@ import Category from './clients/screens/Category';
 import ContactUs from './clients/screens/ContactUs';
 import EditProfile from './clients/screens/EditProfile';
 import Order from './clients/screens/Order';
+import AboutUs from './clients/screens/AboutUs'
 import OrderStatus from './clients/screens/OrderStatus';
 import Reservations from './clients/screens/Reservations';
 import SignIn from './clients/screens/SignIn';
@@ -72,6 +73,7 @@ function App() {
                 <Route path="/order" exact element={<Order/>}/>
                 <Route path="/home" exact element={<Home/>}/>
                 <Route path="/profile" exact element={<UserProfile/>}/>
+                <Route path="/aboutus" exact element={<AboutUs/>}/>
                 <Route path="/category/pizza" exact element={<Pizza/>}/>
                 <Route path="/category/desserts" exact element={<Desserts/>}/>
                 <Route path="/category/appetizers" exact element={<Appetizer/>}/>

@@ -2,6 +2,9 @@ import React from 'react';
 import '../css/Order.css';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import {storage} from '../../firebase';
+import {ref, uploadBytes} from 'firebase/storage';
+import {v4} from 'uuid'
 
 function PaymentCard (){
     const [select, setSelect] = React.useState("gcash");
@@ -17,7 +20,8 @@ function PaymentCard (){
         address :"",
         info: ""
     })
-
+    const [imageUpload, setImageUpload] = React.useState(null);
+    const [imagePreview, setImagePreview] = React.useState(null);
     const [arr,setArr] = React.useState([]);
 
     const getOrders = () =>{
@@ -55,47 +59,76 @@ function PaymentCard (){
     }, [select])
 //
     const onSubmit = () => {
-        Swal.fire({
-            title: 'Please Check the Following Information',
-            html: `<p>Name : ${person.name}</p>`+
-                `<p>Contact Number : ${person.number}</p>`+
-                `<p>Address : ${person.address}</p>`+
-                `<p>Additional Notes : ${person.info}</p>`,
-            confirmButtonText: 'Looks Good',
-            customClass:{
-                icon: 'swalertIcon',
-                htmlContainer:'swalertHTML'
-            }
-        }).then((result)=>{
-            if(result.isConfirmed){
-                axios.post("https://ordering-system-database.herokuapp.com/api/admin/addorder",{
-                    invoice: `MGR0000${arr.length+1}`,
-                    cusname: person.name,
-                    cusaddress: person.address,
-                    price: JSON.parse(localStorage.getItem("Total")),
-                    cuspaid: select,
-                    notes: person.info,
-                    local: local
-                }).then((response) => {
-                    console.log(response)
-                })
+        if(imagePreview === null){
+            Swal.fire({
+                title: 'Payment Failed',
+                text: 'Please upload proof of payment for our staff to verify your order.',
+                icon: 'error',
+                confirmButtonText: 'OK LODS',
+                customClass:{
+                    icon: 'swalertIcon'
+                }
+            })
+        }else{
+            const imageRef = ref(storage, `images/${imageUpload.name + v4()}`)
+            uploadBytes(imageRef, imageUpload)
+            .then((response)=>{
+                console.log(response)
+            });
+            Swal.fire({
+                title: 'Please Check the Following Information',
+                html: `<p>Name : ${person.name}</p>`+
+                    `<p>Contact Number : ${person.number}</p>`+
+                    `<p>Address : ${person.address}</p>`+
+                    `<p>Additional Notes : ${person.info}</p>`,
+                confirmButtonText: 'Looks Good',
+                customClass:{
+                    icon: 'swalertIcon',
+                    htmlContainer:'swalertHTML'
+                }
+            }).then((result)=>{
+                if(result.isConfirmed){
+                    axios.post("https://ordering-system-database.herokuapp.com/api/admin/addorder",{
+                        invoice: `MGR0000${arr.length+1}`,
+                        cusname: person.name,
+                        cusaddress: person.address,
+                        price: JSON.parse(localStorage.getItem("Total")),
+                        cuspaid: select,
+                        notes: person.info,
+                        local: local
+                    }).then((response) => {
+                        console.log(response)
+                    })
+    
+                    Swal.fire({
+                        title: 'You\'ve reached the end of the process.',
+                        html: `<p>Please send your payment to:</p><br>`+
+                            `<p>Name : ${receiver.recName}</p>`+
+                            `<p>Contact Number : ${receiver.recNum}</p>`,
+                        confirmButtonText: 'Ok',
+                        customClass:{
+                            icon: 'swalertIcon',
+                            htmlContainer:'swalertHTML'
+                        }
+                    }).then(()=>{
+                        localStorage.clear();
+                        localStorage.setItem("dummyToken", token);
+                    })
+                }
+            })
+        }
+    }
 
-                Swal.fire({
-                    title: 'You\'ve reached the end of the process.',
-                    html: `<p>Please send your payment to:</p><br>`+
-                        `<p>Name : ${receiver.recName}</p>`+
-                        `<p>Contact Number : ${receiver.recNum}</p>`,
-                    confirmButtonText: 'Ok',
-                    customClass:{
-                        icon: 'swalertIcon',
-                        htmlContainer:'swalertHTML'
-                    }
-                }).then(()=>{
-                    localStorage.clear();
-                    localStorage.setItem("dummyToken", token);
-                })
+    const previewImage = (e) =>{
+        const reader = new FileReader();
+        reader.onload = () =>{
+            if(reader.readyState === 2){
+                setImagePreview(reader.result)
+                setImageUpload(e.target.files[0])
+                console.log(reader.result)
             }
-        })
+        }
+        reader.readAsDataURL(e.target.files[0])
     }
 
     return(
@@ -116,10 +149,18 @@ function PaymentCard (){
 
                     <label>PAYMENT PROOF</label>
                     <input
-                        type="image"
+                        type="file"
                         name="paymentproof"
+                        onChange={(e)=>previewImage(e)}
+                        accept="image/*"
                         required
                     />
+                    {
+                        imagePreview === null?
+                        <p style={{color:'white'}}>NO IMAGE CHOSEN</p>
+                        :
+                        <img src={imagePreview}/>
+                    }
                 </forms>
                 <button onClick={onSubmit} className="confirm-btn">CONFIRM</button>
             </div>

@@ -279,7 +279,7 @@ export default function SignIn(){
                         </button>
                     </div>
                     <div className={styles.imgSignInContainer}>
-                    <img alt="bag" className={styles.imgSignIn} src={require('../../assets/images/bag.png')}/>
+                    <img alt="logo" className={styles.imgSignIn} src={require('../../assets/images/mglogo.png')}/>
                     {/* CONDITIONAL RENDERING */}
                     {
                         data.active1 === true?

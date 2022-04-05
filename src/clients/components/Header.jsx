@@ -39,7 +39,7 @@ function Header(){
             </div>
 
             <div className={HeaderCSS.headerTitle}>
-                <Link to="/contactus" style={{textDecoration:"none",color:'black'}}>MG and Ramshan's</Link>
+                <Link to="/aboutus" style={{textDecoration:"none",color:'black'}}>MG and Ramshan's</Link>
             </div>
 
             <div className = {HeaderCSS.logoContainer}>

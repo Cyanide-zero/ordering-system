@@ -16,9 +16,10 @@ function OrdersCard (props){
 
     const tryRequire = (path) => {
         try{
-            return require(path)
+            return path
         }catch(err){
             console.log(err)
+            console.log(typeof path)
         }
     }
 
