@@ -165,7 +165,7 @@ function AdminReservations(){
                                 else if (item.is_reserved==1) 
                                 {
                                     return(<tr style={{
-                                        backgroundColor:'green'
+                                        backgroundColor:'#DDFBBF'
                                     }}>
                                         <td className='admintd'>{item.idreservations}</td>
                                         <td className='admintd'>{item.date}</td>

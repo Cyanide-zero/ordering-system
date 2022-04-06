@@ -61,83 +61,36 @@
     padding-right: 7.5vw;
 }
 
-.contactTop{
-    width:70%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;     
-    margin-bottom: 8vh;   
-}
+@media screen and (max-width: 1100px) {
+    .contactImage{
+        width: 100vw;
+        max-height:30vh;
+        margin:0;
+    }
 
-.contactTopHeading{
-    font-family: "Montserrat";
-}
-
-.formGroup{
-    display: flex;
-    flex-direction: column;
-    width:60vw;
-    align-items: center;
-}
-
-.formGroup1{
-    display: flex;
-    width:80%;
-    justify-content: space-around;
-    margin-bottom: 5vh;
-}
-
-.formGroup1Content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width:50%;
-}
-
-.formGroup1Content input[type=text]{
-    margin-top: 1vh;
-    width:80%;
-    height:30px;
-    border:3px solid #FDD000;
-    padding-left:1vw;
-}
-
-.formGroup2{
-    display: flex;
-    flex-direction: column;
-    min-width: 75%;
-    margin-bottom: 5vh;
-}
-
-.formGroup2 input[type=text]{
-    margin-top: 1vh;
-    height:30px;
-    border:3px solid #FDD000;
-    padding-left:1vw;
-}
-
-.formGroup3{
-    display: flex;
-    flex-direction: column;
-    min-width: 75%;
-    margin-bottom: 5vh;
-}
-
-.formGroup3 input[type=text]{
-    margin-top: 1vh;
-    height:100px;
-    border:3px solid #FDD000;
-    padding-left:1vw;
-}
-
-.formButton{
-    margin-top: 2vh;
-    margin-bottom: 5vh;
-    border:none;
-    border-radius: 8px;
-    width:75%;
-    height:5vh;
-    background-color: black;
-    color:white;
+    .contactInfo{
+        width: 100%;
+        height:55vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        z-index: 3;
+        background-color: white;
+    }
+    .aboutUsText{
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        padding-bottom: 5vh;
+        margin-bottom: 5vh;
+    }
+    .overlay{
+        width:100%;
+        max-height:30vh;
+        background: rgb(255,255,255);
+        background: linear-gradient(94deg, rgba(255,255,255,0.4) 0%, rgba(40,40,40,0.4) 50%, rgba(255,208,0,0.4) 100%);
+        position: absolute;
+        z-index: 1;
+    }
 }

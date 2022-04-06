@@ -64,13 +64,14 @@ function PaymentCard (){
                 title: 'Payment Failed',
                 text: 'Please upload proof of payment for our staff to verify your order.',
                 icon: 'error',
-                confirmButtonText: 'OK LODS',
+                confirmButtonText: 'OK',
                 customClass:{
                     icon: 'swalertIcon'
                 }
             })
         }else{
             const imageRef = ref(storage, `images/${imageUpload.name + v4()}`)
+            console.log(imageRef._location.path_)
             uploadBytes(imageRef, imageUpload)
             .then((response)=>{
                 console.log(response)
@@ -157,7 +158,7 @@ function PaymentCard (){
                         imagePreview === null?
                         <p style={{color:'white'}}>NO IMAGE CHOSEN</p>
                         :
-                        <img src={imagePreview}/>
+                        <img src={imagePreview} className='previewImage'/>
                     }
                 </forms>
                 <button onClick={onSubmit} className="confirm-btn">CONFIRM</button>

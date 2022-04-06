@@ -15,7 +15,7 @@ function Sidebar(){
 
     return(
         <div className = "sidebar">
-            <h1 className="sidebar-heading">WEB TITLE</h1>
+            <h1 className="sidebar-heading">MG&R Admin</h1>
             <div className="adminbutton-list">
                     <Link style={{textDecoration:'none', color:"black", fontSize:"18px"}} to = "/admin/sales">
                         <div className={location.pathname == "/admin/sales" ? "flex-container-active" : "flex-container"}>

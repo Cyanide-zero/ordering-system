@@ -17,7 +17,7 @@ function DeliverTo (props){
                 title: 'Process Failed',
                 text: 'Please complete name, address, and contact number.',
                 icon: 'error',
-                confirmButtonText: 'Edi Sorry',
+                confirmButtonText: 'OK',
                 customClass:{
                     icon: 'swalertIcon'
                 }
@@ -27,7 +27,7 @@ function DeliverTo (props){
                 title: 'Process Failed',
                 text: 'Wrong Cellphone Number Format',
                 icon: 'error',
-                confirmButtonText: 'Edi Sorry',
+                confirmButtonText: 'OK',
                 customClass:{
                     icon: 'swalertIcon'
                 }

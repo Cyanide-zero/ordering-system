@@ -45,37 +45,6 @@ const handleSubmit = async (e) => {
   };
     
     return(
-        // <div className = {ContactUsCSS.container}>
-        //     <Header/>
-        //         <div className={ContactUsCSS.contactTop}>
-        //             <h1 className={ContactUsCSS.contactTopHeading}>GET IN TOUCH WITH US</h1>
-        //             <p className={ContactUsCSS.contactTopText}>You can also email us at email@gmail.com</p>
-        //         </div>
-        //         <form className={ContactUsCSS.formGroup} onSubmit={handleSubmit}>
-        //             <div className={ContactUsCSS.formGroup1}>
-        //                 <div className={ContactUsCSS.formGroup1Content}>
-        //                     FIRST NAME
-        //                     <input type="text" name="fname" id="fname" required></input>
-        //                 </div>
-        //                 <div className={ContactUsCSS.formGroup1Content}>
-        //                     LAST NAME
-        //                     <input type="text" name="lname" id="lname" required></input>
-        //                 </div>
-        //             </div>
-        //             <div className={ContactUsCSS.formGroup2}>
-        //                 EMAIL ADDRESS
-        //                 <input type = "text" name="email" id="email" required></input>
-        //             </div>
-        //             <div className={ContactUsCSS.formGroup3}>
-        //                 MESSAGE
-        //                 <input type = "text" name="msg" id="msg" required></input>
-        //             </div>
-        //             <button className={ContactUsCSS.formButton} type="submit">
-        //                 {status}
-        //             </button>
-        //         </form>
-        //     <Footer/>
-        // </div>
         <div className={ContactUsCSS.container}>
             <Header/>
             <div className={ContactUsCSS.imageContainer}> 

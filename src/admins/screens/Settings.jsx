@@ -35,7 +35,7 @@ function Settings(){
                 title: 'Password Change Failed',
                 text: 'Please Complete the Form',
                 icon: 'warning',
-                confirmButtonText: 'Edi Sorry',
+                confirmButtonText: 'OK',
                 customClass:{
                     icon: styles.swalertIcon
                 }
@@ -45,7 +45,7 @@ function Settings(){
                 title: 'Password Change Failed',
                 text: 'Wrong Password',
                 icon: 'error',
-                confirmButtonText: 'Edi Sorry',
+                confirmButtonText: 'OK',
                 customClass:{
                     icon: styles.swalertIcon
                 }
@@ -55,7 +55,7 @@ function Settings(){
                 title: 'Password Change Failed',
                 text: 'Passwords did not match.',
                 icon: 'error',
-                confirmButtonText: 'Edi Sorry',
+                confirmButtonText: 'OK',
                 customClass:{
                     icon: styles.swalertIcon
                 }

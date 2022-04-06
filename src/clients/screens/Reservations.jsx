@@ -68,7 +68,7 @@ function Reservations(){
                         <div className={ReservationCSS.schedForm}>
                             <div className={ReservationCSS.schedInputs}>
                                 DATE
-                                <input type="text" name="date" onChange={(e) => setAddDate(e.target.value)}/>
+                                <input type="date" name="date" onChange={(e) => setAddDate(e.target.value)}/>
                             </div>
                             <div className={ReservationCSS.schedInputs} onChange={(e) => setAddTime(e.target.value)}>
                                 TIME

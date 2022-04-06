@@ -3,6 +3,7 @@ import '../css/Order.css';
 import menu from '../../assets/Data.json';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import {AiOutlineReload} from 'react-icons/ai';
 
 function OrdersCard (props){
     let localArr = Object.keys(localStorage);
@@ -142,21 +143,13 @@ function OrdersCard (props){
         <div className = "ordersCard">
             <button 
             className='reStateButton'
-            onClick={loadHandler}>🔄</button>
+            onClick={loadHandler}><AiOutlineReload/></button>
             <div className= "pagecontainer">
                 <div className="orderData">
                     <div className="productInfo">
                         <h3>Your Orders</h3>
-                        <div style={{
-                            marginTop:'1vh',
-                            backgroundColor:'#F2EFE2',
-                            paddingLeft:'2vw',
-                            paddingTop:'2vh',
-                            paddingBottom:'2vh',
-                            paddingRight:'2vh',
-                            borderRadius:'1vw'
-                        }}>
-                            {resArr.length === 0 && <p style={{color:'black'}}> Your Cart is Empty. If you don't see your items, please click the 🔄 button.</p>}
+                        <div className='orderContainer'>
+                            {resArr.length === 0 && <p style={{color:'black'}}> Your Cart is Empty. If you don't see your items, please click the <AiOutlineReload/> button.</p>}
                         {
                             
                             resArr.map((item, index) => {
@@ -215,22 +208,9 @@ function OrdersCard (props){
 
                                                 </p>
                                                </div>
-                                               <div style={{
-                                                   display:'flex',
-                                                   alignItems:'center',
-                                                   width:'10vw',
-                                                   justifyContent:'space-around'
-                                               }}>
+                                               <div className='orderButtonContainer'>
                                                    <button 
-                                                   style={{
-                                                       width:'2vw',
-                                                       height:'2vw',
-                                                       backgroundColor:'black',
-                                                       color:'white',
-                                                       border:'none',
-                                                       borderRadius:'10px',
-                                                       cursor:'pointer'
-                                                   }}
+                                                   className='changeCount'
                                                    onClick={()=>{
                                                             localStorage.setItem(`${item.name}`, item.qty+1)
                                                             setResArr(oldArr => {
@@ -241,15 +221,7 @@ function OrdersCard (props){
                                                    }}
                                                    >+</button>
                                                    <button 
-                                                   style={{
-                                                       width:'2vw',
-                                                       height:'2vw',
-                                                       backgroundColor:'black',
-                                                       color:'white',
-                                                       border:'none',
-                                                       borderRadius:'10px',
-                                                       cursor:'pointer'
-                                                   }}
+                                                   className='changeCount'
                                                    onClick={()=>{
                                                         if(item.qty-1 == 0){
                                                             Swal.fire({
@@ -293,15 +265,7 @@ function OrdersCard (props){
                                                    >-</button>
                                                    <button 
                                                    name = {item.name}
-                                                   style={{
-                                                       width:'2vw',
-                                                       height:'2vw',
-                                                       backgroundColor:'red',
-                                                       color:'white',
-                                                       border:'none',
-                                                       borderRadius:'10px',
-                                                       cursor:'pointer'
-                                                   }}
+                                                   className='removeItem'
                                                    onClick={removeHandler}
                                                    >x</button>
                                                </div>

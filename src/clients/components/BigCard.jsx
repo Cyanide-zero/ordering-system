@@ -15,11 +15,12 @@ const Card = (props) =>{
     const fallBackSrc = require('../../assets/images/bag.png');
     const [error, setError] = React.useState(false);
     const notify = () => toast.success(`${props.food} has been added to your cart.`, {
-        position: "bottom-left",
+        position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
+        pauseOnHover: false,
+        pauseOnFocusLoss:false,
         draggable: true,
         progress: undefined,
     });
@@ -92,9 +93,7 @@ const Card = (props) =>{
                     newestOnTop={false}
                     closeOnClick
                     rtl={false}
-                    pauseOnFocusLoss
                     draggable
-                    pauseOnHover
                     theme="dark"
                     progressStyle={{
                         backgroundColor:'#FDD000'

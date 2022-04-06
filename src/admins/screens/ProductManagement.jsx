@@ -33,6 +33,43 @@ function ProductManagement(){
       });
   }
 
+  const deleteProduct = (id, folder) => {
+    console.log(id, folder)
+    Swal.fire({
+        title: 'Verifying...',
+        text: 'Please wait.',
+        timer: 2000,
+        didOpen: () => {
+          Swal.showLoading();
+          if(folder === 'handcrafted' || folder === 'blendedsmoothies' || folder === 'hotbeverages'){
+            axios.delete(`https://ordering-system-database.herokuapp.com/api/admin/drinksdelete/${id}`)
+            .then((response)=>{
+                setArr(arr.filter((val)=>{
+                    return val.id != id
+                }))
+            })
+            }else{
+            axios.delete(`https://ordering-system-database.herokuapp.com/api/admin/${folder}delete/${id}`)
+            .then((response)=>{
+                setArr(arr.filter((val)=>{
+                    return val.id != id
+                }))
+            })
+            }
+        }
+    }).then(()=>{
+        Swal.fire({
+            title: 'Success',
+            text: 'Item Deleted',
+            icon:'success',
+            customClass:{
+                icon:'swalertIcon'
+            }
+        })
+    })
+    
+    }
+
   const updateProduct = () => {
       console.log(newName, newPrice, folder);
       if((parseInt(localStorage.getItem("price")) == newPrice) && (localStorage.getItem("product") == newName)){
@@ -156,7 +193,7 @@ function ProductManagement(){
                                             localStorage.setItem('id', item.id);
                                             localStorage.setItem('date',item.date);
                                         }}> ✒ </button>  
-                                        {/* &nbsp;|&nbsp;   <button> Delete </button> */}
+                                        <button className='orderDeleteButton' onClick={()=>{deleteProduct(item.id, item.folder)}}> 🗑 </button>
                                         </td>
                                     </tr>
                                 )

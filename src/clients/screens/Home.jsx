@@ -80,14 +80,13 @@ function Home(){
             <Header/>
             <div className={HomeCSS.firstSection}>
                 <div className={HomeCSS.homeTitle}>
-                    MG UNLIWINGS &amp;<br/>
+                    MG UNLIWINGS &<br/>
                     RAMSHAN'S CAFE
-                    <p className={HomeCSS.italic}>INSERT DESCRIPTION HERE</p>
                     <button className={HomeCSS.titleButton}><Link to="/category" style={{textDecoration:"none"}}>ORDER NOW</Link></button>
                 </div>
-                <img className={HomeCSS.pizzaBG} src={require('../../assets/images/pizza-no-bg.png')}/>
+                <img className={HomeCSS.pizzaBG} src={require('../../assets/images/mglogo.png')}/>
                 <img className={HomeCSS.upArrow} src={require('../../assets/icons/up-arrow.png')}/>
-                <Link to="/category/pizza" style={{textDecoration:"none"}}><p className={HomeCSS.italicAbsolute}>try it now</p></Link>
+                <Link to="/category/chicken" style={{textDecoration:"none"}}><p className={HomeCSS.italicAbsolute}>try it now</p></Link>
                 <div className={HomeCSS.circle}></div>
             </div>
 
@@ -100,16 +99,19 @@ function Home(){
                     <Link to="/category/drinks" style={{textDecoration:"none"}}><Scard source="drinks"food = "DRINKS"/></Link>
                     <Link to="/category/chicken" style={{textDecoration:"none"}}><Scard source="chicken"food = "CHICKEN"/></Link>
                 </div>  
+                <div className = {HomeCSS.buttons}>
+                    <Link to='/category/pizza'><img className={HomeCSS.buttonIcon} src={require('../../assets/icons/pizza.png')}/></Link>
+                    <Link to='/category/appetizers'><img className={HomeCSS.buttonIcon} src={require('../../assets/icons/appetizer.png')}/></Link>
+                    <Link to='/category/pasta'><img className={HomeCSS.buttonIcon} src={require('../../assets/icons/pasta.png')}/></Link>
+                    <Link to='/category/drinks'><img className={HomeCSS.buttonIcon} src={require('../../assets/icons/drinks.png')}/></Link>
+                    <Link to='/category/chicken'><img className={HomeCSS.buttonIcon} src={require('../../assets/icons/chicken.png')}/></Link>
+                </div>
             </div>
 
             <div className={HomeCSS.featuredProducts}>
                 <div className={HomeCSS.featuredContainer}>
                     <div className={HomeCSS.topFeature}>
                         <h1>FEATURED PRODUCTS</h1>
-                        <p className={HomeCSS.viewAllButton}>VIEW ALL</p>
-                    </div>
-                    <div className={HomeCSS.featuredButtonsContainer}>
-                        <a className={HomeCSS.featuredButton}>ALL-TIME FAVORITES</a>
                     </div>
                 </div>
 
@@ -150,7 +152,7 @@ function Home(){
                         <form className={HomeCSS.schedForm}>
                             <div className={HomeCSS.schedInputs}>
                                 DATE
-                                <input type="text" name="date" onChange={(e) => setAddDate(e.target.value)}/>
+                                <input type="date" name="date" onChange={(e) => setAddDate(e.target.value)}/>
                             </div>
                             <div className={HomeCSS.schedInputs}>
                                 TIME

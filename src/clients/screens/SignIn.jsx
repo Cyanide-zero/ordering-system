@@ -79,7 +79,7 @@ export default function SignIn(){
                 title: 'Registration Failed',
                 text: 'Passwords did not match.',
                 icon: 'error',
-                confirmButtonText: 'Edi Sorry',
+                confirmButtonText: 'OK',
                 customClass:{
                     icon: styles.swalertIcon
                 }
@@ -90,7 +90,7 @@ export default function SignIn(){
                 title: 'Registration Failed',
                 text: 'Please Complete the Form',
                 icon: 'error',
-                confirmButtonText: 'Edi Sorry',
+                confirmButtonText: 'OK',
                 customClass:{
                     icon: styles.swalertIcon
                 }
@@ -101,7 +101,7 @@ export default function SignIn(){
                 title: 'Registration Failed',
                 text: 'Invalid Email Format',
                 icon: 'error',
-                confirmButtonText: 'Edi Sorry',
+                confirmButtonText: 'OK',
                 customClass:{
                     icon: styles.swalertIcon
                 }
@@ -119,7 +119,7 @@ export default function SignIn(){
                 title: 'Registration Failed',
                 text: 'Invalid Captcha!',
                 icon: 'error',
-                confirmButtonText: 'Edi Sorry',
+                confirmButtonText: 'OK',
                 customClass:{
                     icon: styles.swalertIcon
                 }

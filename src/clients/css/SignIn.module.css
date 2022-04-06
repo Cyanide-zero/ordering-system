@@ -2,10 +2,6 @@ body{
     overflow: hidden;
 }
 
-/* a, img, p{
-    padding-bottom: 10px;
-} */
-
 .container{
     margin-top: 10vh;
     width:100%;
@@ -164,6 +160,73 @@ body{
 
 .swalertHTMLContainer p{
     text-align: justify;
+}
+
+@media screen and (max-width: 1100px) {
+    .signinForms input{
+        border-radius: 5px;
+        border:solid #fdd000;
+        height: auto;
+        width: 70vw;
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    .signinContainer{
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        height: 70vh;
+        width: 90vw;
+        border-radius: 10px;
+    }
+
+    .imgSignInContainer{
+        margin:0;
+        padding:0;
+        width:100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-around;
+        padding-bottom: 5%;
+        /* padding-top: 2%; */
+     }
+
+    .imgSignIn{
+        width:20vw;
+        height:20vw;
+    }
+
+    .signinButtons{
+        align-self: center;
+        justify-self: flex-start;
+        overflow-y: hidden;
+        margin-left: 0;
+    }
+
+    .selector{
+        background-color: #e5e5e5;
+        /* border-radius: 5px 0px 0px 5px; */
+        border: solid #e5e5e5;
+        width: 25vw;
+        padding:8px;
+        font-weight: 600;
+        margin-top:3vh;
+        margin-bottom: 1vh;
+        cursor: pointer;
+    }
+    
+    .selectorActive{
+        background-color: #fdd000;
+        /* border-radius: 0px 5px 5px 0px; */
+        border: solid #fdd000;
+        width: 25vw;
+        height: auto;
+        padding:8px;
+        font-weight: 600;
+        cursor: pointer;
+    }
 }
 
 

@@ -20,7 +20,7 @@ function Accounts(){
                 title: 'Registration Failed',
                 text: 'Invalid Email Format',
                 icon: 'error',
-                confirmButtonText: 'Edi Sorry',
+                confirmButtonText: 'OK',
                 customClass:{
                     icon: styles.swalertIcon
                 }

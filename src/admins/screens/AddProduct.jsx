@@ -23,7 +23,7 @@ function AddProduct(){
                     title: 'Process Failed',
                     text: 'Product name cannot be empty',
                     icon: 'error',
-                    confirmButtonText: 'Edi Sorry',
+                    confirmButtonText: 'OK',
                     customClass:{
                         icon: 'swalertIcon'
                     }
@@ -33,7 +33,7 @@ function AddProduct(){
                     title: 'Process Failed',
                     text: 'Price cannot be empty',
                     icon: 'error',
-                    confirmButtonText: 'Edi Sorry',
+                    confirmButtonText: 'OK',
                     customClass:{
                         icon: 'swalertIcon'
                     }
@@ -79,8 +79,15 @@ function AddProduct(){
                                 title: 'Process Successful',
                                 text: `${productName} has been successfully added.`,
                                 icon: 'success',
+                                confirmButtonText: 'OK',
                                 customClass:{
                                     icon: 'swalertIcon'
+                                }
+                            }).then((result)=>{
+                                if (result.isConfirmed) {
+                                    window.location.reload();
+                                }else{
+                                    window.location.reload();
                                 }
                             })
                         }
@@ -96,10 +103,6 @@ function AddProduct(){
                     }
                 })
                 }
-                
-                console.log(productName);
-                
-                console.log(price);
             }
             }
         })

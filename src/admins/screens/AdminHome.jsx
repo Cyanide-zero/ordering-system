@@ -53,7 +53,7 @@ function AdminHome(){
                     title: 'Login Failed',
                     text: 'Please Complete the Form',
                     icon: 'error',
-                    confirmButtonText: 'Edi Sorry',
+                    confirmButtonText: 'OK',
                     customClass:{
                         icon: 'swalertIcon'
                     }
@@ -63,7 +63,7 @@ function AdminHome(){
                     title: 'Login Failed',
                     text: 'Invalid Email Format',
                     icon: 'error',
-                    confirmButtonText: 'Edi Sorry',
+                    confirmButtonText: 'OK',
                     customClass:{
                         icon: 'swalertIcon'
                     }
