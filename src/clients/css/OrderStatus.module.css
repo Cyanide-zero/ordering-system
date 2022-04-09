@@ -86,9 +86,17 @@
     padding-top: 10px;
 }
 
-.senderaddress, .customeraddress{
+.senderaddress{
     margin-left: 10px;
     width:80%
+}
+
+.customeraddress{
+    padding-left: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width:100%;
 }
 
 .viewButton{
@@ -108,7 +116,6 @@
 }
 
 .rcvdButton{
-    justify-self: flex-end;
     background-color: #FDD000;
     border: none;
     border-radius: 5px;
