@@ -60,7 +60,7 @@ function Home(){
                 }
             }).then((response) => {
                 window.location.reload();
-                })
+            })
         }
     }
 
@@ -84,7 +84,7 @@ function Home(){
                     RAMSHAN'S CAFE
                     <button className={HomeCSS.titleButton}><Link to="/category" style={{textDecoration:"none"}}>ORDER NOW</Link></button>
                 </div>
-                <img className={HomeCSS.pizzaBG} src={require('../../assets/images/mglogo.png')}/>
+                <img className={HomeCSS.pizzaBG} src={require('../../assets/images/chickenbilao.png')}/>
                 <img className={HomeCSS.upArrow} src={require('../../assets/icons/up-arrow.png')}/>
                 <Link to="/category/chicken" style={{textDecoration:"none"}}><p className={HomeCSS.italicAbsolute}>try it now</p></Link>
                 <div className={HomeCSS.circle}></div>

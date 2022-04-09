@@ -74,7 +74,7 @@ function OrdersCard (props){
             localArr.filter(menu => menu === item.menuName).forEach((filtered) => {
                 console.log(filtered);
                 if(parseInt(localStorage.getItem(`${filtered}`) !== 0 && localStorage.getItem(`${filtered}`))){
-                    result = result.concat({name:filtered,
+                    return result = result.concat({name:filtered,
                         folder:item.folder, 
                         qty: parseInt(localStorage.getItem(`${filtered}`)),
                         price: item.price
@@ -95,8 +95,21 @@ function OrdersCard (props){
     };
 
     React.useEffect(()=>{
-        console.log(pageLoad);
+        Swal.fire({
+        title: 'Fetching Orders',
+        text:'Please Wait',
+        timer: 1000,
+        customClass:{
+            loader: 'swalertLoader'
+        },
+        didOpen: () => {
+            Swal.showLoading()
+        }
+        }).then((result) => {
+            loadHandler();
+        })
         getMenu();
+        console.log(pageLoad);
         setResArr(resArr=>[
             ...resArr,
             ...result
@@ -151,7 +164,6 @@ function OrdersCard (props){
                         <div className='orderContainer'>
                             {resArr.length === 0 && <p style={{color:'black'}}> Your Cart is Empty. If you don't see your items, please click the <AiOutlineReload/> button.</p>}
                         {
-                            
                             resArr.map((item, index) => {
                                     {
                                         if(item.name!==undefined){
@@ -176,7 +188,11 @@ function OrdersCard (props){
                                                 marginTop:'1vw',
                                                 marginBottom:'1vw'
                                             }}>
-                                               <div style={{
+                                               {
+                                                   resArr.length === 0?
+                                                   <p style={{color:'black'}}> Your Cart is Empty. If you don't see your items, please click the <AiOutlineReload/> button.</p> : 
+                                                   <>
+                                                   <div style={{
                                                    display:'flex',
                                                    alignItems:'center',
                                                }}>
@@ -268,7 +284,8 @@ function OrdersCard (props){
                                                    className='removeItem'
                                                    onClick={removeHandler}
                                                    >x</button>
-                                               </div>
+                                               </div></>
+                                               }
                                             </div>
                                         ):localStorage.removeItem(`${item.name}`)
                                     )

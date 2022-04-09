@@ -36,38 +36,57 @@ function ProductManagement(){
   const deleteProduct = (id, folder) => {
     console.log(id, folder)
     Swal.fire({
-        title: 'Verifying...',
-        text: 'Please wait.',
-        timer: 2000,
-        didOpen: () => {
-          Swal.showLoading();
-          if(folder === 'handcrafted' || folder === 'blendedsmoothies' || folder === 'hotbeverages'){
-            axios.delete(`https://ordering-system-database.herokuapp.com/api/admin/drinksdelete/${id}`)
-            .then((response)=>{
-                setArr(arr.filter((val)=>{
-                    return val.id != id
-                }))
-            })
-            }else{
-            axios.delete(`https://ordering-system-database.herokuapp.com/api/admin/${folder}delete/${id}`)
-            .then((response)=>{
-                setArr(arr.filter((val)=>{
-                    return val.id != id
-                }))
-            })
-            }
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!',
+        customClass:{
+            icon:'swalertIcon'
         }
-    }).then(()=>{
-        Swal.fire({
-            title: 'Success',
-            text: 'Item Deleted',
-            icon:'success',
-            customClass:{
-                icon:'swalertIcon'
-            }
-        })
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Verifying...',
+                text: 'Please wait.',
+                timer: 2000,
+                didOpen: () => {
+                  Swal.showLoading();
+                  if(folder === 'handcrafted' || folder === 'blendedsmoothies' || folder === 'hotbeverages'){
+                    axios.delete(`https://ordering-system-database.herokuapp.com/api/admin/drinksdelete/${id}`)
+                    .then((response)=>{
+                        setArr(arr.filter((val)=>{
+                            return val.id != id
+                        }))
+                    })
+                    }else{
+                    axios.delete(`https://ordering-system-database.herokuapp.com/api/admin/${folder}delete/${id}`)
+                    .then((response)=>{
+                        setArr(arr.filter((val)=>{
+                            return val.id != id
+                        }))
+                    })
+                    }
+                }
+            }).then(()=>{
+                Swal.fire({
+                    title: 'Success',
+                    text: 'Item Deleted',
+                    icon:'success',
+                    customClass:{
+                        icon:'swalertIcon'
+                    }
+                })
+            })
+        //   Swal.fire(
+        //     'Deleted!',
+        //     'Your file has been deleted.',
+        //     'success'
+        //   )
+        }
     })
-    
     }
 
   const updateProduct = () => {

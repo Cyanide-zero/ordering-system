@@ -6,7 +6,8 @@ import {AiFillContacts,
         AiOutlineShoppingCart,
         AiFillHome,
         AiFillSchedule,
-        AiOutlineLogout
+        AiOutlineLogout,
+        AiOutlineMenu
     } from 'react-icons/ai';
 import {MdCategory} from 'react-icons/md';
 
@@ -23,12 +24,13 @@ function Header(){
         const ref = useDetectClickOutside({ onTriggered: closeDropdown });
         return (
             <div className={HeaderCSS.dropDownContainer} ref={ref}>
+                <Link to="/profile" className={HeaderCSS.dropDownButton}>PROFILE</Link>
+                <Link to="/myorders" className={HeaderCSS.dropDownButton}>MY ORDERS</Link>
                 <Link to="/" className={HeaderCSS.dropDownButton}
                     onClick={()=>{
                         localStorage.clear();
                     }}
                 >LOGOUT</Link>
-                {/* <Link to="/" className={HeaderCSS.dropDownButton}>PROFILE</Link> */}
             </div>
         );
     };
@@ -60,8 +62,8 @@ function Header(){
             <div className = {HeaderCSS.logoContainer}>
                 <Link to="/order"><img className={HeaderCSS.logoIcon} src={require('../../assets/icons/shopping-cart-check.png')} alt="Logo" /></Link>
                 <Link to="/order" className={location.pathname === "/order" ? HeaderCSS.buttonActiveMobile : HeaderCSS.buttonMobile }><AiOutlineShoppingCart/></Link>
-                <Link to="/" ><button onClick={()=>{localStorage.clear();}} className={HeaderCSS.menuButton}><AiOutlineLogout size={"20pt"}/></button></Link>
-                <Link to="/" onClick={()=>{localStorage.clear();}} className={HeaderCSS.buttonMobile}><AiOutlineLogout/></Link>
+                <button onClick={()=>{setToggle(true)}} className={HeaderCSS.menuButton}><AiOutlineMenu size={"20pt"}/></button>
+                <button onClick={()=>{setToggle(true)}} className={HeaderCSS.buttonMobile}><AiOutlineMenu size={"20pt"}/></button>
                 {toggle && <Dropdown/>}
             </div>
         </div>

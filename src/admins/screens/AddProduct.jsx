@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 
 function AddProduct(){
-    const [select, setSelect] = React.useState("pizza");
+    const [select, setSelect] = React.useState("chicken");
     const [productName, setProductName] = React.useState("");
     const [price, setPrice] = React.useState("");
 
@@ -55,6 +55,8 @@ function AddProduct(){
                             customClass:{
                                 icon: 'swalertIcon'
                             }
+                        }).then((response) => {
+                            window.location.reload();
                         })
                     }
                     if(response.data.message){
@@ -83,12 +85,8 @@ function AddProduct(){
                                 customClass:{
                                     icon: 'swalertIcon'
                                 }
-                            }).then((result)=>{
-                                if (result.isConfirmed) {
-                                    window.location.reload();
-                                }else{
-                                    window.location.reload();
-                                }
+                            }).then((response) => {
+                                window.location.reload();
                             })
                         }
                         if(response.data.message){
@@ -130,6 +128,7 @@ function AddProduct(){
                             <div className="inside-flex">
                                 <label>CATEGORY</label>
                                 <select value={select} onChange={(e) => setSelect(e.target.value)} className="category-form">
+                                    <option value="chicken">Chicken</option>
                                     <option value="pizza">Pizza</option>
                                     <option value="desserts">Desserts</option>
                                     <option value="pasta">Pasta</option>

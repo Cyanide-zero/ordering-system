@@ -149,6 +149,7 @@
         color:black;
         margin-left:2.6vw;
         font-size: 20pt;
+        border: none;
     }
 
     .logoContainer{
@@ -160,10 +161,29 @@
     
     .logoIcon,
     .logoContainer p,
-    .menuButton,
-    .dropDownContainer,
-    .dropDownButton,
-    .dropDownButton:hover{
+    .menuButton{
         display: none;
+    }
+
+    .dropDownContainer{
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        background-color: white;
+        padding:10px;
+        bottom:10vh;
+        right:5vw;
+        z-index: 5;
+    }
+    
+    .dropDownButton{
+        text-decoration: none;
+        color:black;
+        margin-top: 1vh;
+        margin-bottom: 2vh;
+    }
+    
+    .dropDownButton:hover{
+        border-bottom:#FDD000 solid 3px;
     }
 }

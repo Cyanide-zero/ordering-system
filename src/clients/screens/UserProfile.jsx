@@ -1,30 +1,42 @@
 import React from "react";
 import '../css/UserProfile.css';
+import {AiFillEdit} from 'react-icons/ai';
+import { useNavigate } from "react-router-dom";
 
 //COMPONENT IMPORTS
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 function UserProfile (){
+    const navigate = useNavigate();
+    const address = localStorage.getItem("address")
+    const name = localStorage.getItem("username")
+    const number = localStorage.getItem("number")
+    const email = localStorage.getItem("useremail")
+
     return(
         <div className="container">
             <Header/>
             <div className="profile">
                 <div className="main-info">
                     <div className="profile-image"></div>
-                    <h3>NAME</h3>
-                    <h3>EMAIL ADDRESS</h3>
+                    <h3>{name}<AiFillEdit 
+                    size={'20pt'} style={{cursor:'pointer'}}
+                    onClick={()=>{
+                        navigate("/editprofile");
+                    }}/></h3>
+                    <h3>{email}</h3>
                 </div>
 
                 <div className="sub-info">
                     <div className="address">
                         <h3>DEFAULT ADDRESS</h3>
-                        <p>lorem ipsum dolor sit amet</p>
+                        <p>{address}</p>
                     </div>
                     
                     <div className="contactnumber">
                         <h3>CONTACT NUMBER</h3>
-                        <p>09123456789</p>
+                        <p>{number}</p>
                     </div>
                 </div>
             </div>

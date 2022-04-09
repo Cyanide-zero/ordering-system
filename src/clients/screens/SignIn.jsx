@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Swal from 'sweetalert2'
 import Captcha from "captcha-image";
+import {v4} from 'uuid'
 
 function useKey(key,cb){
     const callbackRef = React.useRef(cb);
@@ -129,6 +130,7 @@ export default function SignIn(){
             axios.post("https://ordering-system-database.herokuapp.com/api/user/register", {
                 email: addEmail,
                 password: md5(addPass),
+                name: `USER${v4()}`
             }).then((response) => {
                 console.log(response)
                 if(response.data.message){
@@ -228,9 +230,14 @@ export default function SignIn(){
                     console.log(response.data.message)
                     if(!response.data.message){
                         localStorage.setItem("dummyToken", 1);
+                        localStorage.setItem("useremail", response.data[0].email);
+                        localStorage.setItem("username", response.data[0].name);
+                        localStorage.setItem("number", response.data[0].contact);
+                        localStorage.setItem("address", response.data[0].address);
+                        localStorage.setItem("userid", response.data[0].id);
+                        sessionStorage.setItem("password", response.data[0].password);
                         navigate("/home");
                         window.location.reload();
-                        // console.log("GUMAGANA AKO BETCHasda");
                     }else{
                             Swal.fire({
                                 title: 'Login Failed',

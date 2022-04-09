@@ -71,7 +71,7 @@ function DeliverTo (props){
                                 type="text"
                                 className="customername"
                                 name="CustomerName"
-                                placeholder="Name"
+                                placeholder={localStorage.getItem("username")}
                                 onChange={(e) => setName(e.target.value)}
                                 required
                             />
@@ -82,7 +82,7 @@ function DeliverTo (props){
                             <input
                                 type="text"
                                 name="ContactNumber"
-                                placeholder="Contact Number"
+                                placeholder={localStorage.getItem("number")}
                                 onChange={(e) => setNumber(e.target.value)}
                                 required
                             />
@@ -93,8 +93,9 @@ function DeliverTo (props){
                     <input
                         type="text"
                         name="address"
-                        placeholder="Address"
+                        placeholder={localStorage.getItem("address")}
                         onChange={(e) => setAddress(e.target.value)}
+                        readOnly={false}
                         required
                     />
 

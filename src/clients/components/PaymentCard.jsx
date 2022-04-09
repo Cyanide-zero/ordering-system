@@ -2,6 +2,7 @@ import React from 'react';
 import '../css/Order.css';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 import {storage} from '../../firebase';
 import {ref, uploadBytes} from 'firebase/storage';
 import {v4} from 'uuid'
@@ -9,6 +10,11 @@ import {v4} from 'uuid'
 function PaymentCard (){
     const [select, setSelect] = React.useState("gcash");
     var token = localStorage.getItem("dummyToken");
+    var useremail = localStorage.getItem("useremail");
+    var username = localStorage.getItem("username");
+    var number = localStorage.getItem("number");
+    var address = localStorage.getItem("address");
+    var userid = localStorage.getItem("userid")
     let local = JSON.parse(localStorage.getItem("Order"));
     const [receiver, setReceiver] = React.useState({
         recName:"",
@@ -22,7 +28,10 @@ function PaymentCard (){
     })
     const [imageUpload, setImageUpload] = React.useState(null);
     const [imagePreview, setImagePreview] = React.useState(null);
+    const [imagePath, setImagePath] = React.useState("")
     const [arr,setArr] = React.useState([]);
+    const navigate = useNavigate();
+    var imageRef;
 
     const getOrders = () =>{
         console.log(local)
@@ -33,6 +42,7 @@ function PaymentCard (){
     }
 
     React.useEffect(()=>{
+        // console.log(imagePath)
         console.log(JSON.parse(localStorage.getItem("Order")))
         getOrders();
         setPerson({
@@ -70,7 +80,9 @@ function PaymentCard (){
                 }
             })
         }else{
-            const imageRef = ref(storage, `images/${imageUpload.name + v4()}`)
+            imageRef = ref(storage, `images/${imageUpload.name + v4()}`)
+            setImagePath(imageRef._location.path_)
+            console.log(imagePath)
             console.log(imageRef._location.path_)
             uploadBytes(imageRef, imageUpload)
             .then((response)=>{
@@ -96,7 +108,9 @@ function PaymentCard (){
                         price: JSON.parse(localStorage.getItem("Total")),
                         cuspaid: select,
                         notes: person.info,
-                        local: local
+                        local: local,
+                        imagepath: imageRef._location.path_,
+                        orderedby: useremail,
                     }).then((response) => {
                         console.log(response)
                     })
@@ -112,8 +126,15 @@ function PaymentCard (){
                     }).then(()=>{
                         localStorage.clear();
                         localStorage.setItem("dummyToken", token);
+                        localStorage.setItem("username", username);
+                        localStorage.setItem("useremail", useremail);
+                        localStorage.setItem("number", number);
+                        localStorage.setItem("address", address);
+                        localStorage.setItem("userid", userid);
                     })
                 }
+            }).then((result)=>{
+                navigate("/home");
             })
         }
     }
@@ -124,7 +145,6 @@ function PaymentCard (){
             if(reader.readyState === 2){
                 setImagePreview(reader.result)
                 setImageUpload(e.target.files[0])
-                console.log(reader.result)
             }
         }
         reader.readAsDataURL(e.target.files[0])

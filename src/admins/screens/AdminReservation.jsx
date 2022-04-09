@@ -5,6 +5,7 @@ import ReservationCard from '../components/reservationcard';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Swal from 'sweetalert2'
 
 function AdminReservations(){
 
@@ -92,11 +93,32 @@ function AdminReservations(){
     }
 
     const deleteReservation = (id) => {
-        axios.delete(`https://ordering-system-database.herokuapp.com/api/reservations/delete/${id}`).then((response)=> {
-            getReservations(arr.filter((item)=> {
-                return item.idreservations == id
-            }))
-        })
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`https://ordering-system-database.herokuapp.com/api/reservations/delete/${id}`).then((response)=> {
+                    getReservations(arr.filter((item)=> {
+                        return item.idreservations == id
+                    }))
+                })
+                Swal.fire({
+                    title: 'Success',
+                    text: 'Reservation Deleted',
+                    icon:'success',
+                    customClass:{
+                        icon:'swalertIcon'
+                    }
+                })
+            }
+          })
+        
         
     }
 
@@ -133,7 +155,7 @@ function AdminReservations(){
                                if (item.is_reserved==0)
                                 {
                                     return(<tr>
-                                        <td className='admintd'>{item.idreservations}</td>
+                                        <td className='admintd'>{index+1}</td>
                                         <td className='admintd'>{item.date}</td>
                                         <td className='admintd'>{item.time}</td>
                                         <td className='admintd'>{item.partysize}</td>
@@ -167,7 +189,7 @@ function AdminReservations(){
                                     return(<tr style={{
                                         backgroundColor:'#DDFBBF'
                                     }}>
-                                        <td className='admintd'>{item.idreservations}</td>
+                                        <td className='admintd'>{index+1}</td>
                                         <td className='admintd'>{item.date}</td>
                                         <td className='admintd'>{item.time}</td>
                                         <td className='admintd'>{item.partysize}</td>
