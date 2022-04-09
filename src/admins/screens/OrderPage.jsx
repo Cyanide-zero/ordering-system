@@ -61,7 +61,7 @@ function OrderPage(){
             status: status
         }).then((response)=>{
                 console.log(response)
-                setOpenModal(false)
+                window.location.reload();
         })
     }
 
