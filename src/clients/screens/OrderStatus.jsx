@@ -47,6 +47,8 @@ function OrderStatus(){
                             customClass:{
                                 icon:OrderStatusCSS.swalertIcon
                             }
+                        }).then((response)=>{
+                            window.location.reload();
                         })
                 })
             }
