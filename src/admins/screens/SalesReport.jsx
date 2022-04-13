@@ -27,14 +27,15 @@ function SalesReport(){
 
     const filterDates = (e) =>{
         e.preventDefault();
-        if(filteredArr){
+        if(fromDate != "" && toDate != ""){
+            setOpenModal(true)
             arr.map((data, index)=>{
-                let date = new Date(data.orderdate.slice(0,10));
-                let from = new Date(fromDate)
-                let to = new Date(toDate)
-                console.log(date.getTime(), from.getTime());    
+                // let date = new Date(data.orderdate.slice(0,10));
+                // let from = new Date(fromDate)
+                // let to = new Date(toDate)
+                // console.log(date.getTime(), from.getTime());    
                 setFilteredArr(arr.filter((val)=>{
-                    return date.getTime() >= from.getTime() && date.getTime() <= to.getTime()
+                    return data.orderdate.slice(0,10) >= fromDate && data.orderdate.slice(0,10) <= toDate
                 }))
             })
         }
@@ -45,9 +46,6 @@ function SalesReport(){
                 text:'Invalid Date Range'
             }))
         }
-        
-        
-            setOpenModal(true)
     }
 
     React.useEffect(() => {

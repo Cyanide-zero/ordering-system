@@ -10,7 +10,7 @@ import {storage} from '../../firebase';
 function OrderPage(){
 
     const [arr,setArr] = React.useState([]);
-    const [status, setStatus] = React.useState("");
+    const [status, setStatus] = React.useState(localStorage.getItem("status"));
     const [id, setId] = React.useState("")
     const [openModal, setOpenModal] = React.useState(false);
     const imageRef = ref(storage, "images/")
@@ -18,7 +18,7 @@ function OrderPage(){
     const getOrders = () =>{
         axios.get("https://ordering-system-database.herokuapp.com/api/admin/orders")
             .then((response) => {
-                  setArr(response.data);
+                setArr(response.data);
         });
     }
 
@@ -114,11 +114,14 @@ function OrderPage(){
                                 if(!openModal){
                                     localStorage.setItem("Order", JSON.stringify([]))
                                     localStorage.setItem("path", "select one order")
+                                    localStorage.setItem("paymethod", 'select one order')
                                 }
                                 let dataj = JSON.parse(item.orderdetails)
                                 let datad = JSON.parse(localStorage.getItem("Order"))
                                 let imagepath = localStorage.getItem('path');
                                 let orderstatus = localStorage.getItem('status')
+                                let paymethod = localStorage.getItem('paymethod')
+                                let notes = localStorage.getItem('notes')
                                 let total = 0;
                                 return(
                                     <tr key={index}>
@@ -149,9 +152,9 @@ function OrderPage(){
                                                         )
                                                     })
                                                 }<br/>
-                                            <p>Notes: {item.notes}</p><br/>
+                                            <p>Notes: {notes}</p><br/>
                                             <p>Total: ₱{total}</p><br/>
-                                            <p>Payment Method: {item.customerpaid.toUpperCase()}</p><br></br>
+                                            <p>Payment Method: {paymethod.toUpperCase()}</p><br></br>
                                             <p>Payment Proof:</p><br></br>
                                             {
                                                 imageArr.map((pic)=>{
@@ -198,6 +201,8 @@ function OrderPage(){
                                             localStorage.setItem("Address", item.customeraddress)
                                             localStorage.setItem("path", item.imagepath)
                                             localStorage.setItem("status", item.status);
+                                            localStorage.setItem("paymethod", item.customerpaid)
+                                            localStorage.setItem("notes",item.notes)
                                         }}
                                         > 👁 </button>  &nbsp;|&nbsp;   <button onClick={()=>{deleteOrder(item.id)}} className='orderDeleteButton'> ✖ </button></td>
                                     </tr>
