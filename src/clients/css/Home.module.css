@@ -249,7 +249,8 @@ body{
   width:80%;
 }
 
-.infoForm input[type=text]{
+.infoForm input[type=text],
+.infoForm input[type=number]{
   padding-left: 1vw;
   width:96%;
   height:30px;
@@ -456,7 +457,8 @@ body{
     
   }
   
-  .infoForm input[type=text]{
+  .infoForm input[type=text],
+  .infoForm input[type=number]{
     padding-left: 1vw;
     width:96%;
     height:30px;

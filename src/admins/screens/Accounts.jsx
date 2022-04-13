@@ -98,7 +98,7 @@ function Accounts(){
                                 type="password" 
                                 name="password" 
                                 onChange={(e) => {
-                                    setaddPassword(e.target.value.toUpperCase())
+                                    setaddPassword(e.target.value)
                                 }}
                                 required
                             />

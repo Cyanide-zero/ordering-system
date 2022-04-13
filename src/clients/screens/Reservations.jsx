@@ -12,6 +12,7 @@ function Reservations(){
     const [addPartySize, setAddPartySize] = React.useState("");
     const [addName, setAddName] = React.useState("");
     const [addEmail, setAddEmail] = React.useState("");
+    const [phoneNum, setPhoneNum] = React.useState("")
 
     const addReservation = (e) =>{
         e.preventDefault();
@@ -20,7 +21,7 @@ function Reservations(){
         // console.log(addPartySize);
         // console.log(addName);
         // console.log(addEmail);
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        const regex = /^(09|\+639)\d{9}$/;
         
         if(addDate ==="" || addTime === "" || addPartySize==="" || addName==="" ||  addEmail ===""){ 
             Swal.fire({
@@ -33,19 +34,31 @@ function Reservations(){
                 }
             })
         }
+        else if(!regex.test(phoneNum)){
+            Swal.fire({
+                title: 'Process Failed',
+                text: 'Wrong Cellphone Number Format',
+                icon: 'error',
+                confirmButtonText: 'OK',
+                customClass:{
+                    icon: 'swalertIcon'
+                }
+            })
+        }
         else {
             axios.post("https://ordering-system-database.herokuapp.com/api/reservations/get", {
                 date: addDate,
                 time: addTime,
                 partysize: addPartySize,
                 name: addName,
-                emailaddress: addEmail
+                emailaddress: addEmail,
+                phone: phoneNum
             }).then((response) => {
                 console.log(response.data) 
             })
             Swal.fire({
                 title: 'Reservation Created',
-                text: 'Please wait on your email about the status of the reservation.',
+                text: 'Please wait on your email/phone about the status of the reservation.',
                 icon: 'success',
                 timer:2000,
                 showConfirmButton: false,
@@ -85,6 +98,8 @@ function Reservations(){
                             <input type="text" name="name" onChange={(e) => setAddName(e.target.value)}/>
                             <p>EMAIL ADDRESS</p> 
                             <input type="text" name="email" onChange={(e) => setAddEmail(e.target.value)}/>
+                            <p>CONTACT NUMBER</p> 
+                            <input type="number" name="phonenum" onChange={(e) => setPhoneNum(e.target.value)}/>
                         </div>
                         <button className={ReservationCSS.formButton} onClick={addReservation}> 
                             RESERVE NOW

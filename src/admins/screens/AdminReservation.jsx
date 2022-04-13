@@ -144,7 +144,7 @@ function AdminReservations(){
                             <th className='adminth'>Time</th>
                             <th className='adminth'>Party Size</th>
                             <th className='adminth'>Name</th>
-                            <th className='admintd'>Email</th>
+                            <th className='admintd'>Contact Number</th>
                             <th className='admintd'>Actions</th>
                         </tr>
                     </thead>
@@ -160,7 +160,7 @@ function AdminReservations(){
                                         <td className='admintd'>{item.time}</td>
                                         <td className='admintd'>{item.partysize}</td>
                                         <td className='admintd'>{item.name}</td>
-                                        <td className='admintd'>{item.emailaddress}</td>
+                                        <td className='admintd'>{item.contact}</td>
                                         <td className='admintd'>{
                                             item.is_reserved==0?
                                             <button className='reserveButton' onClick={(e)=>{
@@ -194,7 +194,7 @@ function AdminReservations(){
                                         <td className='admintd'>{item.time}</td>
                                         <td className='admintd'>{item.partysize}</td>
                                         <td className='admintd'>{item.name}</td>
-                                        <td className='admintd'>{item.emailaddress}</td>
+                                        <td className='admintd'>{item.contact}</td>
                                         <td className='admintd'> {
                                             item.is_reserved==0?
                                              <button className='reserveButton' onClick={(e)=>{
