@@ -219,7 +219,7 @@ function OrdersCard (props){
                                                 }
                                                 <p style={{
                                                     color:'black'
-                                                }} key={index}>{item.name} <br/> x{item.qty} {item.price * item.qty}
+                                                }} key={index}>{item.name} <br/> x{item.qty} ₱{item.price * item.qty}.00
                                                 {localStorage.setItem("Total", total = total + item.price * item.qty)}
 
                                                 </p>
@@ -291,6 +291,7 @@ function OrdersCard (props){
                                     )
                             })
                         }
+                        <h2 style={{color:'black'}}><b>TOTAL PRICE: </b>₱{localStorage.getItem("Total")}.00</h2>
                         </div>
                     </div>
 

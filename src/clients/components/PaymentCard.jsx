@@ -24,7 +24,8 @@ function PaymentCard (){
         name: "",
         number: "",
         address :"",
-        info: ""
+        info: "",
+        ship:""
     })
     const [imageUpload, setImageUpload] = React.useState(null);
     const [imagePreview, setImagePreview] = React.useState(null);
@@ -50,20 +51,21 @@ function PaymentCard (){
             name: localStorage.getItem("Name"),
             number: localStorage.getItem("Contact Number"),
             address:localStorage.getItem("Address"),
-            info: localStorage.getItem("Notes")
+            info: localStorage.getItem("Notes"),
+            ship:localStorage.getItem("Ship")
         })
 
         if(select==="gcash"){
             setReceiver({
                 ...receiver,
-                recName: "Joven R. Sabangan",
-                recNum: "09493536943"
+                recName: "Ladylyn Valencia",
+                recNum: "09655667614"
             })
         }else if(select === "bdo"){
             setReceiver({
                 ...receiver,
-                recName: "Elaine Joyce Olalo",
-                recNum: "Number Ni Elaine XD"
+                recName: "Ladylyn Valencia",
+                recNum: "1146 2373 05"
             })
         }
     }, [select])
@@ -111,6 +113,7 @@ function PaymentCard (){
                         local: local,
                         imagepath: imageRef._location.path_,
                         orderedby: useremail,
+                        ship: person.ship
                     }).then((response) => {
                         console.log(response)
                     })
@@ -160,7 +163,7 @@ function PaymentCard (){
                         <option value="bdo">BDO</option>
                     </select>
 
-                    <label>SEND TO</label>
+                    <label>SEND PAYMENT TO</label>
                     <div className='receiverContainer'>
                         <p className="receiver">Receiver Name: {receiver.recName}</p>
                         <p className="receiver">Receiver Number: {receiver.recNum}</p>

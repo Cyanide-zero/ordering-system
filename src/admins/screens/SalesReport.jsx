@@ -12,7 +12,8 @@ function SalesReport(){
     const [toDate, setToDate] = React.useState("");
     const [arr, setArr] = React.useState([]);
     const [filteredArr, setFilteredArr] = React.useState([]);
-    const [openModal, setOpenModal] = React.useState(false)
+    const [openModal, setOpenModal] = React.useState(false);
+    var total = 0;
 
     const getOrders = () =>{
         axios.get("https://ordering-system-database.herokuapp.com/api/admin/orders")
@@ -99,6 +100,7 @@ function SalesReport(){
                         <h2 className='modalTitle'>Orders made from {fromDate} to {toDate}</h2><br></br>
                         {
                             filteredArr.map((item, index)=>{
+                                total = total + item.payment;
                                 return(
                                     <div className='modalSalesContainer'>
                                         <p><b>{index+1}. id</b>:{item.id} &nbsp; <b>Invoice</b> {item.invoice_id}</p>
@@ -108,11 +110,13 @@ function SalesReport(){
                                         <p><b>Notes</b>: {item.notes}</p>
                                         <p><b>Payment</b>: ₱{item.payment}.00</p>
                                         <p><b>Payment Method</b>: {item.customerpaid.toUpperCase()}</p>
+                                        <p><b>Shipping Method</b>: {item.shipmethod.toUpperCase()}</p>
                                         <br></br>
                                     </div>
                                 )
                             })
                         }
+                        <h2><b>TOTAL SALES FROM {fromDate} to {toDate}: </b>₱{total}.00</h2>
                         {/* <button onClick={()=>setOpenModal(false)}>Close</button> */}
                         </Modal>
                 </div>

@@ -115,6 +115,7 @@ function OrderPage(){
                                     localStorage.setItem("Order", JSON.stringify([]))
                                     localStorage.setItem("path", "select one order")
                                     localStorage.setItem("paymethod", 'select one order')
+                                    localStorage.setItem("ship", 'select one order')
                                 }
                                 let dataj = JSON.parse(item.orderdetails)
                                 let datad = JSON.parse(localStorage.getItem("Order"))
@@ -122,6 +123,7 @@ function OrderPage(){
                                 let orderstatus = localStorage.getItem('status')
                                 let paymethod = localStorage.getItem('paymethod')
                                 let notes = localStorage.getItem('notes')
+                                let shipmethod = localStorage.getItem('ship')
                                 let total = 0;
                                 return(
                                     <tr key={index}>
@@ -155,6 +157,7 @@ function OrderPage(){
                                             <p>Notes: {notes}</p><br/>
                                             <p>Total: ₱{total}</p><br/>
                                             <p>Payment Method: {paymethod.toUpperCase()}</p><br></br>
+                                            <p>Shipping Method: {shipmethod.toUpperCase()}</p><br></br>
                                             <p>Payment Proof:</p><br></br>
                                             {
                                                 imageArr.map((pic)=>{
@@ -203,6 +206,7 @@ function OrderPage(){
                                             localStorage.setItem("status", item.status);
                                             localStorage.setItem("paymethod", item.customerpaid)
                                             localStorage.setItem("notes",item.notes)
+                                            localStorage.setItem("ship", item.shipmethod)
                                         }}
                                         > 👁 </button>  &nbsp;|&nbsp;   <button onClick={()=>{deleteOrder(item.id)}} className='orderDeleteButton'> ✖ </button></td>
                                     </tr>

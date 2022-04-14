@@ -5,7 +5,6 @@ import Scard from '../components/SmallCard';
 import Bcard from '../components/BigCard';
 import Header from '../components/Header';
 import Footer from '../components/Footer';  
-import Drinks from '../../assets/Drinks.json';
 import axios from "axios";
 import Swal from 'sweetalert2'
 

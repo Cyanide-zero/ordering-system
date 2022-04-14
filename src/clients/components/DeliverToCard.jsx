@@ -8,6 +8,7 @@ function DeliverTo (props){
     const [address, setAddress] = React.useState("");
     const [number, setNumber] = React.useState("");
     const [info,setInfo] = React.useState("N/A");
+    const [ship, setShip] = React.useState("deliver");
 
     const submitDeliver = (e) => {
         e.preventDefault();
@@ -38,7 +39,8 @@ function DeliverTo (props){
                 html: `<p>Name : ${name}</p>`+
                     `<p>Contact Number : ${number}</p>`+
                     `<p>Address : ${address}</p>`+
-                    `<p>Additional Notes : ${info}</p>`,
+                    `<p>Additional Notes : ${info}</p>`+
+                    `<p>Shipping Method : ${ship.toUpperCase()}</p>`,
                 confirmButtonText: 'Looks Good',
                 customClass:{
                     icon: 'swalertIcon',
@@ -50,6 +52,7 @@ function DeliverTo (props){
                     localStorage.setItem("Address", address);
                     localStorage.setItem("Contact Number", number);
                     localStorage.setItem("Notes", info);
+                    localStorage.setItem("Ship", ship);
                     onConfirm();
                 }
             })
@@ -106,6 +109,12 @@ function DeliverTo (props){
                         onChange={(e) => setInfo(e.target.value)}
                         required
                     />
+
+                    <label>SHIPPING METHOD</label>
+                    <select onChange={(e)=>setShip(e.target.value)}>
+                        <option value="deliver">DELIVER</option>
+                        <option value="pickup">PICKUP</option>
+                    </select>
 
                     <button onClick={submitDeliver}className="confirm-btn">CONFIRM</button>
                 </form>
